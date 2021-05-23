@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    android:background="@color/background"
-    tools:context=".ui.home.HomeFragment">
+    android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -41,48 +40,50 @@
 
         <TextView
             android:id="@+id/textView11"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="188dp"
+            android:layout_marginTop="228dp"
+            android:background="@drawable/border"
             android:fontFamily="@font/ellebaskerville_bold"
-            android:text="Notification"
-            android:textColor="@color/white"
+            android:text="Học phí học kỳ 2/2021"
+            android:textColor="@color/black"
             android:textFontWeight="1500"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.14"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView12"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="195dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/border"
             android:fontFamily="@font/ellebaskerville_bold"
-            android:text="Is about to expire"
-            android:textColor="@color/white"
+            android:text="Từ : Admin"
+            android:textColor="@color/black"
             android:textFontWeight="1500"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.188"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/noti_home" />
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
         <TextView
             android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="275dp"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/border"
             android:fontFamily="@font/ellebaskerville_bold"
-            android:text="What do you need today?"
-            android:textColor="@color/white"
+            android:text="Ngày 30/03 hết hạn thanh toán học phí. Yêu cầu sinh viên nhắc nhở phụ huynh đóng tiền đúng hạn."
+            android:textColor="@color/black"
             android:textFontWeight="1500"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.308"
+            app:layout_constraintHorizontal_bias="0.508"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/expire_home" />
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:layout_constraintWidth_percent="0.7" />
 
         <TextView
             android:id="@+id/textView"
@@ -141,89 +142,5 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/wooder_news_one" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/noti_home"
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/expire_home"
-            android:layout_width="match_parent"
-            android:layout_height="270dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-        <Button
-            android:id="@+id/btn_Schedule"
-            style="@style/circle"
-            android:layout_width="97dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="36dp"
-            android:background="@drawable/border"
-            android:fontFamily="@font/ellebaskerville_bold"
-            android:text="Schedule"
-            android:textColor="@color/black"
-            android:textFontWeight="1000"
-            android:textSize="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.097"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textView13" />
-
-        <Button
-            android:id="@+id/btn_deadline"
-            style="@style/circle"
-            android:layout_width="107dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="80dp"
-            android:background="@drawable/border"
-            android:fontFamily="@font/ellebaskerville_bold"
-            android:text="Deadline"
-            android:textColor="@color/black"
-            android:textFontWeight="1000"
-            android:textSize="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.09"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textView13" />
-
-        <Button
-            android:id="@+id/btn_point"
-            style="@style/circle"
-            android:layout_width="97dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="36dp"
-            android:background="@drawable/border"
-            android:fontFamily="@font/ellebaskerville_bold"
-            android:text="Point"
-            android:textColor="@color/black"
-            android:textFontWeight="1000"
-            android:textSize="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textView13" />
-
-        <Button
-            android:id="@+id/btn_testSchedule"
-            style="@style/circle"
-            android:layout_width="97dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="36dp"
-            android:background="@drawable/border"
-            android:fontFamily="@font/ellebaskerville_bold"
-            android:text="Test"
-            android:textColor="@color/black"
-            android:textFontWeight="1000"
-            android:textSize="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.898"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textView13" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

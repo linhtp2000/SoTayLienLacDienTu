@@ -10,8 +10,24 @@
         <item name="backgroundTint">#FFFFFF
         </item>
     </style>
+    <style name="buttoncolor" parent="Base.TextAppearance.AppCompat.Button" >
+        <item name="backgroundTint">#4DD0DB
+        </item>
+    </style>
     <style name="useravt" parent="Base.TextAppearance.AppCompat.Button" >
         <item name="backgroundTint">#10949F
+        </item>
+    </style>
+    <style name="dialog" parent="Base.TextAppearance.AppCompat.Button" >
+        <item name="backgroundTint">#132688
+        </item>
+    </style>
+    <style name="dialogcancel" parent="Base.TextAppearance.AppCompat.Button" >
+        <item name="backgroundTint">#BE0F0F
+        </item>
+    </style>
+    <style name="btnSearch" parent="Base.TextAppearance.AppCompat.Button" >
+        <item name="backgroundTint">#132688
         </item>
     </style>
 </resources>

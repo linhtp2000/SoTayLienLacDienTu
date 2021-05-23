@@ -10,8 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="369dp"
-        android:layout_height="624dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="9dp"
         android:background="@drawable/border"
@@ -25,11 +25,11 @@
         android:layout_marginRight="9dp">
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
-
-            android:layout_width="238dp"
+            android:id="@+id/register_userName"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.7"
             android:layout_height="36dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="58dp"
             android:background="@drawable/border"
             android:ems="10"
             android:hint="UserName"
@@ -42,10 +42,11 @@
             tools:ignore="MissingConstraints" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
-            android:layout_width="238dp"
+            android:id="@+id/register_pass"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.7"
             android:layout_height="36dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/border"
             android:ems="10"
             android:hint="Password"
@@ -54,14 +55,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+            app:layout_constraintTop_toBottomOf="@+id/register_userName"
             tools:ignore="MissingConstraints" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="238dp"
+            android:id="@+id/register_mail"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.7"
             android:layout_height="36dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="58dp"
             android:background="@drawable/border"
             android:ems="10"
             android:hint="Email
@@ -71,22 +73,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4"
+            app:layout_constraintTop_toBottomOf="@+id/register_pass"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/ellebaskerville_bold"
             android:text="UserName:"
             android:textColor="@color/stealblue"
             android:textFontWeight="1000"
             android:textSize="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName3"
+            app:layout_constraintBottom_toTopOf="@+id/register_userName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.23"
+            app:layout_constraintHorizontal_bias="0.18"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
             app:layout_constraintVertical_bias="0.181" />
@@ -95,23 +97,24 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/ellebaskerville_bold"
             android:text="Password:"
             android:textColor="@color/stealblue"
             android:textFontWeight="1000"
             android:textSize="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName4"
+            app:layout_constraintBottom_toTopOf="@+id/register_pass"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.212"
+            app:layout_constraintHorizontal_bias="0.18"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+            app:layout_constraintTop_toBottomOf="@+id/login_userName"
             app:layout_constraintVertical_bias="0.558" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/ellebaskerville_bold"
             android:text="Create Account"
             android:textColor="@color/stealblue"
@@ -122,35 +125,37 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_register"
             style="@style/circle"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_marginTop="224dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/buttoncircle"
             app:icon="@drawable/ic_baseline_arrow_forward_24"
             app:iconTint="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+            app:layout_constraintTop_toBottomOf="@+id/register_pass"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/ellebaskerville_bold"
             android:text="Email:"
             android:textColor="@color/stealblue"
             android:textFontWeight="1000"
             android:textSize="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.18"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4"
-            tools:ignore="MissingConstraints"
-            android:layout_marginLeft="60dp" />
+            app:layout_constraintTop_toBottomOf="@+id/register_pass"
+            app:layout_constraintVertical_bias="0.318"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/textView8"
@@ -165,7 +170,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.188"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+            app:layout_constraintTop_toBottomOf="@+id/register_mail"
             app:layout_constraintVertical_bias="0.566"
             tools:ignore="MissingConstraints" />
 
@@ -177,25 +182,10 @@
             android:background="#24877B"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+            app:layout_constraintTop_toBottomOf="@+id/register_mail"
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/imageView2"
-        style="@style/useravt"
-        android:layout_width="74dp"
-        android:layout_height="74dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/buttoncircle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_account_circle_24"
-        app:tint="#FFFFFF"
-        tools:ignore="MissingConstraints"
-        tools:srcCompat="@drawable/ic_baseline_account_circle_24" />
 
     <TextView
         android:id="@+id/textView5"
@@ -208,5 +198,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        style="@style/useravt"
+        android:layout_width="74dp"
+        android:layout_height="74dp"
+        android:background="@drawable/buttoncircle"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_account_circle_24"
+        app:tint="#FFFFFF"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/ic_baseline_account_circle_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
