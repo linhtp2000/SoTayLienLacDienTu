@@ -4,19 +4,22 @@ import java.util.Timer;
 
 public class BaiGiang {  //class phân công giảng dạy
     private String Id;
-    private  Khoa Khoa;
-    private  Mon Mon;
-    private HocKy HocKy;
-    private  GiaoVien GiaoVien;
+    private  String Name;
+    private  String Khoa;
+    private  int KhoaHoc;
+    private  String Mon;
+    private String HocKy;
+    private  String GiaoVien;
     private  String Thu;  //thứ
-    private Timer ThoiGian;      //thời gian bắt đầu tiết học
+    private String ThoiGian;      //thời gian bắt đầu tiết học
     private String Phong;    //phòng học
 
     public BaiGiang(){}
 
-    public BaiGiang(String id, Khoa khoa, Mon mon, HocKy hocKy,
-                    GiaoVien giaoVien, String thu, Timer thoiGian, String phong) {
+    public BaiGiang(String id,String name, String khoa, String mon, String hocKy,
+                    String giaoVien, String thu, String thoiGian, String phong, int khoaHoc) {
         Id = id;
+        Name=name;
         Khoa = khoa;
         Mon = mon;
         HocKy = hocKy;
@@ -24,8 +27,23 @@ public class BaiGiang {  //class phân công giảng dạy
         Thu = thu;
         ThoiGian = thoiGian;
         Phong = phong;
+        KhoaHoc=khoaHoc;
+
+    }
+    public String getName() {
+        return Name;
     }
 
+    public void setName(String name) {
+        Name = name;
+    }
+    public int getKhoaHoc() {
+        return KhoaHoc;
+    }
+
+    public void setKhoaHoc(int khoaHoc) {
+        KhoaHoc = khoaHoc;
+    }
     public String getId() {
         return Id;
     }
@@ -34,35 +52,35 @@ public class BaiGiang {  //class phân công giảng dạy
         Id = id;
     }
 
-    public Khoa getKhoa() {
+    public String getKhoa() {
         return Khoa;
     }
 
-    public void setKhoa(Khoa khoa) {
+    public void setKhoa(String khoa) {
         Khoa = khoa;
     }
 
-    public Mon getMon() {
+    public String getMon() {
         return Mon;
     }
 
-    public void setMon(Mon mon) {
+    public void setMon(String mon) {
         Mon = mon;
     }
 
-    public HocKy getHocKy() {
+    public String getHocKy() {
         return HocKy;
     }
 
-    public void setHocKy(HocKy hocKy) {
+    public void setHocKy(String hocKy) {
         HocKy = hocKy;
     }
 
-    public GiaoVien getGiaoVien() {
+    public String getGiaoVien() {
         return GiaoVien;
     }
 
-    public void setGiaoVien(GiaoVien giaoVien) {
+    public void setGiaoVien(String giaoVien) {
         GiaoVien = giaoVien;
     }
 
@@ -74,11 +92,11 @@ public class BaiGiang {  //class phân công giảng dạy
         Thu = thu;
     }
 
-    public Timer getThoiGian() {
+    public String getThoiGian() {
         return ThoiGian;
     }
 
-    public void setThoiGian(Timer thoiGian) {
+    public void setThoiGian(String thoiGian) {
         ThoiGian = thoiGian;
     }
 

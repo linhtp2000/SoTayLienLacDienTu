@@ -4,12 +4,12 @@ import java.util.Dictionary;
 
 public class CTDT {   //class chương trình đào tạo, cho biết các môn cần học của SV
     private String Id;
-    private  Khoa Khoa;
-    private SinhVien SinhVien;
-    private Dictionary<Mon, String> lstMon;
+    private  String Khoa;
+    private String SinhVien;
+    private Dictionary<String, String> lstMon;
     public CTDT(){}
 
-    public CTDT(String id, Khoa khoa, SinhVien sinhVien, Dictionary<Mon, String> lstMon) {
+    public CTDT(String id, String khoa, String sinhVien, Dictionary<String, String> lstMon) {
         Id = id;
         Khoa = khoa;
         SinhVien = sinhVien;
@@ -24,27 +24,27 @@ public class CTDT {   //class chương trình đào tạo, cho biết các môn 
         Id = id;
     }
 
-    public Khoa getKhoa() {
+    public String getKhoa() {
         return Khoa;
     }
 
-    public void setKhoa(Khoa khoa) {
+    public void setKhoa(String khoa) {
         Khoa = khoa;
     }
 
-    public SinhVien getSinhVien() {
+    public String getSinhVien() {
         return SinhVien;
     }
 
-    public void setSinhVien(SinhVien sinhVien) {
+    public void setSinhVien(String sinhVien) {
         SinhVien = sinhVien;
     }
 
-    public Dictionary<Mon, String> getLstMon() {
+    public Dictionary<String, String> getLstMon() {
         return lstMon;
     }
 
-    public void setLstMon(Dictionary<Mon, String> lstMon) {
+    public void setLstMon(Dictionary<String, String> lstMon) {
         this.lstMon = lstMon;
     }
 }

@@ -3,13 +3,13 @@ package com.example.contactapp.Models;
 public class SinhVien {
     private String Id;
     private  String Name;
-    private Lop Lop;
+    private String Lop;
     private  String Phone;
     private  String Email;
 
     public SinhVien(){}
 
-    public SinhVien(String id, String name, Lop lop, String phone, String email) {
+    public SinhVien(String id, String name, String lop, String phone, String email) {
         Id = id;
         Name = name;
         Lop = lop;
@@ -33,11 +33,11 @@ public class SinhVien {
         Name = name;
     }
 
-    public Lop getLop() {
+    public String getLop() {
         return Lop;
     }
 
-    public void setLop(Lop lop) {
+    public void setLop(String lop) {
         Lop = lop;
     }
 

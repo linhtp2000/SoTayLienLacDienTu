@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class BaiTapSV {
     private String Id;
-    private BaiTap BaiTap;
+    private String BaiTap;
     private double Diem;
-    private SinhVien SinhVien;
+    private String SinhVien;
     private Date NgayNop;
     private String Comment;
 
@@ -20,11 +20,11 @@ public class BaiTapSV {
         Id = id;
     }
 
-    public BaiTap getBaiTap() {
+    public String getBaiTap() {
         return BaiTap;
     }
 
-    public void setBaiTap(BaiTap baiTap) {
+    public void setBaiTap(String baiTap) {
         BaiTap = baiTap;
     }
 
@@ -36,11 +36,11 @@ public class BaiTapSV {
         Diem = diem;
     }
 
-    public SinhVien getSinhVien() {
+    public String getSinhVien() {
         return SinhVien;
     }
 
-    public void setSinhVien(SinhVien sinhVien) {
+    public void setSinhVien(String sinhVien) {
         SinhVien = sinhVien;
     }
 

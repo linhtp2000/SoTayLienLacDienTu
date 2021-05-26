@@ -3,29 +3,29 @@ package com.example.contactapp.Models;
 import java.util.List;
 
 public class KhoaHoc {
-    private int Id;
-    private List<Lop> lstLop;
+    private String Id;
+    private String Tenlop;
     public KhoaHoc(){}
 
-    public KhoaHoc(int id, List<Lop> lstLop) {
+    public KhoaHoc(String id, String Lop) {
 
         Id = id;
-        this.lstLop = lstLop;
+        this.Tenlop = Lop;
     }
 
-    public int getId() {
+    public String getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         Id = id;
     }
 
-    public List<Lop> getLstLop() {
-        return lstLop;
+    public String getTenLop() {
+        return Tenlop;
     }
 
-    public void setLstLop(List<Lop> lstLop) {
-        this.lstLop = lstLop;
+    public void setLstLop(String Lop) {
+        this.Tenlop = Lop;
     }
 }

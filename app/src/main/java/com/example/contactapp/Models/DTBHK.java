@@ -2,15 +2,15 @@ package com.example.contactapp.Models;
 
 public class DTBHK {    //class điểm trung bình học kỳ
     private String Id;
-    private  DTBM DTBM;  //id điểm trung bình môn
-    private  SinhVien SinhVien;
+    private  String DTBM;  //id điểm trung bình môn
+    private  String SinhVien;
     private  double Diem;    //điểm trung bình
     private String XepLoai;
-    private HocKy HocKy;
+    private String HocKy;
 
     public DTBHK(){}
 
-    public DTBHK(String id, DTBM DTBM, SinhVien sinhVien, double diem, String xepLoai, HocKy hocKy) {
+    public DTBHK(String id, String DTBM, String sinhVien, double diem, String xepLoai, String hocKy) {
         Id = id;
         this.DTBM = DTBM;
         SinhVien = sinhVien;
@@ -27,19 +27,19 @@ public class DTBHK {    //class điểm trung bình học kỳ
         Id = id;
     }
 
-    public DTBM getDTBM() {
+    public String getDTBM() {
         return DTBM;
     }
 
-    public void setDTBM(DTBM DTBM) {
+    public void setDTBM(String DTBM) {
         this.DTBM = DTBM;
     }
 
-    public SinhVien getSinhVien() {
+    public String getSinhVien() {
         return SinhVien;
     }
 
-    public void setSinhVien(SinhVien sinhVien) {
+    public void setSinhVien(String sinhVien) {
         SinhVien = sinhVien;
     }
 
@@ -59,11 +59,11 @@ public class DTBHK {    //class điểm trung bình học kỳ
         XepLoai = xepLoai;
     }
 
-    public HocKy getHocKy() {
+    public String getHocKy() {
         return HocKy;
     }
 
-    public void setHocKy(HocKy hocKy) {
+    public void setHocKy(String hocKy) {
         HocKy = hocKy;
     }
 }

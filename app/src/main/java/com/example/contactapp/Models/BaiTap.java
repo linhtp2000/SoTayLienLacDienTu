@@ -7,16 +7,16 @@ public class BaiTap {//bài tập do GV thêm
     private String Id;
     private  String Name;
     private  String NoiDung;
-    private  GiaoVien GiaoVien;
-    private BaiGiang BaiGiang;
+    private  String GiaoVien;
+    private String BaiGiang;
     private Date NgayTao;
     private Date Deadline;
-    private List<BaiTapSV> lstBTSV;
+    private List<String> lstBTSV;
 
     public BaiTap() {}
 
-    public BaiTap(String id, String name, String noiDung, GiaoVien giaoVien, BaiGiang baiGiang,
-                  Date ngayTao, Date deadline, List<BaiTapSV> lstBTSV) {
+    public BaiTap(String id, String name, String noiDung, String giaoVien, String baiGiang,
+                  Date ngayTao, Date deadline, List<String> lstBTSV) {
         Id = id;
         Name = name;
         NoiDung = noiDung;
@@ -51,19 +51,19 @@ public class BaiTap {//bài tập do GV thêm
         NoiDung = noiDung;
     }
 
-    public GiaoVien getGiaoVien() {
+    public String getGiaoVien() {
         return GiaoVien;
     }
 
-    public void setGiaoVien(GiaoVien giaoVien) {
+    public void setGiaoVien(String giaoVien) {
         GiaoVien = giaoVien;
     }
 
-    public BaiGiang getBaiGiang() {
+    public String getBaiGiang() {
         return BaiGiang;
     }
 
-    public void setBaiGiang(BaiGiang baiGiang) {
+    public void setBaiGiang(String baiGiang) {
         BaiGiang = baiGiang;
     }
 
@@ -83,11 +83,11 @@ public class BaiTap {//bài tập do GV thêm
         Deadline = deadline;
     }
 
-    public List<BaiTapSV> getLstBTSV() {
+    public List<String> getLstBTSV() {
         return lstBTSV;
     }
 
-    public void setLstBTSV(List<BaiTapSV> lstBTSV) {
+    public void setLstBTSV(List<String> lstBTSV) {
         this.lstBTSV = lstBTSV;
     }
 }

@@ -3,11 +3,11 @@ package com.example.contactapp.Models;
 public class Mon {  //class môn học
     private String Id;
     private  String Name;
-    private Khoa Khoa;
+    private String Khoa;
 
     public Mon(){}
 
-    public Mon(String id, String name, com.example.contactapp.Models.Khoa khoa) {
+    public Mon(String id, String name, String khoa) {
         Id = id;
         Name = name;
         Khoa = khoa;
@@ -29,11 +29,11 @@ public class Mon {  //class môn học
         Name = name;
     }
 
-    public Khoa getKhoa() {
+    public String getKhoa() {
         return Khoa;
     }
 
-    public void setKhoa(Khoa khoa) {
+    public void setKhoa(String khoa) {
         Khoa = khoa;
     }
 }

@@ -2,15 +2,15 @@ package com.example.contactapp.Models;
 
 public class DTBM { //class điểm trung bình môn
     private String Id;
-    private  KhoaHoc KhoaHoc;
-    private BaiGiang BaiGiang;
-    private SinhVien SinhVien;
+    private  String KhoaHoc;
+    private String BaiGiang;
+    private String SinhVien;
     private  double Diem;    //điểm trung bình môn
     private String XepLoai;
     public DTBM(){}
 
-    public DTBM(String id, KhoaHoc khoaHoc, BaiGiang baiGiang,
-                SinhVien sinhVien, double diem, String xepLoai) {
+    public DTBM(String id, String khoaHoc, String baiGiang,
+                String sinhVien, double diem, String xepLoai) {
         Id = id;
         KhoaHoc = khoaHoc;
         BaiGiang = baiGiang;
@@ -27,27 +27,27 @@ public class DTBM { //class điểm trung bình môn
         Id = id;
     }
 
-    public KhoaHoc getKhoaHoc() {
+    public String getKhoaHoc() {
         return KhoaHoc;
     }
 
-    public void setKhoaHoc(KhoaHoc khoaHoc) {
+    public void setKhoaHoc(String khoaHoc) {
         KhoaHoc = khoaHoc;
     }
 
-    public BaiGiang getBaiGiang() {
+    public String getBaiGiang() {
         return BaiGiang;
     }
 
-    public void setBaiGiang(BaiGiang baiGiang) {
+    public void setBaiGiang(String baiGiang) {
         BaiGiang = baiGiang;
     }
 
-    public SinhVien getSinhVien() {
+    public String getSinhVien() {
         return SinhVien;
     }
 
-    public void setSinhVien(SinhVien sinhVien) {
+    public void setSinhVien(String sinhVien) {
         SinhVien = sinhVien;
     }
 

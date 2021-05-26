@@ -1,17 +1,11 @@
 package com.example.contactapp;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.IdpResponse;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -19,10 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-
-import static androidx.core.app.ActivityCompat.startActivityForResult;
 
 public class FirebaseUtil {
     public  static FirebaseDatabase mFirebaseDatabase;
@@ -30,28 +21,34 @@ public class FirebaseUtil {
     private  static FirebaseUtil firebaseUtil;
     public  static FirebaseAuth mFirebaseAuth;
     public static FirebaseAuth.AuthStateListener mAuthListener;
-    public static ArrayList<Register> mDeals;
+   // public static ArrayList<RegisterActivity> mDeals;
     private static final int RC_SIGN_IN = 123;
+    public static FirebaseUser mFirebaseUser;
     private  FirebaseUtil(){};
     private static Activity caller;
-   public  static void openFbReference(String ref, Activity callerActivity)
+    private static final String TAG = "ReadAndWriteSnippets";
+  //  public static String user;
+   public  static void openFbReference(String ref)
    {
        if(firebaseUtil==null){
            firebaseUtil= new FirebaseUtil();
            mFirebaseDatabase=FirebaseDatabase.getInstance();
            mFirebaseAuth=FirebaseAuth.getInstance();
-           caller=callerActivity;
-           mAuthListener= new FirebaseAuth.AuthStateListener() {
-               @Override
-               public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                    if(firebaseAuth.getCurrentUser()==null) {
-                        FirebaseUtil.signIn();
-                    }
-                   Toast.makeText(callerActivity.getBaseContext(),"Welcome comeback", Toast.LENGTH_LONG).show();
-               }
-           };
+           mFirebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+//           caller= callerActivity;
+//           mAuthListener= new FirebaseAuth.AuthStateListener() {
+//               @Override
+//               public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//
+//                    if(firebaseAuth.getCurrentUser()==null) {
+//                        FirebaseUtil.signIn();
+//                    }
+//
+//                   Toast.makeText(callerActivity.getBaseContext(),"Welcome comeback", Toast.LENGTH_LONG).show();
+//               }
+//           };
        }
-       mDeals= new ArrayList<Register>();
+//       mDeals= new ArrayList<Register>();
        mDatabaseReference=mFirebaseDatabase.getReference().child(ref);
    }
 

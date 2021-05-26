@@ -2,14 +2,14 @@ package com.example.contactapp.Models;
 
 public class HocPhi {  //class học phí
     private String Id;
-    private SinhVien SinhVien;
-    private  HocKy HocKy;
+    private String SinhVien;
+    private  String HocKy;
     private  double tienHocPhi;
     private  boolean HoanThanh;
 
     public HocPhi(){}
 
-    public HocPhi(String id, SinhVien sinhVien, HocKy hocKy, double tienHocPhi, boolean hoanThanh) {
+    public HocPhi(String id, String sinhVien,String hocKy, double tienHocPhi, boolean hoanThanh) {
         Id = id;
         SinhVien = sinhVien;
         HocKy = hocKy;
@@ -25,19 +25,19 @@ public class HocPhi {  //class học phí
         Id = id;
     }
 
-    public SinhVien getSinhVien() {
+    public String getSinhVien() {
         return SinhVien;
     }
 
-    public void setSinhVien(SinhVien sinhVien) {
+    public void setSinhVien(String sinhVien) {
         SinhVien = sinhVien;
     }
 
-    public HocKy getHocKy() {
+    public String getHocKy() {
         return HocKy;
     }
 
-    public void setHocKy(HocKy hocKy) {
+    public void setHocKy(String hocKy) {
         HocKy = hocKy;
     }
 

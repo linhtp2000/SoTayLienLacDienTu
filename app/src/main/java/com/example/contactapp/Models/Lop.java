@@ -3,8 +3,8 @@ package com.example.contactapp.Models;
 public class Lop {
     private String Id;
     private  String Name;
-    private  Khoa Khoa;
-    private KhoaHoc KhoaHoc;
+    private  String Khoa;
+    private String KhoaHoc;
 
     public Lop(){}
 
@@ -24,19 +24,19 @@ public class Lop {
         Name = name;
     }
 
-    public Khoa getKhoa() {
+    public String getKhoa() {
         return Khoa;
     }
 
-    public void setKhoa(Khoa khoa) {
+    public void setKhoa(String khoa) {
         Khoa = khoa;
     }
 
-    public KhoaHoc getKhoaHoc() {
+    public String getKhoaHoc() {
         return KhoaHoc;
     }
 
-    public void setKhoaHoc(KhoaHoc khoaHoc) {
+    public void setKhoaHoc(String khoaHoc) {
         KhoaHoc = khoaHoc;
     }
 }

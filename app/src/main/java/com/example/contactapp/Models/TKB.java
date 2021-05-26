@@ -2,13 +2,13 @@ package com.example.contactapp.Models;
 
 public class TKB {       //class thời khóa biểu
     private String Id;
-    private SinhVien SinhVien;
-    private BaiGiang BaiGiang;
+    private String SinhVien;
+    private String BaiGiang;
 
     public TKB() {
     }
 
-    public TKB(String id,SinhVien sinhVien, BaiGiang baiGiang) {
+    public TKB(String id,String sinhVien, String baiGiang) {
         Id = id;
         SinhVien = sinhVien;
         BaiGiang = baiGiang;
@@ -22,19 +22,19 @@ public class TKB {       //class thời khóa biểu
         Id = id;
     }
 
-    public SinhVien getSinhVien() {
+    public String getSinhVien() {
         return SinhVien;
     }
 
-    public void setSinhVien(SinhVien sinhVien) {
+    public void setSinhVien(String sinhVien) {
         SinhVien = sinhVien;
     }
 
-    public BaiGiang getBaiGiang() {
+    public String getBaiGiang() {
         return BaiGiang;
     }
 
-    public void setBaiGiang(BaiGiang baiGiang) {
+    public void setBaiGiang(String baiGiang) {
         BaiGiang = baiGiang;
     }
 }
