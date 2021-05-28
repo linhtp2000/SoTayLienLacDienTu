@@ -9,11 +9,10 @@ public class CTDT {   //class chương trình đào tạo, cho biết các môn 
     private Dictionary<String, String> lstMon;
     public CTDT(){}
 
-    public CTDT(String id, String khoa, String sinhVien, Dictionary<String, String> lstMon) {
-        Id = id;
-        Khoa = khoa;
-        SinhVien = sinhVien;
-        this.lstMon = lstMon;
+    public CTDT(String Id, String Khoa, String SinhVien, Dictionary<String, String> Mon) {
+        this.Id = Id;
+        this.SinhVien = SinhVien;
+        this.lstMon = Mon;
     }
 
     public String getId() {

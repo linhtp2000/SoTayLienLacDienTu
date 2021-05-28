@@ -7,56 +7,56 @@ public class ThongBao {
     private String Id;
     private  String NoiDung;
     private  String NguoiGui;
-    private List<String> lstNguoiNhan;
+    private List<String> NguoiNhan;
     private Date NgayGui;
 
     public ThongBao(){}
 
-    public ThongBao(String id, String noiDung, String nguoiGui, List<String> lstNguoiNhan, Date ngayGui) {
-        Id = id;
-        NoiDung = noiDung;
-        NguoiGui = nguoiGui;
-        this.lstNguoiNhan = lstNguoiNhan;
-        NgayGui = ngayGui;
+    public ThongBao(String Id, String NoiDung, String NguoiGui, List<String> NguoiNhan, Date NgayGui) {
+       this.Id = Id;
+        this.NoiDung = NoiDung;
+        this.NguoiGui = NguoiGui;
+        this.NguoiNhan = NguoiNhan;
+        this.NgayGui = NgayGui;
     }
 
     public String getId() {
         return Id;
     }
 
-    public void setId(String id) {
-        Id = id;
+    public void setId(String Id) {
+        this.Id = Id;
     }
 
     public String getNoiDung() {
         return NoiDung;
     }
 
-    public void setNoiDung(String noiDung) {
-        NoiDung = noiDung;
+    public void setNoiDung(String NoiDung) {
+        this.NoiDung = NoiDung;
     }
 
     public String getNguoiGui() {
         return NguoiGui;
     }
 
-    public void setNguoiGui(String nguoiGui) {
-        NguoiGui = nguoiGui;
+    public void setNguoiGui(String NguoiGui) {
+        this.NguoiGui = NguoiGui;
     }
 
     public List<String> getLstNguoiNhan() {
-        return lstNguoiNhan;
+        return NguoiNhan;
     }
 
-    public void setLstNguoiNhan(List<String> lstNguoiNhan) {
-        this.lstNguoiNhan = lstNguoiNhan;
+    public void setLstNguoiNhan(List<String> NguoiNhan) {
+        this.NguoiNhan = NguoiNhan;
     }
 
     public Date getNgayGui() {
         return NgayGui;
     }
 
-    public void setNgayGui(Date ngayGui) {
-        NgayGui = ngayGui;
+    public void setNgayGui(Date NgayGui) {
+        this.NgayGui = NgayGui;
     }
 }

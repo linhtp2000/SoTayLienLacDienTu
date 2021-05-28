@@ -9,85 +9,106 @@ public class BaiTap {//bài tập do GV thêm
     private  String NoiDung;
     private  String GiaoVien;
     private String BaiGiang;
-    private Date NgayTao;
-    private Date Deadline;
-    private List<String> lstBTSV;
+    private String NgayTao;
+    private String Deadline;
+    private List<String> BaiTapSV;
+
+    public String getNgayTao() {
+        return NgayTao;
+    }
+
+    public String getDeadline() {
+        return Deadline;
+    }
+    private String ThoiGianNop;
+    private String ThoiGianTao;
+
 
     public BaiTap() {}
 
-    public BaiTap(String id, String name, String noiDung, String giaoVien, String baiGiang,
-                  Date ngayTao, Date deadline, List<String> lstBTSV) {
-        Id = id;
-        Name = name;
-        NoiDung = noiDung;
-        GiaoVien = giaoVien;
-        BaiGiang = baiGiang;
-        NgayTao = ngayTao;
-        Deadline = deadline;
-        this.lstBTSV = lstBTSV;
+    public BaiTap(String Name, String NoiDung, String GiaoVien, String BaiGiang,
+                  String NgayTao, String Deadline, List<String> BaiTapSV, String ThoiGianNop,String ThoiGianTao) {
+
+       this.Name = Name;
+        this.NoiDung = NoiDung;
+        this.GiaoVien = GiaoVien;
+        this.BaiGiang = BaiGiang;
+        this.NgayTao = NgayTao;
+        this.Deadline = Deadline;
+        this.ThoiGianNop=ThoiGianNop;
+        this.ThoiGianTao=ThoiGianTao;
+        this.BaiTapSV = BaiTapSV;
+    }
+    public void setNgayTao(String ngayTao){
+        this.NgayTao = NgayTao;
+    }
+
+
+    public void setDeadline(String Deadline) {
+        this.Deadline = Deadline;
+    }
+
+    public String getThoiGianNop() {
+        return ThoiGianNop;
+    }
+
+    public void setThoiGianNop(String ThoiGianNop) {
+        this.ThoiGianNop=ThoiGianNop;
+    }
+
+    public String getThoiGianTao() {
+        return ThoiGianTao;
+    }
+
+    public void setThoiGianTao(String ThoiGianTao) {
+        this.ThoiGianTao=ThoiGianTao;
     }
 
     public String getId() {
         return Id;
     }
 
-    public void setId(String id) {
-        Id = id;
+    public void setId(String Id) {
+        this.Id = Id;
     }
 
     public String getName() {
         return Name;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getNoiDung() {
         return NoiDung;
     }
 
-    public void setNoiDung(String noiDung) {
-        NoiDung = noiDung;
+    public void setNoiDung(String NoiDung) {
+        this.NoiDung = NoiDung;
     }
 
     public String getGiaoVien() {
         return GiaoVien;
     }
 
-    public void setGiaoVien(String giaoVien) {
-        GiaoVien = giaoVien;
+    public void setGiaoVien(String GiaoVien) {
+        this.GiaoVien = GiaoVien;
     }
 
     public String getBaiGiang() {
         return BaiGiang;
     }
 
-    public void setBaiGiang(String baiGiang) {
-        BaiGiang = baiGiang;
-    }
-
-    public Date getNgayTao() {
-        return NgayTao;
-    }
-
-    public void setNgayTao(Date ngayTao) {
-        NgayTao = ngayTao;
-    }
-
-    public Date getDeadline() {
-        return Deadline;
-    }
-
-    public void setDeadline(Date deadline) {
-        Deadline = deadline;
+    public void setBaiGiang(String BaiGiang) {
+        this.BaiGiang = BaiGiang;
     }
 
     public List<String> getLstBTSV() {
-        return lstBTSV;
+        return BaiTapSV;
     }
 
-    public void setLstBTSV(List<String> lstBTSV) {
-        this.lstBTSV = lstBTSV;
+    public void setLstBaiTapSV(List<String> BaiTapSV) {
+        this.BaiTapSV = BaiTapSV;
     }
 }

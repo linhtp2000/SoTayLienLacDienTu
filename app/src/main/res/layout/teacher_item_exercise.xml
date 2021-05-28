@@ -9,23 +9,15 @@
     android:padding="10dp">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="1dp"
-        tools:ignore="MissingConstraints">
-
         <TextView
             android:id="@+id/tvMon"
-            android:layout_width="156dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="158dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:text="TextView"
-            android:textSize="20dp"
-            android:fontFamily="@font/ellebaskerville_bold"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,13 +31,18 @@
             app:layout_constraintTop_toBottomOf="@+id/tvMon" />
 
         <TextView
-            android:id="@+id/tvDay"
+            android:id="@+id/tvDate"
             android:layout_width="84dp"
             android:layout_height="18dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             android:text="TextView"
-            android:textAlignment="textEnd"
             android:fontFamily="@font/ellebaskerville_bold"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvMon"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="RtlCompat" />
@@ -54,22 +51,15 @@
             android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="TextView"
-            android:textAlignment="textEnd"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             android:fontFamily="@font/ellebaskerville_bold"
+            android:textAlignment="textEnd"
+            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDay"
             tools:ignore="RtlCompat" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_check_circle_24"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-3dp"
-        tools:layout_editor_absoluteY="16dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

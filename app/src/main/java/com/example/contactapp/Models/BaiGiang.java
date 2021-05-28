@@ -1,8 +1,9 @@
 package com.example.contactapp.Models;
 
+import java.io.Serializable;
 import java.util.Timer;
 
-public class BaiGiang {  //class phân công giảng dạy
+public class BaiGiang implements Serializable {  //class phân công giảng dạy
     private String Id;
     private  String Name;
     private  String Khoa;
@@ -16,95 +17,94 @@ public class BaiGiang {  //class phân công giảng dạy
 
     public BaiGiang(){}
 
-    public BaiGiang(String id,String name, String khoa, String mon, String hocKy,
-                    String giaoVien, String thu, String thoiGian, String phong, int khoaHoc) {
-        Id = id;
-        Name=name;
-        Khoa = khoa;
-        Mon = mon;
-        HocKy = hocKy;
-        GiaoVien = giaoVien;
-        Thu = thu;
-        ThoiGian = thoiGian;
-        Phong = phong;
-        KhoaHoc=khoaHoc;
+    public BaiGiang(String Id,String Name, String Khoa, String Mon, String HocKy,
+                    String GiaoVien, String Thu, String ThoiGian, String Phong, int KhoaHoc) {
+        this.Id = Id;
+        this.Name=Name;
+        this.Khoa = Khoa;
+        this.Mon = Mon;
+        this.HocKy = HocKy;
+        this.GiaoVien = GiaoVien;
+        this.Thu = Thu;
+        this.ThoiGian = ThoiGian;
+        this.Phong = Phong;
+        this.KhoaHoc=KhoaHoc;
 
     }
     public String getName() {
         return Name;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setName(String Name) {
+        this.Name=Name;
     }
     public int getKhoaHoc() {
         return KhoaHoc;
     }
 
-    public void setKhoaHoc(int khoaHoc) {
-        KhoaHoc = khoaHoc;
+    public void setKhoaHoc(int KhoaHoc) { this.KhoaHoc=KhoaHoc;
+
     }
     public String getId() {
         return Id;
     }
 
-    public void setId(String id) {
-        Id = id;
+    public void setId(String Id) {
+        this.Id = Id;
     }
 
     public String getKhoa() {
         return Khoa;
     }
 
-    public void setKhoa(String khoa) {
-        Khoa = khoa;
+    public void setKhoa(String Khoa) {
+        this.Khoa = Khoa;
     }
 
     public String getMon() {
         return Mon;
     }
 
-    public void setMon(String mon) {
-        Mon = mon;
+    public void setMon(String Mon) {
+        this.Mon = Mon;
     }
 
     public String getHocKy() {
         return HocKy;
     }
 
-    public void setHocKy(String hocKy) {
-        HocKy = hocKy;
+    public void setHocKy(String HocKy) {
+        this.HocKy = HocKy;
     }
 
     public String getGiaoVien() {
         return GiaoVien;
     }
 
-    public void setGiaoVien(String giaoVien) {
-        GiaoVien = giaoVien;
+    public void setGiaoVien(String GiaoVien) {
+        this.GiaoVien = GiaoVien;
     }
 
     public String getThu() {
         return Thu;
     }
 
-    public void setThu(String thu) {
-        Thu = thu;
+    public void setThu(String Thu){ this.Thu = Thu;
     }
 
     public String getThoiGian() {
         return ThoiGian;
     }
 
-    public void setThoiGian(String thoiGian) {
-        ThoiGian = thoiGian;
+    public void setThoiGian(String ThoiGian) {
+        this.ThoiGian = ThoiGian;
     }
 
     public String getPhong() {
         return Phong;
     }
 
-    public void setPhong(String phong) {
-        Phong = phong;
+    public void setPhong(String Phong) {
+        this.Phong = Phong;
     }
 }

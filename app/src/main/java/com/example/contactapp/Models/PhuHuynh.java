@@ -9,44 +9,41 @@ public class PhuHuynh {  //class phụ huynh
 
     public PhuHuynh(){}
 
-    public PhuHuynh(String id, String name,String sinhVien, String phone, String email) {
-        Id = id;
-        Name = name;
-        SinhVien = sinhVien;
-        Phone = phone;
-        Email = email;
+    public PhuHuynh(String Name,String SinhVien, String Phone, String Email) {
+       this.Name = Name;
+        this.SinhVien = SinhVien;
+       this.Phone = Phone;
+        this.Email = Email;
     }
 
     public String getId() {
         return Id;
     }
 
-    public void setId(String id) {
-        Id = id;
+    public void setId(String Id) {
+        this.Id = Id;
     }
 
     public String getName() {
         return Name;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setName(String Name) {this.Name = Name;
     }
 
     public String getSinhVien() {
         return SinhVien;
     }
 
-    public void setSinhVien(String sinhVien) {
-        SinhVien = sinhVien;
+    public void setSinhVien(String SinhVien) {
+        this.SinhVien = SinhVien;
     }
 
     public String getPhone() {
         return Phone;
     }
 
-    public void setPhone(String phone) {
-        Phone = phone;
+    public void setPhone(String Phone) {this.Phone = Phone;
     }
 
     public String getEmail() {
@@ -54,6 +51,6 @@ public class PhuHuynh {  //class phụ huynh
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.Email = Email;
     }
 }

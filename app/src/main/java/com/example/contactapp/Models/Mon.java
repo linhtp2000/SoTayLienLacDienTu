@@ -7,18 +7,17 @@ public class Mon {  //class môn học
 
     public Mon(){}
 
-    public Mon(String id, String name, String khoa) {
-        Id = id;
-        Name = name;
-        Khoa = khoa;
+    public Mon( String Name, String Khoa) {
+       this.Name = Name;
+        this.Khoa = Khoa;
     }
 
     public String getId() {
         return Id;
     }
 
-    public void setId(String id) {
-        Id = id;
+    public void setId(String Id) {
+        this.Id=Id;
     }
 
     public String getName() {
@@ -26,7 +25,7 @@ public class Mon {  //class môn học
     }
 
     public void setName(String name) {
-        Name = name;
+        this.Name = Name;
     }
 
     public String getKhoa() {
@@ -34,6 +33,6 @@ public class Mon {  //class môn học
     }
 
     public void setKhoa(String khoa) {
-        Khoa = khoa;
+        this.Khoa = Khoa;
     }
 }

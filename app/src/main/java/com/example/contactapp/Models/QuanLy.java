@@ -8,11 +8,10 @@ public class QuanLy {
 
     public QuanLy(){}
 
-    public QuanLy(String id, String name, String phone, String email) {
-        Id = id;
-        Name = name;
-        Phone = phone;
-        Email = email;
+    public QuanLy(String Name, String Phone, String Email) {
+        this.Name = Name;
+        this.Phone = Phone;
+        this.Email = Email;
     }
 
     public String getId() {
@@ -20,7 +19,7 @@ public class QuanLy {
     }
 
     public void setId(String id) {
-        Id = id;
+        Id = Id;
     }
 
     public String getName() {
@@ -28,22 +27,21 @@ public class QuanLy {
     }
 
     public void setName(String name) {
-        Name = name;
+        this.Name = Name;
     }
 
     public String getPhone() {
         return Phone;
     }
 
-    public void setPhone(String phone) {
-        Phone = phone;
+    public void setPhone(String Phone) {
+        this.Phone = Phone;
     }
 
     public String getEmail() {
         return Email;
     }
 
-    public void setEmail(String email) {
-        Email = email;
+    public void setEmail(String Email){this.Email = Email;
     }
 }

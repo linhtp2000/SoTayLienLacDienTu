@@ -10,13 +10,12 @@ public class DTBHK {    //class điểm trung bình học kỳ
 
     public DTBHK(){}
 
-    public DTBHK(String id, String DTBM, String sinhVien, double diem, String xepLoai, String hocKy) {
-        Id = id;
+    public DTBHK( String DTBM, String SinhVien, double Diem, String XepLoai, String HocKy) {
         this.DTBM = DTBM;
-        SinhVien = sinhVien;
-        Diem = diem;
-        XepLoai = xepLoai;
-        HocKy = hocKy;
+        this.SinhVien = SinhVien;
+        this.Diem = Diem;
+        this.XepLoai = XepLoai;
+        this.HocKy = HocKy;
     }
 
     public String getId() {
@@ -24,7 +23,7 @@ public class DTBHK {    //class điểm trung bình học kỳ
     }
 
     public void setId(String id) {
-        Id = id;
+        this.Id = Id;
     }
 
     public String getDTBM() {
@@ -39,31 +38,31 @@ public class DTBHK {    //class điểm trung bình học kỳ
         return SinhVien;
     }
 
-    public void setSinhVien(String sinhVien) {
-        SinhVien = sinhVien;
+    public void setSinhVien(String SinhVien) {
+        this.SinhVien = SinhVien;
     }
 
     public double getDiem() {
         return Diem;
     }
 
-    public void setDiem(double diem) {
-        Diem = diem;
+    public void setDiem(double Diem) {
+        this.Diem = Diem;
     }
 
     public String getXepLoai() {
         return XepLoai;
     }
 
-    public void setXepLoai(String xepLoai) {
-        XepLoai = xepLoai;
+    public void setXepLoai(String XepLoai) {
+        this.XepLoai = XepLoai;
     }
 
     public String getHocKy() {
         return HocKy;
     }
 
-    public void setHocKy(String hocKy) {
-        HocKy = hocKy;
+    public void setHocKy(String HocKy) {
+        this.HocKy = HocKy;
     }
 }

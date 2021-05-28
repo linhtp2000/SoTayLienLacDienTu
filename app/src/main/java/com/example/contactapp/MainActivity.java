@@ -9,6 +9,7 @@ import com.example.contactapp.Models.PhuHuynh;
 import com.example.contactapp.Models.QuanLy;
 import com.example.contactapp.Models.SinhVien;
 import com.example.contactapp.Teacher.Class.TeacherClassActivity;
+import com.example.contactapp.Teacher.Exercises.TeacherExerciseInsert;
 import com.example.contactapp.Teacher.Exercises.TeacherExercisesActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(MainActivity.this, TeacherClassActivity.class);
+        Intent intent = new Intent(MainActivity.this, TeacherExercisesActivity.class);
         startActivity(intent);
 
 //        mFirebaseDatabase=FirebaseDatabase.getInstance();

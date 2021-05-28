@@ -12,31 +12,37 @@ public class Lop {
         return Id;
     }
 
-    public void setId(String id) {
-        Id = id;
+    public void setId(String Id) {
+        this.Id = Id;
     }
 
     public String getName() {
         return Name;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getKhoa() {
         return Khoa;
     }
 
-    public void setKhoa(String khoa) {
-        Khoa = khoa;
+    public void setKhoa(String Khoa) {
+        this.Khoa = Khoa;
     }
 
     public String getKhoaHoc() {
         return KhoaHoc;
     }
 
-    public void setKhoaHoc(String khoaHoc) {
-        KhoaHoc = khoaHoc;
+    public void setKhoaHoc(String KhoaHoc) {
+        this.KhoaHoc = KhoaHoc;
+    }
+
+    public Lop(String Name, String Khoa, String KhoaHoc) {
+        this.Name = Name;
+        this.Khoa = Khoa;
+        this.KhoaHoc = KhoaHoc;
     }
 }

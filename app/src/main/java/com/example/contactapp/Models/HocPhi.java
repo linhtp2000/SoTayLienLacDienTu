@@ -4,56 +4,56 @@ public class HocPhi {  //class học phí
     private String Id;
     private String SinhVien;
     private  String HocKy;
-    private  double tienHocPhi;
-    private  boolean HoanThanh;
+    private  String TienHocPhi;
+    private boolean HoanThanh;
 
     public HocPhi(){}
 
-    public HocPhi(String id, String sinhVien,String hocKy, double tienHocPhi, boolean hoanThanh) {
-        Id = id;
-        SinhVien = sinhVien;
-        HocKy = hocKy;
-        this.tienHocPhi = tienHocPhi;
-        HoanThanh = hoanThanh;
+    public HocPhi(String Id, String SinhVien,String HocKy, String TienHocPhi, boolean HoanThanh) {
+        this.Id = Id;
+        this.SinhVien = SinhVien;
+        this.HocKy = HocKy;
+        this.TienHocPhi = TienHocPhi;
+        this.HoanThanh = HoanThanh;
     }
 
     public String getId() {
         return Id;
     }
 
-    public void setId(String id) {
-        Id = id;
+    public void setId(String Id) {
+        this.Id = Id;
     }
 
     public String getSinhVien() {
         return SinhVien;
     }
 
-    public void setSinhVien(String sinhVien) {
-        SinhVien = sinhVien;
+    public void setSinhVien(String SinhVien) {
+        this.SinhVien = SinhVien;
     }
 
     public String getHocKy() {
         return HocKy;
     }
 
-    public void setHocKy(String hocKy) {
-        HocKy = hocKy;
+    public void setHocKy(String HocKy) {
+        this.HocKy = HocKy;
     }
 
-    public double getTienHocPhi() {
-        return tienHocPhi;
+    public String getTienHocPhi() {
+        return TienHocPhi;
     }
 
-    public void setTienHocPhi(double tienHocPhi) {
-        this.tienHocPhi = tienHocPhi;
+    public void setTienHocPhi(String TienHocPhi) {
+        this.TienHocPhi = TienHocPhi;
     }
 
     public boolean isHoanThanh() {
         return HoanThanh;
     }
 
-    public void setHoanThanh(boolean hoanThanh) {
-        HoanThanh = hoanThanh;
+    public void setHoanThanh(boolean HoanThanh) {
+        this.HoanThanh = HoanThanh;
     }
 }

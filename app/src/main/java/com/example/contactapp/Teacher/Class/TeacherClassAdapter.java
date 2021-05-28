@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,11 +63,13 @@ implements View.OnClickListener{
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snap:dataSnapshot.getChildren()) {
                     BaiGiang bg = snap.getValue(BaiGiang.class);
-                     bg.setId(snap.getKey());
-                     if(bg.getKhoaHoc()==2018) {
-                        lstBaiGiang.add(bg);
-                        notifyItemInserted(lstBaiGiang.size()-1);
-                    }
+                    bg.setId(snap.getKey());
+
+                      //  if (bg.getKhoaHoc() == 2000) {
+                            lstBaiGiang.add(bg);
+                            notifyItemInserted(lstBaiGiang.size() - 1);
+
+                  //  }
                 }
             }
             @Override
@@ -143,9 +146,9 @@ implements View.OnClickListener{
                 @Override
                 public void onClick(View v) {
                     int position=getLayoutPosition();
-                    String baigiangId=lstBaiGiang.get(position).getId();
+                   BaiGiang bg=lstBaiGiang.get(position);
                     Intent intent= new Intent(v.getContext(), TeacherExercisesActivity.class);
-                    intent.putExtra("BaigiangId",baigiangId);
+                    intent.putExtra("Baigiang", bg);
                     v.getContext().startActivity(intent);
                 }
             });

@@ -6,11 +6,11 @@ public class Admin {
     private  String Phone;
     private  String Email;
 
-    public Admin(String id, String name, String phone, String email) {
-        Id = id;
-        Name = name;
-        Phone = phone;
-        Email = email;
+    public Admin( String Name, String Phone, String Email) {
+
+        this.Name = Name;
+        this.Phone = Phone;
+        this.Email = Email;
     }
     public Admin(){}
 
@@ -18,31 +18,31 @@ public class Admin {
         return Id;
     }
 
-    public void setId(String id) {
-        Id = id;
+    public void setId(String Id) {
+        this.Id = Id;
     }
 
     public String getName() {
         return Name;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getPhone() {
         return Phone;
     }
 
-    public void setPhone(String phone) {
-        Phone = phone;
+    public void setPhone(String Phone) {
+        this.Phone = Phone;
     }
 
     public String getEmail() {
         return Email;
     }
 
-    public void setEmail(String email) {
-        Email = email;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 }

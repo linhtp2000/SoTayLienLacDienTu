@@ -8,11 +8,11 @@ public class GiaoVien {
 
     public GiaoVien(){}
 
-    public GiaoVien(String id, String name, String phone, String email) {
-        Id = id;
-        Name = name;
-        Phone = phone;
-        Email = email;
+    public GiaoVien (String Name, String Phone, String Email) {
+
+        this.Name = Name;
+        this.Phone = Phone;
+        this.Email = Email;
     }
 
     public String getId() {
@@ -20,15 +20,14 @@ public class GiaoVien {
     }
 
     public void setId(String id) {
-        Id = id;
+        this.Id = Id;
     }
 
     public String getName() {
         return Name;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setName(String name)  {this.Name = Name;
     }
 
     public String getPhone() {
@@ -36,7 +35,7 @@ public class GiaoVien {
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.Phone = Phone;
     }
 
     public String getEmail() {
@@ -44,6 +43,6 @@ public class GiaoVien {
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.Email = Email;
     }
 }
