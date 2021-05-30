@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.contactapp.Model.Deadline_item;
 import com.example.contactapp.R;
 
 import java.util.ArrayList;
@@ -30,10 +31,10 @@ public class DeadlineAdapter extends  RecyclerView.Adapter<DeadlineAdapter.ViewH
 
     @Override
     public void onBindViewHolder(DeadlineAdapter.ViewHolder holder, int position) {
-        holder.title.setText(listDeadline.get(position).getTitle());
-        holder.debcription.setText(listDeadline.get(position).getDebcription());
-        holder.date.setText(listDeadline.get(position).getDate());
-        holder.time.setText(listDeadline.get(position).getTime());
+        holder.title.setText(listDeadline.get(position).getName());
+        holder.debcription.setText(listDeadline.get(position).getNoiDung());
+        holder.date.setText(listDeadline.get(position).getDeadline());
+        holder.time.setText(listDeadline.get(position).getThoiGianNop());
     }
 
     @Override

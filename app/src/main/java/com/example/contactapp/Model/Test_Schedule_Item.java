@@ -1,4 +1,4 @@
-package com.example.contactapp.Student;
+package com.example.contactapp.Model;
 
 public class Test_Schedule_Item {
     public String title;

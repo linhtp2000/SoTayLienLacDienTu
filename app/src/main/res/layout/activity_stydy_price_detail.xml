@@ -4,34 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:padding="15dp"
     android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
         android:background="@drawable/border2"
+        android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842">
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:fontFamily="@font/ellebaskerville_bold"
             android:text="Wellcome, Trung"
             android:textColor="@color/white"
-            android:textFontWeight="1500"
+            android:textFontWeight="900"
             android:textSize="27dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.156"
@@ -39,66 +36,70 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView11"
-            android:layout_width="300dp"
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="228dp"
+            android:layout_marginTop="208dp"
             android:background="@drawable/border"
             android:fontFamily="@font/ellebaskerville_bold"
+            android:padding="10dp"
             android:text="Học phí học kỳ 2/2021"
             android:textColor="@color/black"
-            android:textFontWeight="1500"
-            android:textSize="20dp"
+            android:textFontWeight="900"
+            android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.533"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView12"
-            android:layout_width="300dp"
+            android:id="@+id/tvNguoiGui"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/border"
             android:fontFamily="@font/ellebaskerville_bold"
+            android:padding="10dp"
             android:text="Từ : Admin"
             android:textColor="@color/black"
-            android:textFontWeight="1500"
-            android:textSize="20dp"
+            android:textFontWeight="900"
+            android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
         <TextView
-            android:id="@+id/textView13"
-            android:layout_width="300dp"
+            android:id="@+id/tvDecrip"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/border"
-            android:fontFamily="@font/ellebaskerville_bold"
+            android:fontFamily="@font/ellebaskerville"
+            android:padding="20dp"
             android:text="Ngày 30/03 hết hạn thanh toán học phí. Yêu cầu sinh viên nhắc nhở phụ huynh đóng tiền đúng hạn."
             android:textColor="@color/black"
-            android:textFontWeight="1500"
-            android:textSize="20dp"
+            android:textFontWeight="900"
+            android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.508"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/tvNguoiGui"
             app:layout_constraintWidth_percent="0.7" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
             android:fontFamily="@font/ellebaskerville_bold"
             android:text="08 May, 2021"
             android:textColor="@color/white"
-            android:textFontWeight="1500"
+            android:textFontWeight="900"
+            android:layout_marginTop="15dp"
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.112"
+            app:layout_constraintHorizontal_bias="0.089"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <TextView
             android:id="@+id/textView9"
@@ -108,7 +109,7 @@
             android:fontFamily="@font/ellebaskerville_bold"
             android:text="Student"
             android:textColor="@color/white"
-            android:textFontWeight="1500"
+            android:textFontWeight="900"
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.92"
@@ -117,16 +118,16 @@
 
         <TextView
             android:id="@+id/textView10"
-            android:layout_width="109dp"
+            android:layout_width="wrap_content"
             android:layout_height="27dp"
-            android:layout_marginTop="128dp"
+            android:layout_marginTop="132dp"
             android:fontFamily="@font/ellebaskerville_bold"
             android:text="12:28 pm"
             android:textColor="@color/yellow_text"
-            android:textFontWeight="1500"
+            android:textFontWeight="900"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.945"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

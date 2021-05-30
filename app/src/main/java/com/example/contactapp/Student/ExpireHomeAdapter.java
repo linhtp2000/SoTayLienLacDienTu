@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.contactapp.Model.Expire_Home;
 import com.example.contactapp.R;
 
 import java.util.ArrayList;
@@ -30,9 +31,9 @@ public class ExpireHomeAdapter extends  RecyclerView.Adapter<ExpireHomeAdapter.V
 
     @Override
     public void onBindViewHolder(ExpireHomeAdapter.ViewHolder holder, int position) {
-        holder.title.setText(listExpireHome.get(position).getTitle());
-        holder.deb.setText(listExpireHome.get(position).getDebcription());
-        holder.time.setText(listExpireHome.get(position).getTime());
+        holder.title.setText(listExpireHome.get(position).getName());
+        holder.deb.setText(listExpireHome.get(position).getNoiDung());
+        holder.time.setText(listExpireHome.get(position).getThoiGianNop());
     }
 
     @Override

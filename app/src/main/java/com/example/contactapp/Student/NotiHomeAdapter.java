@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.contactapp.Model.Noti_Home;
 import com.example.contactapp.R;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class NotiHomeAdapter extends  RecyclerView.Adapter<NotiHomeAdapter.ViewH
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.title.setText(listNotiHome.get(position).getTitle());
-        holder.deb.setText(listNotiHome.get(position).getDebcription());
+        holder.deb.setText(listNotiHome.get(position).getNoiDung());
     }
 
     @Override
@@ -46,6 +47,7 @@ public class NotiHomeAdapter extends  RecyclerView.Adapter<NotiHomeAdapter.ViewH
             super(itemView);
             title = (TextView)itemView.findViewById(R.id.noti_home_title);
             deb = (TextView)itemView.findViewById(R.id.noti_home_decription);
+
         }
     }
 }

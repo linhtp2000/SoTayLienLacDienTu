@@ -3,9 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="70dp"
     android:padding="5dp"
-    android:layout_margin="10dp"
     android:background="@drawable/borderrecylerview"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="10dp"
+    >
 
     <TextView
         android:id="@+id/test_item_title"
@@ -15,7 +16,7 @@
         android:fontFamily="@font/ellebaskerville_bold"
         android:text="Title"
         android:textColor="@color/black"
-        android:textFontWeight="1500"
+        android:textFontWeight="900"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.043"
@@ -30,7 +31,7 @@
         android:fontFamily="@font/ellebaskerville_bold"
         android:text="Date"
         android:textColor="@color/black"
-        android:textFontWeight="1500"
+        android:textFontWeight="900"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.953"
@@ -42,10 +43,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
-        android:fontFamily="@font/ellebaskerville_bold"
+        android:fontFamily="@font/ellebaskerville"
         android:text="Time"
         android:textColor="@color/black"
-        android:textFontWeight="1500"
+        android:textFontWeight="900"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"

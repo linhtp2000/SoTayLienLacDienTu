@@ -13,21 +13,20 @@
         android:layout_width="match_parent"
         android:layout_height="570dp"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
         android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintHorizontal_bias="0.315"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="9dp">
+        app:layout_constraintVertical_bias="0.571">
 
         <EditText
             android:id="@+id/login_user"
             android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.7"
             android:layout_height="36dp"
             android:layout_marginTop="46dp"
             android:background="@drawable/border"
@@ -39,12 +38,12 @@
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintWidth_percent="0.7"
             tools:ignore="MissingConstraints" />
 
         <EditText
             android:id="@+id/login_pass"
             android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.7"
             android:layout_height="36dp"
             android:layout_marginTop="54dp"
             android:background="@drawable/border"
@@ -56,6 +55,7 @@
             app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_user"
+            app:layout_constraintWidth_percent="0.7"
             tools:ignore="MissingConstraints" />
 
         <TextView
@@ -101,7 +101,7 @@
             android:fontFamily="@font/ellebaskerville_bold"
             android:text="Sign In"
             android:textColor="@color/stealblue"
-            android:textFontWeight="1500"
+            android:textFontWeight="900"
             android:textSize="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +124,6 @@
             android:id="@+id/button2"
             style="@style/circle"
             android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.5"
             android:layout_height="35dp"
             android:layout_marginTop="80dp"
             android:background="@drawable/border"
@@ -132,17 +131,17 @@
             android:text="Forgot Password"
             android:textColor="@color/black"
             android:textFontWeight="1000"
-
             android:textSize="12dp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/btn_login" />
+            app:layout_constraintTop_toTopOf="@id/btn_login"
+            app:layout_constraintWidth_percent="0.5" />
 
         <Button
             android:id="@+id/btn_createAccount"
             style="@style/circle"
             android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.5"
             android:layout_height="35dp"
             android:layout_marginBottom="40dp"
             android:background="@drawable/border"
@@ -154,6 +153,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.5"
             tools:ignore="MissingConstraints" />
 
         <Spinner
@@ -211,7 +211,7 @@
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_baseline_account_circle_24"
+        android:src="@drawable/ic_baseline_account_circle_24"
         app:tint="#FFFFFF"
         tools:ignore="MissingConstraints"
         tools:srcCompat="@drawable/ic_baseline_account_circle_24" />

@@ -1,18 +1,17 @@
 package com.example.contactapp.Student;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.contactapp.Model.BaiTapSV;
 import com.example.contactapp.Model.Expire_Home;
@@ -25,18 +24,16 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-//time
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class Home extends AppCompatActivity {
+public class ParentHome extends AppCompatActivity {
     ArrayList<Noti_Home> arrayListNotificate;
     ArrayList<Expire_Home> arrayList2;
+    ArrayList<Parent> arrayListParent;
     ArrayList<Student> arrayListStudent;
     NotiHomeAdapter notiHomeAdapter;
     ExpireHomeAdapter expireHomeAdapter;
@@ -44,9 +41,12 @@ public class Home extends AppCompatActivity {
     TextView time;
     TextView date;
     TextView User;
-    public static String UserRole="student";
-    public static String Id="VDJAmzB3heR0PzLRhzdCWQfBx3n2";
+    TextView Role;
+    public static String UserRole="";
+    public static String Id="zhnJ319PcYPP01eRVJftvEPCirD2";
+    public static String idChild;
     public static String NameUser;
+    public static String NameChild;
     public static String PhoneUser;
     public static String MailUser;
     public static String ClassUser;
@@ -62,12 +62,14 @@ public class Home extends AppCompatActivity {
         //Init FireBase
         mDatabase = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.activity_home);
-        ParentHome.UserRole="";
+        UserRole="parent";
         //Thời gian
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
         String currentTime = new SimpleDateFormat("HH:mm a", Locale.getDefault()).format(new Date());
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
         String Day = new SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault()).format(new Date());
+        Role=(TextView) findViewById(R.id.textView9);
+        Role.setText("Parent");
         date=(TextView) findViewById(R.id.textView);
         date.setText(Day);
 
@@ -78,29 +80,91 @@ public class Home extends AppCompatActivity {
 
 
         //getUser
-        arrayListStudent=new ArrayList<>();
+        arrayListParent=new ArrayList<>();
+
         User = (TextView) findViewById(R.id.textView4);
 
 
-        mDatabase.child("SinhVien").addChildEventListener(new ChildEventListener() {
+        mDatabase.child("PhuHuynh").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Student student = snapshot.getValue(Student.class);
+                Parent parent = snapshot.getValue(Parent.class);
                 String key = snapshot.getKey();
-//                arrayListStudent.add(new Student(key,student.getName(),student.getPhone(),student.getMail(),student.getClasses()));
-//                User.setText("Wellcome, " + arrayListStudent.get(0).getName());
-//                NameUser=arrayListStudent.get(0).getName();
-//                ClassUser=arrayListStudent.get(0).getClasses();
                 if(key.equals(Id)){
-                    arrayListStudent.add(new Student(key,student.getEmail(),student.getLop(),student.getPhone(),student.getName()));
-                    User.setText("Wellcome, " + arrayListStudent.get(0).getName());
-                    NameUser=arrayListStudent.get(0).getName();
-                    ClassUser=arrayListStudent.get(0).getLop();
-                    PhoneUser=arrayListStudent.get(0).getPhone();
-                    MailUser=arrayListStudent.get(0).getEmail();
+                    arrayListParent.add(new Parent(key,parent.getEmail(),parent.getName(),parent.getPhone(),parent.getSinhVien()));
+                    User.setText("Wellcome, " + arrayListParent.get(0).getName());
+                    idChild=arrayListParent.get(0).getSinhVien();
+                    NameUser=arrayListParent.get(0).getName();
+                    PhoneUser=arrayListParent.get(0).getPhone();
+                    MailUser=arrayListParent.get(0).getEmail();
                 }
-
                 notiHomeAdapter.notifyDataSetChanged();
+                mDatabase.child("SinhVien").addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                        Student student = snapshot.getValue(Student.class);
+                        String key = snapshot.getKey();
+                        if(key.equals(idChild)){
+                            arrayListStudent.add(new Student(key,student.getEmail(),student.getLop(),student.getPhone(),student.getName()));
+                            NameChild=arrayListStudent.get(0).getName();
+                        }
+                        notiHomeAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                ArrayList<BaiTapSV> baitapsv = new ArrayList<>();
+                mDatabase.child("BaiTapSV").addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                        BaiTapSV baitap = snapshot.getValue(BaiTapSV.class);
+                        String key = snapshot.getKey();
+                        baitapsv.add(new BaiTapSV(key,baitap.getBaiTap(),baitap.getComment(),baitap.getDiem(),baitap.getNgayNop(),baitap.getSinhVien(),baitap.getThoiGian()));
+                        if(ParentHome.idChild.equals(baitap.getSinhVien())){
+                            idBaiTap=baitap.getBaiTap();
+                        }
+                        expireHomeAdapter.notifyDataSetChanged();
+
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
 
             @Override
@@ -123,44 +187,12 @@ public class Home extends AppCompatActivity {
 
             }
         });
+        arrayListStudent=new ArrayList<>();
 
 
 
         //get BaiTap
-        ArrayList<BaiTapSV> baitapsv = new ArrayList<>();
-        mDatabase.child("BaiTapSV").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                BaiTapSV baitap = snapshot.getValue(BaiTapSV.class);
-                String key = snapshot.getKey();
-                baitapsv.add(new BaiTapSV(key,baitap.getBaiTap(),baitap.getComment(),baitap.getDiem(),baitap.getNgayNop(),baitap.getSinhVien(),baitap.getThoiGian()));
-                if(Home.Id.equals(baitap.getSinhVien())){
-                    idBaiTap=baitap.getBaiTap();
-                }
-                expireHomeAdapter.notifyDataSetChanged();
 
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
 
         //Khai báo recycleView
@@ -272,7 +304,7 @@ public class Home extends AppCompatActivity {
         btn_Schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Home.this, Schedule.class));
+                startActivity(new Intent(ParentHome.this, Schedule.class));
             }
         });
 
@@ -280,7 +312,7 @@ public class Home extends AppCompatActivity {
         btn_testSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Home.this, TestSchedule.class));
+                startActivity(new Intent(ParentHome.this, TestSchedule.class));
             }
         });
 
@@ -288,7 +320,7 @@ public class Home extends AppCompatActivity {
         btn_dealine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Home.this, Deadline.class));
+                startActivity(new Intent(ParentHome.this, Deadline.class));
             }
         });
 
@@ -296,7 +328,7 @@ public class Home extends AppCompatActivity {
         btn_point.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Home.this, Point.class));
+                startActivity(new Intent(ParentHome.this, Point.class));
             }
         });
 
@@ -304,7 +336,7 @@ public class Home extends AppCompatActivity {
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Home.this, ProfileStudent.class));
+                startActivity(new Intent(ParentHome.this, ProfileStudent.class));
             }
         });
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
@@ -312,18 +344,18 @@ public class Home extends AppCompatActivity {
         ItemTouchHelper itemTouchHelper2 = new ItemTouchHelper(simpleCallback2);
         itemTouchHelper2.attachToRecyclerView(recyclerViewExpireHome);
     }
-   ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 
-       @Override
-       public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-           return false;
-       }
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
 
-       @Override
-       public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-           int position = viewHolder.getLayoutPosition();
-           IdNoti=position;
-           IdExpire=-1;
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            int position = viewHolder.getLayoutPosition();
+            IdNoti=position;
+            IdExpire=-1;
             switch (direction){
                 case ItemTouchHelper.LEFT:
                     arrayListNotificate.remove(position);
@@ -335,11 +367,11 @@ public class Home extends AppCompatActivity {
                     notiHomeAdapter.notifyItemRemoved(position);
                     nguoiGui=arrayListNotificate.get(position).getNguoiGui();
                     decrip=arrayListNotificate.get(position).getNoiDung();
-                    startActivity(new Intent(Home.this, StydyPriceDetail.class));
+                    startActivity(new Intent(ParentHome.this, StydyPriceDetail.class));
                     break;
             }
-       }
-   };
+        }
+    };
     ItemTouchHelper.SimpleCallback simpleCallback2 = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView2, @NonNull RecyclerView.ViewHolder viewHolder2, @NonNull RecyclerView.ViewHolder target2) {
@@ -362,7 +394,7 @@ public class Home extends AppCompatActivity {
                     name=arrayList2.get(position2).getName();
                     nguoiGui=arrayList2.get(position2).getThoiGianNop();
                     decrip=arrayList2.get(position2).getNoiDung();
-                    startActivity(new Intent(Home.this, StydyPriceDetail.class));
+                    startActivity(new Intent(ParentHome.this, StydyPriceDetail.class));
                     break;
             }
         }
