@@ -4,19 +4,216 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:padding="10dp"
+    android:background="@color/background">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:background="@drawable/border2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.842">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Wellcome, Trung"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:textSize="27dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.156"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="188dp"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Notification"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="195dp"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Is about to expire"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/noti_home" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="275dp"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="What do you need today?"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/expire_home" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="08 May, 2021"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.112"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="64dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="96dp"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Student"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.92"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="109dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="128dp"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="12:28 pm"
+            android:textColor="@color/yellow_text"
+            android:textFontWeight="900"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/pudetail_avata"
+            android:layout_width="53dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.893"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/wooder_news_one" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/noti_home"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/expire_home"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <Button
+            android:id="@+id/btn_Schedule"
+            style="@style/circle"
+            android:layout_width="97dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/border"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Schedule"
+            android:textColor="@color/black"
+            android:textFontWeight="800"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.097"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textView13" />
+
+        <Button
+            android:id="@+id/btn_deadline"
+            style="@style/circle"
+            android:layout_width="107dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/border"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Deadline"
+            android:textColor="@color/black"
+            android:textFontWeight="800"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.09"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textView13" />
+
+        <Button
+            android:id="@+id/btn_point"
+            style="@style/circle"
+            android:layout_width="97dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/border"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Point"
+            android:textColor="@color/black"
+            android:textFontWeight="800"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textView13" />
+
+        <Button
+            android:id="@+id/btn_testSchedule"
+            style="@style/circle"
+            android:layout_width="97dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/border"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Test"
+            android:textColor="@color/black"
+            android:textFontWeight="800"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.898"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textView13" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
         android:theme="@style/Theme.ContactApp">
         <activity android:name=".Bottom_Nav_Main"></activity>
         <activity android:name=".RegisterActivity" />
@@ -16,11 +17,28 @@
         <activity android:name=".Teacher.Exercises.TeacherExercisesActivity" />
         <activity android:name=".Teacher.Exercises.TeacherExerciseInsert" />
         <activity android:name=".Teacher.Profile.TeacherProfileActivity" />
+
+       
+        <activity android:name=".Student.ProfileStudent"></activity>
+        <activity android:name=".Student.Home" />
+        <activity android:name=".Student.ParentHome" />
+        <activity android:name=".Student.Point" />
+        <activity android:name=".Student.DeadlineDetail" />
+        <activity android:name=".Student.StydyPriceDetail" />
+        <activity android:name=".Student.Deadline" />
+        <activity android:name=".Student.TestSchedule" />
+        <activity android:name=".Student.Schedule" />
+        <activity android:name=".Student.ChangePassword" />
+        <activity android:name=".Student.EditProfileUser" />
+        <activity android:name=".Student.ProfileUserDetail" />
+        <activity android:name=".Register" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -29,4 +47,5 @@
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true" />
     </application>
+
 </manifest>

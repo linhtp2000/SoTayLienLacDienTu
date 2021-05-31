@@ -6,32 +6,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <TextView
-        android:id="@+id/dialogDelete_Title"
+        android:id="@+id/dialogError_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:fontFamily="@font/ellebaskerville_bold"
-        android:text="Are you sure?"
+        android:text="ERROR"
+        android:textColor="@color/stealblue"
+        android:textFontWeight="2000"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dialogError_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:fontFamily="@font/ellebaskerville_bold"
+        android:text="wrong username or password"
         android:textColor="@color/stealblue"
         android:textFontWeight="400"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-
-        android:id="@+id/btnCancel"
-
-        android:id="@+id/btn_deleteDialogCancel"
-
+        android:id="@+id/btn_dialogError_Cancel"
         style="@style/dialog"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_marginBottom="608dp"
+        android:layout_marginBottom="552dp"
         android:background="@drawable/boderbuttoncolor"
         android:fontFamily="@font/ellebaskerville_bold"
         android:text="Cancel"
@@ -40,29 +49,7 @@
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.685"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-
-        android:id="@+id/btnOK"
-
-        android:id="@+id/btn_deleteDialogOke"
-
-        style="@style/dialogcancel"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginBottom="608dp"
-        android:background="@drawable/boderbuttoncolor"
-        android:fontFamily="@font/ellebaskerville_bold"
-        android:text="Ok"
-        android:textColor="@color/white"
-        android:textFontWeight="1000"
-        android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 

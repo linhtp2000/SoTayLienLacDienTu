@@ -1,69 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/border"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:background="@color/white"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/dialogDelete_Title"
+        android:id="@+id/dialogError2_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/ellebaskerville_bold"
-        android:text="Are you sure?"
+        android:text="ERROR"
+        android:textColor="@color/stealblue"
+        android:textFontWeight="900"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dialogError2_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/ellebaskerville_bold"
+        android:text="Bạn phải nhập đầy đủ thông tin"
         android:textColor="@color/stealblue"
         android:textFontWeight="400"
-        android:textSize="20dp"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-
-        android:id="@+id/btnCancel"
-
-        android:id="@+id/btn_deleteDialogCancel"
-
+        android:id="@+id/btn_dialogError_Oke1"
         style="@style/dialog"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_marginBottom="608dp"
-        android:background="@drawable/boderbuttoncolor"
-        android:fontFamily="@font/ellebaskerville_bold"
-        android:text="Cancel"
-        android:textColor="@color/white"
-        android:textFontWeight="1000"
-        android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.685"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-
-        android:id="@+id/btnOK"
-
-        android:id="@+id/btn_deleteDialogOke"
-
-        style="@style/dialogcancel"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginBottom="608dp"
+        android:layout_marginTop="52dp"
         android:background="@drawable/boderbuttoncolor"
         android:fontFamily="@font/ellebaskerville_bold"
         android:text="Ok"
         android:textColor="@color/white"
         android:textFontWeight="1000"
         android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/dialogError2_content"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
