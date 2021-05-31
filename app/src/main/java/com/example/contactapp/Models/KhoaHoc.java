@@ -3,11 +3,11 @@ package com.example.contactapp.Models;
 import java.util.List;
 
 public class KhoaHoc {
-    private String Lop;
+    private List<String>Lop;
     private String Id;
     public KhoaHoc(){}
 
-    public KhoaHoc(String Lop) {
+    public KhoaHoc(List<String>Lop) {
         this.Lop = Lop;
     }
 
@@ -19,11 +19,22 @@ public class KhoaHoc {
         this.Id = Id;
     }
 
-    public String getTenLop() {
+    public List<String> getTenLop() {
         return Lop;
     }
 
-    public void setLstLop(String Lop) {
+    public void setLstLop(List<String>Lop) {
         this.Lop = Lop;
+    }
+
+    public KhoaHoc(String name, List<String> lop) {
+        Lop = lop;
+    }
+    public List<String> getLop() {
+        return Lop;
+    }
+
+    public void setLop(List<String> lop) {
+        Lop = lop;
     }
 }

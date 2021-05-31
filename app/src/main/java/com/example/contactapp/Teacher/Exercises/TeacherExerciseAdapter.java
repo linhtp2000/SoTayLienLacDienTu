@@ -23,11 +23,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherExerciseAdapter extends RecyclerView.Adapter<TeacherExerciseAdapter.TeacherExerciseViewHolder>
-{
+ {
     BaiGiang bg;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -38,7 +39,8 @@ public class TeacherExerciseAdapter extends RecyclerView.Adapter<TeacherExercise
 
 
     public TeacherExerciseAdapter(BaiGiang baigiang){
-        bg=baigiang;
+
+        bg=new BaiGiang();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference=mFirebaseDatabase.getReference().child("BaiTap");
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
@@ -84,6 +86,7 @@ public class TeacherExerciseAdapter extends RecyclerView.Adapter<TeacherExercise
         return lstBaiTap.size();
     }
 
+
     public class TeacherExerciseViewHolder extends RecyclerView.ViewHolder
     {
         TextView tvMon,tvTenbt,tvDate,tvTime;
@@ -93,18 +96,19 @@ public class TeacherExerciseAdapter extends RecyclerView.Adapter<TeacherExercise
             tvMon=itemView.findViewById(R.id.tvMon);
             tvTenbt=itemView.findViewById(R.id.tvTenbt);
             tvDate=itemView.findViewById(R.id.tvDate);
-            tvTime=itemView.findViewById(R.id.tvMon);
+            tvTime=itemView.findViewById(R.id.tvTime);
 
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    int position=getLayoutPosition();
-//                    BaiTap bt=lstBaiTap.get(position);
-//                    Intent intent= new Intent(v.getContext(), TeacherExercisesActivity.class);
-//                    intent.putExtra("Baigiang", bg);
-//                    v.getContext().startActivity(intent);
-//                }
-//            });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position=getLayoutPosition();
+                    BaiTap bt=lstBaiTap.get(position);
+                    Intent intent= new Intent(v.getContext(), TeacherExerciseEdit.class);
+                    intent.putExtra("Baitap",  bt);
+                    intent.putExtra("Baigiang",  bg);
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
 
 

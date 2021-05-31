@@ -1,9 +1,10 @@
 package com.example.contactapp.Models;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class BaiTap {//bài tập do GV thêm
+public class BaiTap implements Serializable {//bài tập do GV thêm
     private String Id;
     private  String Name;
     private  String NoiDung;

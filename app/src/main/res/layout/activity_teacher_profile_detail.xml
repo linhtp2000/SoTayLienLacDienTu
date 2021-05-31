@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:background="@color/background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:background="@drawable/border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.335">
+
+        <ImageView
+            android:id="@+id/imgvImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+
+            android:text="Lecture"
+            android:textColor="@color/stealblue"
+            android:textFontWeight="2000"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/pudetail_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="244dp"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Name:"
+            android:textColor="@color/stealblue"
+            android:textFontWeight="500"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.077"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="214dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border"
+            android:ems="10"
+
+            android:textSize="20dp"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.711"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/pudetail_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Email:"
+            android:textColor="@color/stealblue"
+            android:textFontWeight="500"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="214dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border"
+            android:ems="10"
+            android:textSize="20dp"
+
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/tvName"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/pudetail_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="365dp"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:textColor="@color/stealblue"
+            android:textFontWeight="500"
+            android:textSize="20dp"
+            android:text="Phone:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/tvPhone"
+            android:layout_width="214dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/tvEmail"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/btnEdit"
+            style="@style/buttoncolor"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.7"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/boderbuttoncolor"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Edit"
+            android:textColor="@color/white"
+            android:textFontWeight="500"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPhone"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/btnChangepwd"
+            style="@style/buttoncolor"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.7"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/boderbuttoncolor"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Change Pasword"
+            android:textColor="@color/white"
+            android:textFontWeight="500"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnEdit"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            style="@style/buttoncolor"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.7"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/boderbuttoncolor"
+            android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Logout"
+            android:textColor="@color/white"
+            android:textFontWeight="1000"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnChangepwd"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

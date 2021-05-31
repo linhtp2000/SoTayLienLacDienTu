@@ -10,6 +10,8 @@ import android.os.FileUtils;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -24,6 +26,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,6 +47,11 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private ChildEventListener mChildListener;
+    public  static FirebaseAuth mFirebaseAuth;
+    public static FirebaseAuth.AuthStateListener mAuthListener;
+    private String[] lstRole={"GiaoVien","PhuHuynh","SinhVien"};
+    int role=0;
+    private static int check=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +65,24 @@ public class RegisterActivity extends AppCompatActivity {
         inputEmail = (EditText) findViewById(R.id.edtEmail);
         inputPassword = (EditText) findViewById(R.id.edtPassword);
         spnRole=findViewById(R.id.spnRole);
+
+
+        ArrayAdapter list = new ArrayAdapter(this, android.R.layout.simple_spinner_item,lstRole);
+        list.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spnRole.setAdapter(list);
+        spnRole.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                role=position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        mFirebaseDatabase=FirebaseDatabase.getInstance();
+        mDatabaseReference=mFirebaseDatabase.getReference();
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +132,28 @@ public class RegisterActivity extends AppCompatActivity {
                                     }
                                 }
                                 else {
+                                    FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+                                    if(role==0)
+                                    {
+                                        GiaoVien gv= new GiaoVien();
+                                        gv.setEmail(email);
+                                        mDatabaseReference.child("GiaoVien").push().setValue(user.getUid());
+                                        mDatabaseReference.child("GiaoVien").child(user.getUid()).push().setValue(gv);
+                                    }
+                                    if(role==3)
+                                    {
+                                        SinhVien sv= new SinhVien();
+                                        sv.setEmail(email);
+                                        mDatabaseReference.child("SinhVien").push().setValue(user.getUid());
+                                        mDatabaseReference.child("SinhVien").child(user.getUid()).push().setValue(sv);
+                                    }
+                                    if(role==1)
+                                    {
+                                        PhuHuynh ph= new PhuHuynh();
+                                        ph.setEmail(email);
+                                        mDatabaseReference.child("PhuHuynh").push().setValue(user.getUid());
+                                        mDatabaseReference.child("PhuHuynh").child(user.getUid()).setValue(ph);
+                                    }
                                     Toast.makeText(RegisterActivity.this, "Sign up successfully!" , Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                     finish();
@@ -122,130 +170,50 @@ public class RegisterActivity extends AppCompatActivity {
      //   progressBar.setVisibility(View.GONE);
     }
     //Kiểm tra Email đã tồn tại
-    private boolean CheckMailExist(String email) {
-        final int[] check = {0};
-        FirebaseUtil.openFbReference("Admin");
-        mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
-        mDatabaseReference=FirebaseUtil.mDatabaseReference;
-        ValueEventListener postListener = new ValueEventListener() {
+    private boolean CheckMailExist (String email) {
+    mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference=mFirebaseDatabase.getReference().child("GiaoVien");
+     //   mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("GiaoVien");
+        mChildListener= new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                Admin ad = dataSnapshot.getValue(Admin.class);
-                if(ad.getEmail().toString().equals(email))
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                GiaoVien gv =snapshot.getValue(GiaoVien.class);
+                if(gv.getEmail().equals(email))
                 {
-                    check[0] =1;
-                    return;
+                    check=1;
                 }
             }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         };
-        mDatabaseReference.addValueEventListener(postListener);
-        if(check[0]==1){return true;}
-
-        FirebaseUtil.openFbReference("GiaoVien");
-        mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
-        mDatabaseReference=FirebaseUtil.mDatabaseReference;
-        ValueEventListener postListener2 = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                GiaoVien ad = dataSnapshot.getValue(GiaoVien.class);
-                if(ad.getEmail().toString().equals(email))
-                {
-                    check[0] =1;
-                    return;
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        };
-        mDatabaseReference.addValueEventListener(postListener2);
-        if(check[0]==1){return true;}
-
-        FirebaseUtil.openFbReference("PhuHuynh");
-        mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
-        mDatabaseReference=FirebaseUtil.mDatabaseReference;
-        ValueEventListener postListener3 = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                PhuHuynh ad = dataSnapshot.getValue(PhuHuynh.class);
-                if(ad.getEmail().toString().equals(email))
-                {
-                    check[0] =1;
-                    return;
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        };
-        mDatabaseReference.addValueEventListener(postListener3);
-        if(check[0]==1){return true;}
-
-        FirebaseUtil.openFbReference("SinhVien");
-        mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
-        mDatabaseReference=FirebaseUtil.mDatabaseReference;
-        ValueEventListener postListener4 = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                SinhVien ad = dataSnapshot.getValue(SinhVien.class);
-                if(ad.getEmail().toString().equals(email))
-                {
-                    check[0] =1;
-                    return;
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        };
-        mDatabaseReference.addValueEventListener(postListener4);
-        if(check[0]==1){return true;}
-
-        FirebaseUtil.openFbReference("QuanLy");
-        mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
-        mDatabaseReference=FirebaseUtil.mDatabaseReference;
-        ValueEventListener postListener5 = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                QuanLy ad = dataSnapshot.getValue(QuanLy.class);
-                if(ad.getEmail().toString().equals(email))
-                {
-                    check[0] =1;
-                    return;
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        };
-        mDatabaseReference.addValueEventListener(postListener5);
-        if(check[0]==1){return true;}
+        mDatabaseReference.addChildEventListener(mChildListener);
+    if(check==1)
+    {return true;}
 
         return false;
     }
-
-
+//    public static  void attachListener(){
+//        mFirebaseAuth.addAuthStateListener(mAuthListener);
+//    }
+//    public static  void detachListener(){
+//        mFirebaseAuth.removeAuthStateListener(mAuthListener);
+//    }
 }
+

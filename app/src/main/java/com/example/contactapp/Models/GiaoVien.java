@@ -20,14 +20,14 @@ public class GiaoVien {
     }
 
     public void setId(String id) {
-        this.Id = Id;
+        this.Id = id;
     }
 
     public String getName() {
         return Name;
     }
 
-    public void setName(String name)  {this.Name = Name;
+    public void setName(String name)  {this.Name = name;
     }
 
     public String getPhone() {
@@ -35,7 +35,7 @@ public class GiaoVien {
     }
 
     public void setPhone(String phone) {
-        this.Phone = Phone;
+        this.Phone = phone;
     }
 
     public String getEmail() {
@@ -43,6 +43,6 @@ public class GiaoVien {
     }
 
     public void setEmail(String email) {
-        this.Email = Email;
+        this.Email = email;
     }
 }

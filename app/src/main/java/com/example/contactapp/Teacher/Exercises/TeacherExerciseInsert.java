@@ -128,7 +128,7 @@ public class TeacherExerciseInsert extends AppCompatActivity {
                        baitap.setNoiDung(edtNoiDung.getText().toString());
                        baitap.setNgayTao(tvFrom.getText().toString());
                        baitap.setDeadline(tvTo.getText().toString());
-                       baitap.setThoiGianNop(tvTo.getText().toString());
+                       baitap.setThoiGianNop(tvTime.getText().toString());
                        baitap.setThoiGianTao(from);
                        baitap.setBaiGiang(bg.getId());
                        baitap.setGiaoVien(bg.getGiaoVien());

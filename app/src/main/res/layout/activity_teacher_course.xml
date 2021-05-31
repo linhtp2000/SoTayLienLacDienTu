@@ -6,7 +6,7 @@
     android:padding="10dp"
     android:background="@color/background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Teacher.Course.TeacherCourseFragment">
+    tools:context=".Teacher.Course.TeacherCourseActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
