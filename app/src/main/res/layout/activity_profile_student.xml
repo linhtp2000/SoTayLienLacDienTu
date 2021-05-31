@@ -40,7 +40,7 @@
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_mssv"
-        app:srcCompat="@drawable/wooder_news_one" />
+      />
 
     <Button
         android:id="@+id/btn_profileUser"

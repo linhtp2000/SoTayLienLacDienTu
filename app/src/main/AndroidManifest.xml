@@ -33,7 +33,15 @@
         <activity android:name=".Student.ChangePassword" />
         <activity android:name=".Student.EditProfileUser" />
         <activity android:name=".Student.ProfileUserDetail" />
-        <activity android:name=".Register" />
+
+        <activity android:name=".Admin.ListClass"></activity>
+        <activity android:name=".Admin.ListCourse"></activity>
+        <activity android:name=".Admin.ListStudent"></activity>
+        <activity android:name=".Admin.Student"></activity>
+        <activity android:name=".Admin.EditStudent"></activity>
+        <activity android:name=".Admin.ListManager"></activity>
+        <activity android:name=".Admin.ManagerInfo"></activity>
+
 
         <activity
             android:name=".MainActivity"

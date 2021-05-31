@@ -18,6 +18,8 @@ import com.example.contactapp.Models.GiaoVien;
 import com.example.contactapp.Models.PhuHuynh;
 import com.example.contactapp.Models.QuanLy;
 import com.example.contactapp.Models.SinhVien;
+import com.example.contactapp.Teacher.Class.TeacherClassActivity;
+import com.example.contactapp.Teacher.Course.TeacherCourseActivity;
 import com.example.contactapp.Teacher.Exercises.TeacherExercisesActivity;
 import com.example.contactapp.Teacher.Profile.TeacherProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -411,15 +413,14 @@ public class LoginActivity extends AppCompatActivity {
                                                     mDatabaseReference = mFirebaseDatabase.getReference().child("PhuHuynh");
                                                     mDatabaseReference.addValueEventListener(new ValueEventListener() {
                                                         public void onDataChange(DataSnapshot dataSnapshot) {
-                                                            PhuHuynh ph = dataSnapshot.getValue(PhuHuynh.class);
-                                                            if (ph.getEmail() != null) {
-                                                                if (ph.getEmail().equals(email)) {
-                                                                    check = 1;
-
-                                                                    Intent intent = new Intent(LoginActivity.this, TeacherProfileActivity.class);
-                                                                    startActivity(intent);
-                                                                    finish();
-
+                                                            for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                                                                PhuHuynh ph = snap.getValue(PhuHuynh.class);
+                                                                if (ph.getEmail() != null) {
+                                                                    if (ph.getEmail().equals(email)) {
+                                                                        Intent intent = new Intent(LoginActivity.this, TeacherClassActivity.class);
+                                                                        startActivity(intent);
+                                                                        finish();
+                                                                    }
                                                                 }
                                                             }
                                                         }

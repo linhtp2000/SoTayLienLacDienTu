@@ -28,7 +28,6 @@
             android:adjustViewBounds="false"
             android:background="@drawable/border_avt"
             android:scaleType="fitCenter"
-            android:src="@drawable/wooder_news_one"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

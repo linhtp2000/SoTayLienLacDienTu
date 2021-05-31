@@ -25,10 +25,7 @@
     <Button
 
         android:id="@+id/btnCancel"
-
-        android:id="@+id/btn_deleteDialogCancel"
-
-        style="@style/dialog"
+   style="@style/dialog"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginBottom="608dp"
@@ -47,9 +44,6 @@
     <Button
 
         android:id="@+id/btnOK"
-
-        android:id="@+id/btn_deleteDialogOke"
-
         style="@style/dialogcancel"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
