@@ -12,16 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
         android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335">
+        app:layout_constraintVertical_bias="0.551">
 
         <ImageView
             android:id="@+id/imgvImage"
@@ -72,9 +70,9 @@
             android:background="@drawable/border"
             android:ems="10"
 
-            android:textSize="20dp"
             android:inputType="textPersonName"
             android:paddingLeft="15dp"
+            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.711"
             app:layout_constraintStart_toStartOf="parent"
@@ -103,10 +101,10 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/border"
             android:ems="10"
-            android:textSize="20dp"
-
             android:inputType="textPersonName"
+
             android:paddingLeft="15dp"
+            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="@+id/tvName"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -119,10 +117,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="365dp"
             android:fontFamily="@font/ellebaskerville_bold"
+            android:text="Phone:"
             android:textColor="@color/stealblue"
             android:textFontWeight="500"
             android:textSize="20dp"
-            android:text="Phone:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.057"
             app:layout_constraintStart_toStartOf="parent"
@@ -137,6 +135,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingLeft="15dp"
+            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="@+id/tvEmail"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -147,7 +146,6 @@
             android:id="@+id/btnEdit"
             style="@style/buttoncolor"
             android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.7"
             android:layout_height="40dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/boderbuttoncolor"
@@ -159,13 +157,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvPhone"
+            app:layout_constraintWidth_percent="0.7"
             tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/btnChangepwd"
             style="@style/buttoncolor"
             android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.7"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/boderbuttoncolor"
@@ -178,13 +176,13 @@
             app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnEdit"
+            app:layout_constraintWidth_percent="0.7"
             tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/btnLogout"
             style="@style/buttoncolor"
             android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.7"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/boderbuttoncolor"
@@ -197,6 +195,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnChangepwd"
+            app:layout_constraintWidth_percent="0.7"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

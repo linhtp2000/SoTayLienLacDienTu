@@ -43,6 +43,7 @@ public class TeacherExerciseInsert extends AppCompatActivity {
     TextView tvCourse, tvClass,tvFrom,tvTo,tvTime;
     String from,to;
     Calendar time1,time2;
+    BaiGiang baiGiang;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,11 +66,15 @@ public class TeacherExerciseInsert extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference=mFirebaseDatabase.getReference();
 
-//        Intent intent=getIntent();
-////        BaiGiang bg =(BaiGiang) intent.getSerializableExtra("Baigiang");
-        BaiGiang bg= new BaiGiang();
+        Intent intent=getIntent();
+        BaiGiang bg =(BaiGiang) intent.getSerializableExtra("Baigiang");
+        if(bg==null)
+        {
+            bg= new BaiGiang();
+        }
+        baiGiang=bg;
         tvCourse.setText("Course - "+bg.getKhoaHoc());
-        tvClass.setText(bg.getMon());
+        tvClass.setText(bg.getName());
 
         Calendar calendar = Calendar.getInstance();
         int gio = calendar.get(Calendar.HOUR);
@@ -119,7 +124,7 @@ public class TeacherExerciseInsert extends AppCompatActivity {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if(tvTo.getText()!="" && tvFrom.getText()!="" && edtName.getText().toString()!="" &&edtNoiDung.getText().toString()!="") {
+               if(tvTo.getText()!="" && tvFrom.getText()!="" && edtName.getText().toString()!="" &&edtNoiDung.getText().toString()!=""&&tvTime.getText().toString()!="") {
                    String day1=tvFrom.getText().toString();
                    String day2=tvTo.getText().toString();
                    if(CheckDeadlineValid(day1,day2,time1,time2)==true) {
@@ -130,12 +135,13 @@ public class TeacherExerciseInsert extends AppCompatActivity {
                        baitap.setDeadline(tvTo.getText().toString());
                        baitap.setThoiGianNop(tvTime.getText().toString());
                        baitap.setThoiGianTao(from);
-                       baitap.setBaiGiang(bg.getId());
-                       baitap.setGiaoVien(bg.getGiaoVien());
+                       baitap.setBaiGiang(baiGiang.getId());
+                       baitap.setGiaoVien(baiGiang.getGiaoVien());
                        baitap.setLstBaiTapSV(null);
                        mDatabaseReference.child("BaiTap").push().setValue(baitap);
                        Toast.makeText(TeacherExerciseInsert.this, "Insert Successfully!", Toast.LENGTH_LONG).show();
-                       Clean();
+                       backToList();
+                      // Clean();
                    }
                    else {
                        Toast.makeText(TeacherExerciseInsert.this, "Deadline is invalid!", Toast.LENGTH_LONG).show();
@@ -150,23 +156,28 @@ public class TeacherExerciseInsert extends AppCompatActivity {
         });
 
     }
-    private void Clean()
-    {
-      //  tvFrom.setText("");
-        tvTo.setText("");
-        edtName.setText("");
-        edtNoiDung.setText("");
-        tvTime.setText("");
-        Calendar calendar = Calendar.getInstance();
-        int gio = calendar.get(Calendar.HOUR);
-        int phut = calendar.get(Calendar.MINUTE);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String date = (simpleDateFormat.format(calendar.getTime()));
-        tvFrom.setText(date);
-        from=(gio+":"+phut).toString();
-        time1=calendar;
-
-    }
+//    private void Clean()
+//    {
+//      //  tvFrom.setText("");
+//        tvTo.setText("");
+//        edtName.setText("");
+//        edtNoiDung.setText("");
+//        tvTime.setText("");
+//        Calendar calendar = Calendar.getInstance();
+//        int gio = calendar.get(Calendar.HOUR);
+//        int phut = calendar.get(Calendar.MINUTE);
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//        String date = (simpleDateFormat.format(calendar.getTime()));
+//        tvFrom.setText(date);
+//        from=(gio+":"+phut).toString();
+//        time1=calendar;
+//
+//    }
+private void backToList() {
+    Intent intent = new Intent(TeacherExerciseInsert.this, TeacherExercisesActivity.class);
+    intent.putExtra("Baigiang",baiGiang);
+    startActivity(intent);
+}
     private boolean CheckDeadlineValid(String day1, String day2, Calendar time1, Calendar time2){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date date1 = null;

@@ -3,6 +3,7 @@ package com.example.contactapp.Teacher.Exercises;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -41,11 +42,11 @@ public class TeacherExerciseEdit extends AppCompatActivity {
     TextView tvCourse, tvClass,tvFrom,tvTo,tvTime;
     String from;
     Calendar to;
-
+    BaiGiang bg;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher_insert_exercise);
+        setContentView(R.layout.activity_teacher_exercise_edit);
 
         tvFrom=findViewById(R.id.tvFrom);
         tvTo=findViewById(R.id.tvTo);
@@ -61,7 +62,7 @@ public class TeacherExerciseEdit extends AppCompatActivity {
         tvTime=findViewById(R.id.tvTime);
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference=mFirebaseDatabase.getReference();
+        mDatabaseReference=mFirebaseDatabase.getReference().child("BaiTap");
 
         Intent intent=getIntent();
         BaiTap baitap =(BaiTap) intent.getSerializableExtra("Baitap");
@@ -69,6 +70,7 @@ public class TeacherExerciseEdit extends AppCompatActivity {
         tvCourse.setText("Course - "+baigiang.getKhoaHoc());
         tvClass.setText(baigiang.getMon());
 
+        bg=baigiang;
         edtName.setText(baitap.getName());
         edtNoiDung.setText(baitap.getNoiDung());
         tvFrom.setText(baitap.getNgayTao());
@@ -115,20 +117,22 @@ public class TeacherExerciseEdit extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvTo.getText()!="" && tvFrom.getText()!="" && edtName.getText().toString()!="" &&edtNoiDung.getText().toString()!="") {
+                if(tvTo.getText()!="" && tvFrom.getText()!="" && edtName.getText().toString()!="" &&edtNoiDung.getText().toString()!=""&&tvTime.getText().toString().trim()!="") {
                     String day1=tvFrom.getText().toString();
                     String day2=tvTo.getText().toString();
                     if(CheckDeadlineValid(day1,day2,from,to)==true) {
-                        BaiTap baitap = new BaiTap();
-                        baitap.setName(edtName.getText().toString());
-                        baitap.setNoiDung(edtNoiDung.getText().toString());
-                        baitap.setNgayTao(tvFrom.getText().toString());
-                        baitap.setDeadline(tvTo.getText().toString());
-                        baitap.setThoiGianNop(tvTime.getText().toString());
-                        baitap.setBaiGiang(baigiang.getId());
-                        baitap.setGiaoVien(baigiang.getGiaoVien());
-                        baitap.setLstBaiTapSV(null);
-                        mDatabaseReference.child("BaiTap").child(baitap.getId()).setValue(baitap);
+                        BaiTap bt = new BaiTap();
+                       // bt.setId(baitap.getId());
+                        bt.setName(edtName.getText().toString());
+                        bt.setNoiDung(edtNoiDung.getText().toString());
+                        bt.setNgayTao(tvFrom.getText().toString());
+                        bt.setDeadline(tvTo.getText().toString());
+                        bt.setThoiGianTao(from);
+                        bt.setThoiGianNop(tvTime.getText().toString());
+                        bt.setBaiGiang(baigiang.getId());
+                        bt.setGiaoVien(baigiang.getGiaoVien());
+                        bt.setLstBaiTapSV(null);
+                        mDatabaseReference.child(baitap.getId()).setValue(bt);
                         Toast.makeText(TeacherExerciseEdit.this, "Edit Successfully!", Toast.LENGTH_LONG).show();
                         backToList();
                     }
@@ -148,7 +152,7 @@ public class TeacherExerciseEdit extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Showdialog(baitap);
+                Showdialog(baitap,TeacherExerciseEdit.this);
                 backToList();
             }
         });
@@ -170,13 +174,13 @@ public class TeacherExerciseEdit extends AppCompatActivity {
             }
             if(date1.equals(date2))
             {
-                if(Integer.parseInt(s1)>time2.HOUR)
+                if(Integer.parseInt(s1)<time2.HOUR)
                 {
                     return true;
                 }
                 else
                 {
-                    if(Integer.parseInt(s1)==time2.HOUR &&Integer.parseInt(s2)>time2.MINUTE)
+                    if(Integer.parseInt(s1)==time2.HOUR &&Integer.parseInt(s2)<time2.MINUTE)
                     { return true;}
                 }
             }
@@ -188,14 +192,16 @@ public class TeacherExerciseEdit extends AppCompatActivity {
     }
     private void backToList() {
         Intent intent = new Intent(TeacherExerciseEdit.this, TeacherExercisesActivity.class);
+        intent.putExtra("Baigiang",bg);
         startActivity(intent);
     }
-    public void Showdialog(BaiTap baitap){
-        final Dialog dialog=new Dialog(this);
+    private void Showdialog(BaiTap baitap, Context context){
+       Dialog dialog=new Dialog(getBaseContext());
         dialog.setContentView(R.layout.dialogdelete);
+        dialog.show();
         Button btnOK = (Button) dialog.findViewById(R.id.btnOK);
         Button btnCancel =(Button) dialog.findViewById(R.id.btnCancel);
-        dialog.show();
+
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -205,8 +211,8 @@ public class TeacherExerciseEdit extends AppCompatActivity {
         btnOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabaseReference.child("BaiTap").child(baitap.getId()).removeValue();
-                Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
+                mDatabaseReference.child(baitap.getId()).removeValue();
+                Toast.makeText(context, "Delete successfully!", Toast.LENGTH_SHORT).show();
                 dialog.cancel();
             }
         });

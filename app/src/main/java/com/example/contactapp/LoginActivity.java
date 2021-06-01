@@ -22,6 +22,7 @@ import com.example.contactapp.Teacher.Class.TeacherClassActivity;
 import com.example.contactapp.Teacher.Course.TeacherCourseActivity;
 import com.example.contactapp.Teacher.Exercises.TeacherExerciseEdit;
 import com.example.contactapp.Teacher.Exercises.TeacherExercisesActivity;
+import com.example.contactapp.Teacher.Home.TeacherHomeActivity;
 import com.example.contactapp.Teacher.Profile.TeacherProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -59,10 +60,10 @@ public class LoginActivity extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         //   final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        authListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+//        authListener = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                FirebaseUser user = firebaseAuth.getCurrentUser();
 //                if (user != null) {
 //                    //Giao vien
 //                    mDatabaseReference = mFirebaseDatabase.getReference().child("GiaoVien");
@@ -160,8 +161,8 @@ public class LoginActivity extends AppCompatActivity {
 //                        }
 //                    });
 //                }
-            }
-            };
+//            }
+//            };
 
 //        if (auth.getCurrentUser() != null) {
 //            String email = auth.getCurrentUser().getEmail().toString();
@@ -395,7 +396,7 @@ public class LoginActivity extends AppCompatActivity {
                                                             //GiaoVien gv = snap.getValue(GiaoVien.class)
                                                             if (id != null) {
                                                                 if (id.equals(uid)) {
-                                                                    Intent intent = new Intent(LoginActivity.this, TeacherProfileActivity.class);
+                                                                    Intent intent = new Intent(LoginActivity.this, TeacherHomeActivity.class);
                                                                     startActivity(intent);
                                                                     finish();
                                                                 }

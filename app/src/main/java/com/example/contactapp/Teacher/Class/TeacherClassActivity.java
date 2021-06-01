@@ -50,13 +50,20 @@ public class TeacherClassActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_class);
-        lstBaiGiang=new ArrayList<>();
+
+        Intent intent=getIntent();
+        String kh=(String) intent.getSerializableExtra("KhoaHoc");
+        if(kh==null)
+        {
+            kh="";
+        }
+        khoahoc=kh;
 
         recyclerView=(RecyclerView)findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager=new LinearLayoutManager(TeacherClassActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter= new TeacherClassAdapter();
+        adapter= new TeacherClassAdapter(khoahoc);
         recyclerView.setAdapter(adapter);
 
 

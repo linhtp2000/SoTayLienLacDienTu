@@ -1,6 +1,8 @@
 package com.example.contactapp.Models;
 
-public class GiaoVien {
+import java.io.Serializable;
+
+public class GiaoVien implements Serializable {
     private String Id;
     private  String Name;
     private  String Phone;

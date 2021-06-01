@@ -19,6 +19,7 @@ import com.example.contactapp.Models.GiaoVien;
 import com.example.contactapp.R;
 import com.example.contactapp.RegisterActivity;
 import com.example.contactapp.Teacher.Exercises.TeacherExercisesActivity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -39,6 +40,8 @@ implements View.OnClickListener{
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     List<BaiGiang> lstBaiGiang=new ArrayList<>();
+    private FirebaseAuth auth;
+    String kh;
     private ChildEventListener mChildListener;
     Context context;
     private static final String TAG = "ReadAndWriteSnippets";
@@ -54,8 +57,9 @@ implements View.OnClickListener{
         notifyDataSetChanged();
     }
 
-    public TeacherClassAdapter(){
-       // lstBaiGiang=list;
+    public TeacherClassAdapter(String kh){
+         auth = FirebaseAuth.getInstance();
+         String uid= auth.getCurrentUser().getUid();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference=mFirebaseDatabase.getReference().child("BaiGiang");
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
@@ -64,12 +68,10 @@ implements View.OnClickListener{
                 for (DataSnapshot snap:dataSnapshot.getChildren()) {
                     BaiGiang bg = snap.getValue(BaiGiang.class);
                     bg.setId(snap.getKey());
-
-                      //  if (bg.getKhoaHoc() == 2000) {
-                            lstBaiGiang.add(bg);
-                            notifyItemInserted(lstBaiGiang.size() - 1);
-
-                  //  }
+                    if(bg.getKhoaHoc()==Integer.parseInt(kh)&&bg.getGiaoVien().equals(uid)) {
+                        lstBaiGiang.add(bg);
+                        notifyItemInserted(lstBaiGiang.size() - 1);
+                    }
                 }
             }
             @Override

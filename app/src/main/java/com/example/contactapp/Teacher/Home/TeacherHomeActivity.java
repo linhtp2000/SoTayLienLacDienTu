@@ -1,27 +1,27 @@
-package com.example.contactapp.Teacher.Course;
+package com.example.contactapp.Teacher.Home;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.contactapp.Models.BaiGiang;
 import com.example.contactapp.Models.GiaoVien;
 import com.example.contactapp.R;
-import com.example.contactapp.Teacher.Class.TeacherClassAdapter;
+import com.example.contactapp.Teacher.Course.TeacherCourseActivity;
+import com.example.contactapp.Teacher.Course.TeacherCourseAdapter;
+import com.example.contactapp.Teacher.Exercises.TeacherExerciseEdit;
+import com.example.contactapp.Teacher.Profile.TeacherProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -34,38 +34,45 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-public class TeacherCourseActivity extends AppCompatActivity {
+public class TeacherHomeActivity extends AppCompatActivity {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private ChildEventListener mChildListener;
     private FirebaseUser mFirebaseUser;
-    List<BaiGiang> lstBaiGiang=new ArrayList<>();
-    TeacherCourseAdapter adapter;
-    String khoahoc;
-    RecyclerView recyclerView;
-    TextView tvName,tvCourse, tvDate,tvTime;
+    TextView tvName,tvDate,tvTime;
+    RelativeLayout btnCourse, btnProfile;
     private static final String TAG = "ReadAndWriteSnippets";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher_course);
+        setContentView(R.layout.activity_teacher_home);
 
-        tvTime=findViewById(R.id.textViewTime);
-        tvName=findViewById(R.id.textViewName);
-      //  tvCourse=findViewById(R.id.textViewCourse);
-        tvDate=findViewById(R.id.textViewDate);
+        tvTime=findViewById(R.id.tvTime);
+        tvName=findViewById(R.id.tvName);
+        tvDate=findViewById(R.id.tvDate);
+
+        btnCourse=findViewById(R.id.ButtonYourClass);
+        btnProfile=findViewById(R.id.ButtonNotification);
 
         getUser();
         getDate();
 
-        recyclerView=(RecyclerView)findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(TeacherCourseActivity.this);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter= new TeacherCourseAdapter();
-        recyclerView.setAdapter(adapter);
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent= new Intent(TeacherHomeActivity.this, TeacherProfileActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        btnCourse.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent= new Intent(TeacherHomeActivity.this, TeacherCourseActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
 
     }
@@ -78,7 +85,8 @@ public class TeacherCourseActivity extends AppCompatActivity {
         int year=calendar.get(Calendar.YEAR);
         int gio=calendar.get(Calendar.HOUR);
         int phut=calendar.get(Calendar.MINUTE);
-      //  String dayOfWeek = new SimpleDateFormat("EEEE").format(date);
+        int buoi=calendar.get(Calendar.AM);
+        //  String dayOfWeek = new SimpleDateFormat("EEEE").format(date);
         month=month+1;
         String m="";
         if(month==1) m="Jan";
@@ -94,7 +102,11 @@ public class TeacherCourseActivity extends AppCompatActivity {
         if(month==11) m="Nov";
         if(month==12) m="Dec";
         tvDate.setText(day+" "+m+", "+year);
-        tvTime.setText(gio+":"+phut);
+        if(buoi==0) {
+            tvTime.setText(gio + ":" + phut + "pm");
+        }else {
+            tvTime.setText(gio + ":" + phut + "pm");
+        }
 
     }
     private void getUser()
@@ -112,7 +124,7 @@ public class TeacherCourseActivity extends AppCompatActivity {
                     if(gv.getId().equals(uid))
                     {
                         tvName.setText("Welcome, "+gv.getName());
-                       return;
+                        return;
                     }
                 }
 
@@ -125,3 +137,4 @@ public class TeacherCourseActivity extends AppCompatActivity {
         });
     }
 }
+

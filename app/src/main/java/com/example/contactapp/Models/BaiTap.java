@@ -40,7 +40,7 @@ public class BaiTap implements Serializable {//bài tập do GV thêm
         this.ThoiGianTao=ThoiGianTao;
         this.BaiTapSV = BaiTapSV;
     }
-    public void setNgayTao(String ngayTao){
+    public void setNgayTao(String NgayTao){
         this.NgayTao = NgayTao;
     }
 
