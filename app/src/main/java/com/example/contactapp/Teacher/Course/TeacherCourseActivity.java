@@ -78,7 +78,7 @@ public class TeacherCourseActivity extends AppCompatActivity {
         int year=calendar.get(Calendar.YEAR);
         int gio=calendar.get(Calendar.HOUR);
         int phut=calendar.get(Calendar.MINUTE);
-      //  String dayOfWeek = new SimpleDateFormat("EEEE").format(date);
+     int buoi=calendar.get(Calendar.AM);
         month=month+1;
         String m="";
         if(month==1) m="Jan";
@@ -94,7 +94,12 @@ public class TeacherCourseActivity extends AppCompatActivity {
         if(month==11) m="Nov";
         if(month==12) m="Dec";
         tvDate.setText(day+" "+m+", "+year);
-        tvTime.setText(gio+":"+phut);
+        if(buoi==0){
+            tvTime.setText(gio+":"+phut+"pm");
+        }
+        else {
+            tvTime.setText(gio+":"+phut+"am");
+        }
 
     }
     private void getUser()
