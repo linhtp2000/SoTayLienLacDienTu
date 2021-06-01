@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.contactapp.LoginActivity;
 import com.example.contactapp.Model.BaiTapSV;
 import com.example.contactapp.Model.Expire_Home;
 import com.example.contactapp.Model.Noti_Home;
@@ -43,12 +44,13 @@ public class ParentHome extends AppCompatActivity {
     TextView User;
     TextView Role;
     public static String UserRole="";
-    public static String Id="zhnJ319PcYPP01eRVJftvEPCirD2";
+    public static String Id= LoginActivity.IdUser;
     public static String idChild;
     public static String NameUser;
     public static String NameChild;
     public static String PhoneUser;
     public static String MailUser;
+    public static String AddressUser;
     public static String ClassUser;
     public static int IdNoti;
     public static int IdExpire;
@@ -91,12 +93,13 @@ public class ParentHome extends AppCompatActivity {
                 Parent parent = snapshot.getValue(Parent.class);
                 String key = snapshot.getKey();
                 if(key.equals(Id)){
-                    arrayListParent.add(new Parent(key,parent.getEmail(),parent.getName(),parent.getPhone(),parent.getSinhVien()));
+                    arrayListParent.add(new Parent(key,parent.getEmail(),parent.getName(),parent.getPhone(),parent.getSinhVien(),parent.getAddress()));
                     User.setText("Wellcome, " + arrayListParent.get(0).getName());
                     idChild=arrayListParent.get(0).getSinhVien();
                     NameUser=arrayListParent.get(0).getName();
                     PhoneUser=arrayListParent.get(0).getPhone();
                     MailUser=arrayListParent.get(0).getEmail();
+                    AddressUser=arrayListParent.get(0).getAddress();
                 }
                 notiHomeAdapter.notifyDataSetChanged();
                 mDatabase.child("SinhVien").addChildEventListener(new ChildEventListener() {
@@ -105,7 +108,7 @@ public class ParentHome extends AppCompatActivity {
                         Student student = snapshot.getValue(Student.class);
                         String key = snapshot.getKey();
                         if(key.equals(idChild)){
-                            arrayListStudent.add(new Student(key,student.getEmail(),student.getLop(),student.getPhone(),student.getName()));
+                            arrayListStudent.add(new Student(key,student.getEmail(),student.getLop(),student.getPhone(),student.getName(),student.getAddress(),student.getMSSV()));
                             NameChild=arrayListStudent.get(0).getName();
                         }
                         notiHomeAdapter.notifyDataSetChanged();

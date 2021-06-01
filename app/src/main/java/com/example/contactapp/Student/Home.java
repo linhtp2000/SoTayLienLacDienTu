@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.contactapp.LoginActivity;
 import com.example.contactapp.Model.BaiTapSV;
 import com.example.contactapp.Model.Expire_Home;
 import com.example.contactapp.Model.Noti_Home;
@@ -45,11 +46,13 @@ public class Home extends AppCompatActivity {
     TextView date;
     TextView User;
     public static String UserRole="student";
-    public static String Id="VDJAmzB3heR0PzLRhzdCWQfBx3n2";
+    public static String Id= LoginActivity.IdUser;
     public static String NameUser;
     public static String PhoneUser;
     public static String MailUser;
     public static String ClassUser;
+    public static String AddressUser;
+    public static String MSSV;
     public static int IdNoti;
     public static int IdExpire;
     public static String name;
@@ -92,12 +95,14 @@ public class Home extends AppCompatActivity {
 //                NameUser=arrayListStudent.get(0).getName();
 //                ClassUser=arrayListStudent.get(0).getClasses();
                 if(key.equals(Id)){
-                    arrayListStudent.add(new Student(key,student.getEmail(),student.getLop(),student.getPhone(),student.getName()));
+                    arrayListStudent.add(new Student(key,student.getEmail(),student.getLop(),student.getPhone(),student.getName(),student.getAddress(),student.getMSSV()));
                     User.setText("Wellcome, " + arrayListStudent.get(0).getName());
                     NameUser=arrayListStudent.get(0).getName();
                     ClassUser=arrayListStudent.get(0).getLop();
                     PhoneUser=arrayListStudent.get(0).getPhone();
                     MailUser=arrayListStudent.get(0).getEmail();
+                    AddressUser=arrayListStudent.get(0).getAddress();
+                    MSSV=arrayListStudent.get(0).getMSSV();
                 }
 
                 notiHomeAdapter.notifyDataSetChanged();

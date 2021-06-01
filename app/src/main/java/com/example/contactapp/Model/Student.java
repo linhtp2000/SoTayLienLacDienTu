@@ -6,11 +6,32 @@ public class Student {
     private String Lop;
     private String Phone;
     private String Name;
+    private String Address;
+    private String MSSV;
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public String getMSSV() {
+        return MSSV;
+    }
+
+    public void setMSSV(String MSSV) {
+        this.MSSV = MSSV;
+    }
+
     public Student(){
         //Nhận data từ fireBase
     }
 
-    public Student(String id, String email, String lop, String phone, String name) {
+    public Student(String id, String email, String lop, String phone, String name , String address,String mssv) {
+        this.Address=address;
+        this.MSSV=mssv;
         this.id = id;
         Email = email;
         Lop = lop;
