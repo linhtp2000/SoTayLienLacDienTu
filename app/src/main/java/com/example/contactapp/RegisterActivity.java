@@ -144,20 +144,28 @@ public class RegisterActivity extends AppCompatActivity {
                                       //  mDatabaseReference.child("GiaoVien").push().setValue(user.getUid());
                                         mDatabaseReference.child("GiaoVien").child(user.getUid()).setValue(gv);
                                     }
-                                    if(role==3)
-                                    {
-                                        SinhVien sv= new SinhVien();
-                                        sv.setEmail(email);
-                                        mDatabaseReference.child("SinhVien").push().setValue(user.getUid());
-                                        mDatabaseReference.child("SinhVien").child(user.getUid()).setValue(sv);
-                                    }
                                     if(role==1)
                                     {
                                         PhuHuynh ph= new PhuHuynh();
                                         ph.setEmail(email);
-                                        mDatabaseReference.child("PhuHuynh").push().setValue(user.getUid());
-                                        mDatabaseReference.child("PhuHuynh").child(user.getUid()).setValue(ph);
+                                        ph.setName(null);
+                                        ph.setPhone(null);
+                                        ph.setSinhVien(null);
+
+                                      //    mDatabaseReference.child("PhuHuynh").push().setValue(user.getUid());
+                                        mDatabaseReference.child("PhuHuynh").child(user.getUid()).setValue(ph.getEmail());
                                     }
+                                    if(role==2)
+                                    {
+                                        SinhVien sv= new SinhVien();
+                                        sv.setEmail(email);
+                                        sv.setLop(null);
+                                        sv.setName(null);
+                                        sv.setPhone(null);
+                                      //  mDatabaseReference.child("SinhVien").push().setValue(user.getUid());
+                                        mDatabaseReference.child("SinhVien").child(user.getUid()).setValue(sv);
+                                    }
+
                                     Toast.makeText(RegisterActivity.this, "Sign up successfully!" , Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                     finish();

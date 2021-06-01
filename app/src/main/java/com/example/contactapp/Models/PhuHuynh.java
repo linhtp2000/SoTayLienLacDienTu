@@ -51,6 +51,6 @@ public class PhuHuynh {  //class phụ huynh
     }
 
     public void setEmail(String email) {
-        this.Email = Email;
+        this.Email = email;
     }
 }
