@@ -1,10 +1,16 @@
 package com.example.contactapp;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,6 +24,8 @@ import com.example.contactapp.Models.GiaoVien;
 import com.example.contactapp.Models.PhuHuynh;
 import com.example.contactapp.Models.QuanLy;
 import com.example.contactapp.Models.SinhVien;
+import com.example.contactapp.Student.Home;
+import com.example.contactapp.Student.ParentHome;
 import com.example.contactapp.Teacher.Class.TeacherClassActivity;
 import com.example.contactapp.Teacher.Course.TeacherCourseActivity;
 import com.example.contactapp.Teacher.Exercises.TeacherExerciseEdit;
@@ -358,15 +366,11 @@ public class LoginActivity extends AppCompatActivity {
                             String email = inputEmail.getText().toString();
                             final String password = inputPassword.getText().toString();
 
-                            if (TextUtils.isEmpty(email)) {
-                                Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                                dialogError(Gravity.CENTER);
                                 return;
                             }
 
-                            if (TextUtils.isEmpty(password)) {
-                                Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
-                                return;
-                            }
 
                             //authenticate user
                             auth.signInWithEmailAndPassword(email, password)
@@ -421,7 +425,7 @@ public class LoginActivity extends AppCompatActivity {
                                                                 //GiaoVien gv = snap.getValue(GiaoVien.class)
                                                                 if (id != null) {
                                                                     if (id.equals(uid)) {
-                                                                        Intent intent = new Intent(LoginActivity.this, TeacherExercisesActivity.class);
+                                                                        Intent intent = new Intent(LoginActivity.this, ParentHome.class);
                                                                         startActivity(intent);
                                                                         finish();
                                                                     }
@@ -446,7 +450,7 @@ public class LoginActivity extends AppCompatActivity {
                                                                     //GiaoVien gv = snap.getValue(GiaoVien.class)
                                                                     if (id != null) {
                                                                         if (id.equals(uid)) {
-                                                                            Intent intent = new Intent(LoginActivity.this,TeacherClassActivity.class);
+                                                                            Intent intent = new Intent(LoginActivity.this, Home.class);
                                                                             startActivity(intent);
                                                                             finish();
                                                                         }
@@ -727,47 +731,79 @@ public class LoginActivity extends AppCompatActivity {
 //
 //        return;
 //    }
-private boolean CheckMailExist (String email) {
-    mFirebaseDatabase = FirebaseDatabase.getInstance();
-    mDatabaseReference=mFirebaseDatabase.getReference().child("GiaoVien");
-    //   mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("GiaoVien");
-    mChildListener= new ChildEventListener() {
-        @Override
-        public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+    private boolean CheckMailExist (String email) {
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference=mFirebaseDatabase.getReference().child("GiaoVien");
+        //   mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("GiaoVien");
+        mChildListener= new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-                GiaoVien gv =snapshot.getValue(GiaoVien.class);
-                if(gv.getEmail().equals(email))
-                {
-                    check=1;
-                }
+                    GiaoVien gv =snapshot.getValue(GiaoVien.class);
+                    if(gv.getEmail().equals(email))
+                    {
+                        check=1;
+                    }
 
+            }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        mDatabaseReference.addChildEventListener(mChildListener);
+        if(check==1)
+        {return true;}
+
+        return false;
+    }
+    private void dialogError(int gravity){
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialogerror2);
+
+        Window window = dialog.getWindow();
+        if(window == null)
+        {
+            return;
         }
-        @Override
-        public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+        if(Gravity.BOTTOM == gravity)
+        {
+            dialog.setCancelable(true);
         }
-
-        @Override
-        public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+        else {
+            dialog.setCancelable(false);
         }
-
-        @Override
-        public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError error) {
-
-        }
-    };
-    mDatabaseReference.addChildEventListener(mChildListener);
-    if(check==1)
-    {return true;}
-
-    return false;
-}
+        Button btn_oke = (Button) dialog.findViewById(R.id.btn_dialogError_Oke1);
+        btn_oke.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
 }
 
 
