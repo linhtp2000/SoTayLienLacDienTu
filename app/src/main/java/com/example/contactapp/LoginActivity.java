@@ -32,6 +32,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
@@ -386,112 +387,149 @@ public class LoginActivity extends AppCompatActivity {
                                                 String email = auth.getCurrentUser().getEmail();
                                                 int checkuser = 0;
 
-                                                mDatabaseReference = mFirebaseDatabase.getReference().child("GiaoVien");
-                                                mDatabaseReference.addValueEventListener(new ValueEventListener() {
-                                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                                        for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                                                            GiaoVien gv = snap.getValue(GiaoVien.class);
-                                                            if (gv.getEmail() != null) {
-                                                                if (gv.getEmail().equals(email)) {
+                                                Query query1=mFirebaseDatabase.getReference().child("GiaoVien").orderByKey().equalTo(auth.getCurrentUser().getUid());
+                                                if(query1.get()!=null)
+                                                {
+                                                    Intent intent = new Intent(LoginActivity.this, TeacherProfileActivity.class);
+                                                    startActivity(intent);
+                                                    return;
+                                                  //  finish();
+                                                }
+//                                                mDatabaseReference = mFirebaseDatabase.getReference().child("GiaoVien");
+//                                                mDatabaseReference.addValueEventListener(new ValueEventListener() {
+//                                                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                                                        for (DataSnapshot snap : dataSnapshot.getChildren()) {
+//                                                            GiaoVien gv = snap.getValue(GiaoVien.class);
+//                                                            if (gv.getEmail() != null) {
+//                                                                if (gv.getEmail().equals(email)) {
+//                                                                    Intent intent = new Intent(LoginActivity.this, TeacherProfileActivity.class);
+//                                                                    startActivity(intent);
+//                                                                    finish();
+//                                                                }
+//                                                            }
+//                                                        }
+//
+//                                                    }
+//
+//                                                    @Override
+//                                                    public void onCancelled(DatabaseError databaseError) {
+//                                                        // Getting Post failed, log a message
+//                                                        Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//                                                    }
+//                                                });
 
-                                                                    Intent intent = new Intent(LoginActivity.this, TeacherProfileActivity.class);
-                                                                    startActivity(intent);
-                                                                    finish();
-                                                                }
-                                                            }
-                                                        }
+                                                Query query2=mFirebaseDatabase.getReference().child("PhuHuynh").orderByKey().equalTo(auth.getCurrentUser().getUid());
+                                                if(query2.get()!=null)
+                                                {
+                                                    Intent intent = new Intent(LoginActivity.this, TeacherClassActivity.class);
+                                                    startActivity(intent);
+                                                    return;
+                                                  //  finish();
+                                                }
 
-                                                    }
-
-                                                    @Override
-                                                    public void onCancelled(DatabaseError databaseError) {
-                                                        // Getting Post failed, log a message
-                                                        Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                                                    }
-                                                });
-
-                                                    mDatabaseReference = mFirebaseDatabase.getReference().child("PhuHuynh");
-                                                    mDatabaseReference.addValueEventListener(new ValueEventListener() {
-                                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                                            for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                                                                PhuHuynh ph = snap.getValue(PhuHuynh.class);
-                                                                if (ph.getEmail() != null) {
-                                                                    if (ph.getEmail().equals(email)) {
-                                                                        Intent intent = new Intent(LoginActivity.this, TeacherClassActivity.class);
-                                                                        startActivity(intent);
-                                                                        finish();
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-
-                                                        @Override
-                                                        public void onCancelled(DatabaseError databaseError) {
-                                                            // Getting Post failed, log a message
-                                                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                                                        }
-                                                    });
-
+//                                                    mDatabaseReference = mFirebaseDatabase.getReference().child("PhuHuynh");
+//                                                    mDatabaseReference.addValueEventListener(new ValueEventListener() {
+//                                                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                                                            for (DataSnapshot snap : dataSnapshot.getChildren()) {
+//                                                                PhuHuynh ph = snap.getValue(PhuHuynh.class);
+//                                                                if (ph.getEmail() != null) {
+//                                                                    if (ph.getEmail().equals(email)) {
+//                                                                        Intent intent = new Intent(LoginActivity.this, TeacherClassActivity.class);
+//                                                                        startActivity(intent);
+//                                                                        finish();
+//                                                                    }
+//                                                                }
+//                                                            }
+//                                                        }
+//
+//                                                        @Override
+//                                                        public void onCancelled(DatabaseError databaseError) {
+//                                                            // Getting Post failed, log a message
+//                                                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//                                                        }
+//                                                    });
+                                                Query query4=mFirebaseDatabase.getReference().child("SinhVien").orderByKey().equalTo(auth.getCurrentUser().getUid());
+                                                if(query4.get()!=null)
+                                                {
+                                                    Intent intent = new Intent(LoginActivity.this, TeacherCourseActivity.class);
+                                                    startActivity(intent);
+                                                    return;
+                                                   // finish();
+                                                }
                                                         //Sinh vien
-                                                        mDatabaseReference = mFirebaseDatabase.getReference().child("SinhVien");
-                                                        mDatabaseReference.addValueEventListener(new ValueEventListener() {
-                                                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                                                SinhVien sv = dataSnapshot.getValue(SinhVien.class);
-                                                                if (sv.getEmail() != null) {
-                                                                if (sv.getEmail().equals(email)) {
-                                                                    Intent intent = new Intent(LoginActivity.this, TeacherExercisesActivity.class);
-                                                                    startActivity(intent);
-                                                                    finish();
-                                                                }
-                                                                }
-                                                            }
-
-                                                            @Override
-                                                            public void onCancelled(DatabaseError databaseError) {
-                                                                // Getting Post failed, log a message
-                                                                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                                                            }
-                                                        });
-                                                        //Quản lý
-                                                        mDatabaseReference = mFirebaseDatabase.getReference().child("QuanLy");
-                                                        mDatabaseReference.addValueEventListener(new ValueEventListener() {
-                                                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                                                QuanLy ql = dataSnapshot.getValue(QuanLy.class);
-                                                                if (ql.getEmail() != null) {
-                                                                if (ql.getEmail().equals(email)) {
-                                                                    Intent intent = new Intent(LoginActivity.this, TeacherExercisesActivity.class);
-                                                                    startActivity(intent);
-                                                                    finish();
-                                                                }
-                                                                }
-                                                            }
-
-                                                            @Override
-                                                            public void onCancelled(DatabaseError databaseError) {
-                                                                // Getting Post failed, log a message
-                                                                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                                                            }
-                                                        });
+//                                                        mDatabaseReference = mFirebaseDatabase.getReference().child("SinhVien");
+//                                                        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+//                                                            public void onDataChange(DataSnapshot dataSnapshot) {
+//                                                                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+//                                                                    SinhVien sv = snap.getValue(SinhVien.class);
+//                                                                    if (sv.getEmail() != null) {
+//                                                                        if (sv.getEmail().equals(email)) {
+//                                                                            Intent intent = new Intent(LoginActivity.this, TeacherExercisesActivity.class);
+//                                                                            startActivity(intent);
+//                                                                            finish();
+//                                                                        }
+//                                                                    }
+//                                                                }
+//                                                            }
+//
+//                                                            @Override
+//                                                            public void onCancelled(DatabaseError databaseError) {
+//                                                                // Getting Post failed, log a message
+//                                                                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//                                                            }
+//                                                        });
+//                                                        //Quản lý
+//                                                        mDatabaseReference = mFirebaseDatabase.getReference().child("QuanLy");
+//                                                        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+//                                                            public void onDataChange(DataSnapshot dataSnapshot) {
+//                                                                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+//                                                                    QuanLy ql = dataSnapshot.getValue(QuanLy.class);
+//                                                                    if (ql.getEmail() != null) {
+//                                                                        if (ql.getEmail().equals(email)) {
+//                                                                            Intent intent = new Intent(LoginActivity.this, TeacherExercisesActivity.class);
+//                                                                            startActivity(intent);
+//                                                                            finish();
+//                                                                        }
+//                                                                    }
+//                                                                }
+//                                                            }
+//
+//                                                            @Override
+//                                                            public void onCancelled(DatabaseError databaseError) {
+//                                                                // Getting Post failed, log a message
+//                                                                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//                                                            }
+//                                                        });
+                                                Query query=mFirebaseDatabase.getReference().child("Admin").orderByKey().equalTo(auth.getCurrentUser().getUid());
+                                                if(query!=null)
+                                                {
+                                                    Intent intent = new Intent(LoginActivity.this, TeacherExercisesActivity.class);
+                                                                            startActivity(intent);
+                                                    return;
+                                                                        //  finish();
+                                                }
                                                         //Admin
-                                                        mDatabaseReference = mFirebaseDatabase.getReference().child("Admin");
-                                                        mDatabaseReference.addValueEventListener(new ValueEventListener() {
-                                                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                                                Admin ad = dataSnapshot.getValue(Admin.class);
-                                                                if (ad.getEmail() != null) {
-                                                                if (ad.getEmail().equals(email)) {
-                                                                    Intent intent = new Intent(LoginActivity.this, TeacherExercisesActivity.class);
-                                                                    startActivity(intent);
-                                                                    finish();
-                                                                }
-                                                                }
-                                                            }
-
-                                                            @Override
-                                                            public void onCancelled(DatabaseError databaseError) {
-                                                                // Getting Post failed, log a message
-                                                                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                                                            }
-                                                        });
+//                                                        mDatabaseReference = mFirebaseDatabase.getReference().child("Admin");
+//                                                        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+//                                                            public void onDataChange(DataSnapshot dataSnapshot) {
+//                                                                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+//                                                                    Admin ad = dataSnapshot.getValue(Admin.class);
+//                                                                    if (ad.getEmail() != null) {
+//                                                                        if (ad.getEmail().equals(email)) {
+//                                                                            Intent intent = new Intent(LoginActivity.this, TeacherExercisesActivity.class);
+//                                                                            startActivity(intent);
+//                                                                            finish();
+//                                                                        }
+//                                                                    }
+//                                                                }
+//                                                            }
+//
+//                                                            @Override
+//                                                            public void onCancelled(DatabaseError databaseError) {
+//                                                                // Getting Post failed, log a message
+//                                                                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//                                                            }
+//                                                        });
                                                     }
                                                 }
                                     });

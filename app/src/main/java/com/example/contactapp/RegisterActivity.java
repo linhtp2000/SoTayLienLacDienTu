@@ -137,15 +137,19 @@ public class RegisterActivity extends AppCompatActivity {
                                     {
                                         GiaoVien gv= new GiaoVien();
                                         gv.setEmail(email);
-                                        mDatabaseReference.child("GiaoVien").push().setValue(user.getUid());
-                                        mDatabaseReference.child("GiaoVien").child(user.getUid()).push().setValue(gv);
+                                        gv.setName(null);
+                                        gv.setPhone(null);
+                                        gv.setId(null);
+
+                                      //  mDatabaseReference.child("GiaoVien").push().setValue(user.getUid());
+                                        mDatabaseReference.child("GiaoVien").child(user.getUid()).setValue(gv);
                                     }
                                     if(role==3)
                                     {
                                         SinhVien sv= new SinhVien();
                                         sv.setEmail(email);
                                         mDatabaseReference.child("SinhVien").push().setValue(user.getUid());
-                                        mDatabaseReference.child("SinhVien").child(user.getUid()).push().setValue(sv);
+                                        mDatabaseReference.child("SinhVien").child(user.getUid()).setValue(sv);
                                     }
                                     if(role==1)
                                     {

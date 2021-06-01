@@ -58,14 +58,14 @@ public class TeacherProfileActivity extends AppCompatActivity {
         btnLogout = findViewById(R.id.btnLogout);
 
        getData();
-
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               Intent intent= new Intent(TeacherProfileActivity.this,TeacherProfileEdit.class);
-               startActivity(intent);
-            }
-        });
+//
+//        btnEdit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//               Intent intent= new Intent(TeacherProfileActivity.this,TeacherProfileEdit.class);
+//               startActivity(intent);
+//            }
+//        });
 
         btnChangpwd.setOnClickListener(new View.OnClickListener() {
             @Override
