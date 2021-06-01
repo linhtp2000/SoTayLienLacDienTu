@@ -60,9 +60,10 @@ public class ManagerInfo extends AppCompatActivity {
                     //  Lop lop=dataSnapshot.getValue(Lop.class);
                     QuanLy quanLy=dataSnapshot.getValue(QuanLy.class);
                     quanLy.setId(dataSnapshot.getKey());
-                    String a=quanLy.getId();
-                    String b=extras.getString("IdManager");
-                    Boolean check=a.equals(b);
+                    String getId=quanLy.getId();
+                    String checkId=extras.getString("IdManager");
+
+                    Boolean check=getId.equals(checkId);
 
                     if(check==true)
                     {
@@ -74,6 +75,7 @@ public class ManagerInfo extends AppCompatActivity {
 
 
                     }
+
 
 
 
@@ -105,8 +107,8 @@ public class ManagerInfo extends AppCompatActivity {
                     String path=extras.getString("IdManager");
 
                     database.child(path).child("name").setValue(nameManager.getText().toString());
-                   database.child(extras.getString("IdManager")).child("phone").setValue(phoneManager.getText().toString());
-                   database.child(extras.getString("IdManager")).child("email").setValue(mailManager.getText().toString());
+                    database.child(extras.getString("IdManager")).child("phone").setValue(phoneManager.getText().toString());
+                    database.child(extras.getString("IdManager")).child("email").setValue(mailManager.getText().toString());
                     Toast.makeText(getApplicationContext(),"Sửa đổi thành công",Toast.LENGTH_LONG).show();
 
 
@@ -129,7 +131,7 @@ public class ManagerInfo extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               openDialogSure();
+                openDialogSure();
             }
         });
         btnCancle.setOnClickListener(new View.OnClickListener() {

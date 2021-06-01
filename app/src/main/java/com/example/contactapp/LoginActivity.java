@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.contactapp.Admin.AdminManager;
 import com.example.contactapp.Models.Admin;
 import com.example.contactapp.Models.GiaoVien;
 import com.example.contactapp.Models.PhuHuynh;
@@ -491,7 +492,7 @@ public class LoginActivity extends AppCompatActivity {
                                                                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
                                                             }
                                                         });
-                                               
+
                                                         //Admin
                                                        mDatabaseReference = mFirebaseDatabase.getReference().child("Admin");
                                                         mDatabaseReference.addValueEventListener(new ValueEventListener() {
@@ -501,7 +502,7 @@ public class LoginActivity extends AppCompatActivity {
                                                                     //GiaoVien gv = snap.getValue(GiaoVien.class)
                                                                     if (id != null) {
                                                                         if (id.equals(uid)) {
-                                                                            Intent intent = new Intent(LoginActivity.this, TeacherCourseActivity.class);
+                                                                            Intent intent = new Intent(LoginActivity.this, AdminManager.class);
                                                                             startActivity(intent);
                                                                             finish();
                                                                         }

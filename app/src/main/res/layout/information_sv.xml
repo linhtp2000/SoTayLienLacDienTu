@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.428">
 
         <TextView
-            android:id="@+id/txtDayManager"
+            android:id="@+id/txtClassNameStudent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Class-18110140"
@@ -53,6 +53,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="10dp"
+            android:src="@drawable/student"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.558"
@@ -158,6 +159,35 @@
             app:layout_constraintVertical_bias="0.426" />
 
         <TextView
+            android:id="@+id/txtMail2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtMail3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MSSV"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.021"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.574" />
+
+        <TextView
             android:id="@+id/editTextMailManager"
             android:layout_width="292dp"
             android:layout_height="42dp"
@@ -175,6 +205,41 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.428" />
 
+        <TextView
+            android:id="@+id/txtAddressStudent"
+            android:layout_width="292dp"
+            android:layout_height="42dp"
+            android:background="@drawable/edit_text_border"
+            android:ems="10"
+
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text="ádsas"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.809"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtMssv"
+            android:layout_width="292dp"
+            android:layout_height="42dp"
+            android:background="@drawable/edit_text_border"
+            android:ems="10"
+
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text="ádsas"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.809"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.577" />
+
         <Button
             android:id="@+id/btnOkSure"
             android:layout_width="197dp"
@@ -184,10 +249,24 @@
             app:backgroundTint="#4DD0DB"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.631"
+            app:layout_constraintHorizontal_bias="0.625"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.547" />
+            app:layout_constraintVertical_bias="0.682" />
+
+        <Button
+            android:id="@+id/btnDeleteStudent"
+            android:layout_width="197dp"
+            android:layout_height="45dp"
+            android:background="@drawable/edit_text_border"
+            android:text="Delete"
+            app:backgroundTint="@color/red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.62"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.776" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

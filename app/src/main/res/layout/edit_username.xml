@@ -52,6 +52,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="10dp"
+            android:src="@drawable/student"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.558"
@@ -105,6 +106,21 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.453" />
 
+        <TextView
+            android:id="@+id/txtTexv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.015"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.527" />
+
         <EditText
             android:id="@+id/EditTextPhone"
             android:layout_width="292dp"
@@ -121,6 +137,22 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.449" />
 
+        <EditText
+            android:id="@+id/editTextAddress"
+            android:layout_width="292dp"
+            android:layout_height="42dp"
+            android:background="@drawable/edit_text_border"
+
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.802"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.527" />
+
         <Button
             android:id="@+id/btnOkSure"
             android:layout_width="197dp"
@@ -130,10 +162,10 @@
             app:backgroundTint="#4DD0DB"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.649"
+            app:layout_constraintHorizontal_bias="0.591"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.578" />
+            app:layout_constraintVertical_bias="0.655" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

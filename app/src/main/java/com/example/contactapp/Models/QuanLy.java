@@ -18,15 +18,15 @@ public class QuanLy {
         return Id;
     }
 
-    public void setId(String id) {
-        Id = Id;
+    public void setId(String Id) {
+        this.Id = Id;
     }
 
     public String getName() {
         return Name;
     }
 
-    public void setName(String name) {
+    public void setName(String Name) {
         this.Name = Name;
     }
 

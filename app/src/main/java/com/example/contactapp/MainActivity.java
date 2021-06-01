@@ -23,10 +23,8 @@ import com.example.contactapp.Models.QuanLy;
 import com.example.contactapp.Models.SinhVien;
 import com.example.contactapp.Teacher.Class.TeacherClassActivity;
 import com.example.contactapp.Teacher.Course.TeacherCourseActivity;
-import com.example.contactapp.Teacher.Exercises.TeacherExerciseEdit;
 import com.example.contactapp.Teacher.Exercises.TeacherExerciseInsert;
 import com.example.contactapp.Teacher.Exercises.TeacherExercisesActivity;
-import com.example.contactapp.Teacher.Home.TeacherHomeActivity;
 import com.example.contactapp.Teacher.Profile.TeacherProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -72,164 +70,115 @@ public class MainActivity extends AppCompatActivity {
 //        Intent intent = new Intent(MainActivity.this, TeacherExercisesActivity.class);
 //        startActivity(intent);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        auth = FirebaseAuth.getInstance();
-
-        //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (user == null) {
-                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                    finish();
-                } else {
-                    String uid = user.getUid();
-                    mDatabaseReference = mFirebaseDatabase.getReference().child("GiaoVien");
-                    mDatabaseReference.addValueEventListener(new ValueEventListener() {
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                                String id = snap.getKey();
-                                //GiaoVien gv = snap.getValue(GiaoVien.class)
-                                if (id != null) {
-                                    if (id.equals(uid)) {
-                                        Intent intent = new Intent(MainActivity.this, TeacherHomeActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                }
-                            }
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            // Getting Post failed, log a message
-                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                        }
-                    });
-
-
-                    mDatabaseReference = mFirebaseDatabase.getReference().child("PhuHuynh");
-                    mDatabaseReference.addValueEventListener(new ValueEventListener() {
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                                String id = snap.getKey();
-                                //GiaoVien gv = snap.getValue(GiaoVien.class)
-                                if (id != null) {
-                                    if (id.equals(uid)) {
-                                        Intent intent = new Intent(MainActivity.this, TeacherExercisesActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                }
-                            }
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            // Getting Post failed, log a message
-                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                        }
-                    });
-
-                    //Sinh vien
-                    mDatabaseReference = mFirebaseDatabase.getReference().child("SinhVien");
-                    mDatabaseReference.addValueEventListener(new ValueEventListener() {
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                                String id = snap.getKey();
-                                //GiaoVien gv = snap.getValue(GiaoVien.class)
-                                if (id != null) {
-                                    if (id.equals(uid)) {
-                                        Intent intent = new Intent(MainActivity.this, TeacherClassActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                }
-                            }
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            // Getting Post failed, log a message
-                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                        }
-                    });
-                    //Quản lý
-                    mDatabaseReference = mFirebaseDatabase.getReference().child("QuanLy");
-                    mDatabaseReference.addValueEventListener(new ValueEventListener() {
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                                String id = snap.getKey();
-                                //GiaoVien gv = snap.getValue(GiaoVien.class)
-                                if (id != null) {
-                                    if (id.equals(uid)) {
-                                        Intent intent = new Intent(MainActivity.this, TeacherExerciseEdit.class);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                }
-                            }
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            // Getting Post failed, log a message
-                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                        }
-                    });
-
-                    //Admin
-                    mDatabaseReference = mFirebaseDatabase.getReference().child("Admin");
-                    mDatabaseReference.addValueEventListener(new ValueEventListener() {
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                                String id = snap.getKey();
-                                //GiaoVien gv = snap.getValue(GiaoVien.class)
-                                if (id != null) {
-                                    if (id.equals(uid)) {
-                                        Intent intent = new Intent(MainActivity.this, TeacherCourseActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                }
-                            }
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            // Getting Post failed, log a message
-                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                        }
-                    });
-                }
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+//                if (user != null) {
+//                    //Giao vien
+//                    mDatabaseReference=mFirebaseDatabase.getReference().child("GiaoVien");
+//                    mDatabaseReference.addValueEventListener(new ValueEventListener() {
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                            GiaoVien gv= dataSnapshot.getValue(GiaoVien.class);
+//                            if(gv.getEmail().equals(user.getEmail())){
+//                                Intent intent = new Intent(MainActivity.this, TeacherExercisesActivity.class);
+//                                startActivity(intent);
+//                                finish();
+//
+//                            }
+//                        }
+//                        @Override
+//                        public void onCancelled(DatabaseError databaseError) {
+//                            // Getting Post failed, log a message
+//                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//                        }
+//                    });
+//                    //Phu huynh
+//                    mDatabaseReference=mFirebaseDatabase.getReference().child("PhuHuynh");
+//                    mDatabaseReference.addValueEventListener(new ValueEventListener() {
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                            PhuHuynh ph= dataSnapshot.getValue(PhuHuynh.class);
+//                            if(ph.getEmail().equals(user.getEmail())){
+//                                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//                                startActivity(intent);
+//                                finish();
+//
+//                            }
+//                        }
+//                        @Override
+//                        public void onCancelled(DatabaseError databaseError) {
+//                            // Getting Post failed, log a message
+//                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//                        }
+//                    });
+//                    //Sinh vien
+//                    mDatabaseReference=mFirebaseDatabase.getReference().child("SinhVien");
+//                    mDatabaseReference.addValueEventListener(new ValueEventListener() {
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                            GiaoVien gv= dataSnapshot.getValue(GiaoVien.class);
+//                            if(gv.getEmail().equals(user.getEmail())){
+//                                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+//                                startActivity(intent);
+//                                finish();
+//
+//                            }
+//                        }
+//                        @Override
+//                        public void onCancelled(DatabaseError databaseError) {
+//                            // Getting Post failed, log a message
+//                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//                        }
+//                    });
+//                    //Quản lý
+//                    mDatabaseReference=mFirebaseDatabase.getReference().child("QuanLy");
+//                    mDatabaseReference.addValueEventListener(new ValueEventListener() {
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                            QuanLy ql= dataSnapshot.getValue(QuanLy.class);
+//                            if(ql.getEmail().equals(user.getEmail())){
+//                                Intent intent = new Intent(MainActivity.this, TeacherExercisesActivity.class);
+//                                startActivity(intent);
+//                                finish();
+//
+//                            }
+//                        }
+//                        @Override
+//                        public void onCancelled(DatabaseError databaseError) {
+//                            // Getting Post failed, log a message
+//                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//                        }
+//                    });
+//                    //Admin
+//                    mDatabaseReference=mFirebaseDatabase.getReference().child("Admin");
+//                    mDatabaseReference.addValueEventListener(new ValueEventListener() {
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                            Admin ad= dataSnapshot.getValue(Admin.class);
+//                            if(ad.getEmail().equals(user.getEmail())){
+//                                Intent intent = new Intent(MainActivity.this, TeacherExercisesActivity.class);
+//                                startActivity(intent);
+//                                finish();
+//
+//                            }
+//                        }
+//                        @Override
+//                        public void onCancelled(DatabaseError databaseError) {
+//                            // Getting Post failed, log a message
+//                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//                        }
+//                    });
+//                }
+//                else
+//                {
             }
         };
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        //  }
+
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        auth.addAuthStateListener(authListener);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (authListener != null) {
-            auth.removeAuthStateListener(authListener);
-        }
-    }
 
 }

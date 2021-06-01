@@ -32,11 +32,13 @@ public class EditStudent extends AppCompatActivity {
         TextView classname=findViewById(R.id.txtDayManager);
         classname.setText(extras.getString("class"));
 
-        studentName.setText(extras.getString("name"));
+        studentName.setText(extras.getString("name") +" "+ extras.getString("mssv"));
         TextView mail=findViewById(R.id.txtMailEdit);
         mail.setText(extras.getString("mail"));
         EditText phone=findViewById(R.id.EditTextPhone);
         phone.setText(extras.getString("phone"));
+        EditText address=findViewById(R.id.editTextAddress);
+        address.setText(extras.getString("address"));
 
 
 
@@ -50,8 +52,11 @@ public class EditStudent extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (phone.getText().toString() == "") {
-                    database.child(extras.getString("id")).child("Phone").setValue(phone.getText().toString());
+                Boolean checkPhone=phone.getText().toString().equals("");
+                Boolean checkAddr=address.getText().toString().equals("");
+                if (checkPhone==false && checkAddr==false) {
+                    database.child(extras.getString("id")).child("phone").setValue(phone.getText().toString());
+                    database.child(extras.getString("id")).child("address").setValue(address.getText().toString());
                     Toast.makeText(getApplicationContext(), "Thay đổi thành công", Toast.LENGTH_LONG).show();
                 }
                 else  Toast.makeText(getApplicationContext(),"Bạn chưa nhập số điện thoại", Toast.LENGTH_LONG).show();

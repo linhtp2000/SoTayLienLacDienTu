@@ -2,10 +2,13 @@ package com.example.contactapp.Admin;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +39,7 @@ public class Student extends AppCompatActivity {
         TextView studentName=findViewById(R.id.txtNameStudentEdit);
 
         Bundle extras=getIntent().getExtras();
-
+        dialog=new Dialog(Student.this);
         studentName.setText(extras.getString("name"));
         TextView mail=findViewById(R.id.editTextMailManager);
         mail.setText(extras.getString("mail"));
@@ -64,9 +67,16 @@ public class Student extends AppCompatActivity {
                         txtPhone.setText(student.getPhone());
                         TextView txtId=findViewById(R.id.txtId);
                         txtId.setText(student.getId());
+                        TextView txtAddr=findViewById(R.id.txtAddressStudent);
+                        txtAddr.setText(student.getAddress());
+                        TextView txtMSSV=findViewById(R.id.txtMssv);
+                        txtMSSV.setText(student.getMSSV());
 
-                        TextView txtclass=findViewById(R.id.txtDayManager);
-                        txtclass.setText("Class " +student.getLop());
+
+                        TextView txtclass=findViewById(R.id.txtClassNameStudent);
+                        txtclass.setText(student.getLop());
+
+
 
 
                     }
@@ -86,14 +96,25 @@ public class Student extends AppCompatActivity {
 
             }
         });
+        Button btnDelete=findViewById(R.id.btnDeleteStudent);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openDialogSure();
+
+            }
+        });
         Button btnEdit=findViewById(R.id.btnOkSure);
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TextView txtPhone=findViewById(R.id.editTextName);
-                TextView txtclass=findViewById(R.id.txtDayManager);
+                TextView txtclass=findViewById(R.id.txtClassNameStudent);
 
                 TextView id=findViewById(R.id.txtId);
+                TextView txtMSSV=findViewById(R.id.txtMssv);
+                TextView Addr=findViewById(R.id.txtAddressStudent);
 
                 Intent intent=new Intent(v.getContext(), EditStudent.class);
                 intent.putExtra("id", id.getText().toString());
@@ -102,6 +123,8 @@ public class Student extends AppCompatActivity {
                 intent.putExtra("mail",mail.getText().toString());
                 intent.putExtra("name", studentName.getText().toString());
                 intent.putExtra("phone",txtPhone.getText().toString());
+                intent.putExtra("address", Addr.getText().toString());
+                intent.putExtra("mssv", txtMSSV.getText().toString());
 
 
                 v.getContext().startActivity(intent);
@@ -124,6 +147,43 @@ public class Student extends AppCompatActivity {
 
 
 
+    private void openDialogSure(){
+        dialog.setContentView(R.layout.dialogsure);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        Button btnOk=dialog.findViewById(R.id.btnOkSure);
+        Button btnCancle =dialog.findViewById(R.id.btnCancleSure);
+        TextView txtClassName=findViewById(R.id.txtClassNameStudent);
+        dialog.show();
+
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView id=findViewById(R.id.txtId);
+                String Id=id.getText().toString();
+                database.child(Id).setValue(null);
+                Toast.makeText(getApplicationContext(), "Xóa thành công",Toast.LENGTH_LONG).show();
+                Intent intent= new Intent(v.getContext(),ListStudent.class);
+                intent.putExtra("key",txtClassName.getText().toString());
+                v.getContext().startActivity(intent);
+
+            }
+        });
+        btnCancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+
+
+
+
+
+
+
+    }
 
 
 

@@ -6,35 +6,19 @@ public class SinhVien {
     private String Lop;
     private  String Phone;
     private  String Email;
-    private String Address;
     private String MSSV;
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public void setAddress(String address) {
-        Address = address;
-    }
-
-    public String getMSSV() {
-        return MSSV;
-    }
-
-    public void setMSSV(String MSSV) {
-        this.MSSV = MSSV;
-    }
+    private String Address;
 
     public SinhVien(){}
 
-    public SinhVien(String Id, String Name, String Lop, String Phone, String Email, String address, String Mssv) {
-        this.Id = Id;
+    public SinhVien( String Name, String Lop, String Phone, String Email, String MSSV, String Address) {
+
         this.Name = Name;
         this.Lop = Lop;
         this.Phone = Phone;
         this.Email = Email;
-        this.Address=address;
-        this.MSSV=Mssv;
+        this.MSSV=MSSV;
+        this.Address=Address;
     }
 
     public String getId() {
@@ -75,5 +59,19 @@ public class SinhVien {
 
     public void setEmail(String Email) {
         this.Email = Email;
+    }
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String Address) {
+        this.Address=Address;
+    }
+    public String getMSSV() {
+        return MSSV;
+    }
+
+    public void setMSSV(String MSSV) {
+        this.MSSV=MSSV;
     }
 }
