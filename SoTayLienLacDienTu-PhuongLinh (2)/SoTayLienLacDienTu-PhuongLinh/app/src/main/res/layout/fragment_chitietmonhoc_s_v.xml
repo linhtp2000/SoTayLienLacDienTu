@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Quanly.YourClass.QuanlySV.ChitietmonhocSV">
+
+  <LinearLayout
+      android:orientation="vertical"
+      android:weightSum="20"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <TextView
+          android:gravity="center"
+          android:textStyle="bold"
+          android:textColor="@color/white"
+          android:text="Phạm Thành Trung - 18110220"
+          android:textSize="15sp"
+          android:layout_weight="1.5"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"/>
+
+      <LinearLayout
+          android:weightSum="10"
+          android:layout_weight="1"
+          android:layout_width="match_parent"
+          android:layout_height="0dp">
+          <TextView
+              android:layout_weight="0.5"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"/>
+          <EditText
+              android:gravity="center"
+              android:text="Semester 2018-2019"
+              android:background="@drawable/custom_editsearch"
+              android:layout_weight="5"
+              android:textSize="12sp"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"/>
+          <TextView
+              android:layout_weight="0.3"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"/>
+          <Button
+              android:textSize="20sp"
+              android:textColor="@color/white"
+              android:textAllCaps="false"
+              android:text="Search"
+              android:background="@drawable/custom_button"
+              android:layout_weight="3"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"/>
+      </LinearLayout>
+      <TextView
+          android:layout_weight="0.8"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"/>
+      <LinearLayout
+          android:orientation="vertical"
+          android:weightSum="14"
+          android:background="@drawable/custom_editsearch"
+          android:layout_weight="14"
+          android:layout_width="match_parent"
+          android:layout_height="0dp">
+          <TextView
+              android:paddingLeft="30dp"
+              android:gravity="center_vertical"
+              android:textStyle="bold"
+              android:textColor="@color/black"
+              android:textSize="22sp"
+              android:text="State 1"
+              android:layout_weight="1"
+              android:layout_width="match_parent"
+              android:layout_height="0dp"/>
+          <ListView
+              android:id="@+id/lstMonHoc"
+              android:layout_weight="12"
+              android:layout_width="match_parent"
+              android:layout_height="0dp"/>
+
+          <TextView
+              android:textSize="12sp"
+              android:gravity="center"
+              android:textColor="@color/black"
+              android:text="Điểm trung bình: 10.00, Xếp Loai: Xuất Sắc"
+              android:layout_weight="0.8"
+              android:layout_width="match_parent"
+              android:layout_height="0dp"/>
+      </LinearLayout>
+  </LinearLayout>
+
+</FrameLayout>
