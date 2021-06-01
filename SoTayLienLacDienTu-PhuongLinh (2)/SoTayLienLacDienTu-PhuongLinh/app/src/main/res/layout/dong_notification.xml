@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:visibility="gone"
+        android:src="@drawable/ic_full_moon"
+        android:id="@+id/hinhcheck"
+        android:layout_width="15dp"
+        android:layout_height="100dp"
+         />
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_editsearch"
+        android:orientation="vertical"
+        android:weightSum="3"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/hinhcheck"
+        android:layout_width="350dp"
+        android:layout_height="100dp">
+        <TextView
+            android:id="@+id/txtTenThongbao"
+            android:paddingLeft="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:text="Học phí kỳ 2/2021"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <TextView
+            android:id="@+id/txtNoiDungThongBao"
+            android:paddingLeft="20dp"
+            android:textSize="18sp"
+            android:textColor="#80000000"
+            android:text="Ngày 30/03 hết hạn thanh toán học phí"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+    </LinearLayout>
+</RelativeLayout>

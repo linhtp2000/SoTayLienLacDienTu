@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="70sp">
+
+
+    <TextView
+        android:id="@+id/txtItemCourse"
+        android:layout_width="289dp"
+        android:layout_height="51dp"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/background"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnDeleteCourse"
+        android:layout_width="98dp"
+        android:layout_height="51dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/background"
+        android:text="Delete"
+        app:backgroundTint="#EF1010" />
+
+
+</LinearLayout>
+
+
+
