@@ -379,16 +379,16 @@ public class LoginActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
                                             if (!task.isSuccessful()) {
-                                                CheckMailExist(email);
-                                                if (check==0) {
-                                                    Toast.makeText(LoginActivity.this, "Account has not been!", Toast.LENGTH_LONG).show();
-                                                } else {
-                                                    if (check==1) {
-                                                        Toast.makeText(
-                                                                LoginActivity.this, "Password is incorrect!", Toast.LENGTH_LONG).show();
-                                                    } else
+
+//                                                if (check==0) {
+//                                                    Toast.makeText(LoginActivity.this, "Account has not been!", Toast.LENGTH_LONG).show();
+//                                                } else {
+//                                                    if (check==1) {
+//                                                        Toast.makeText(
+//                                                                LoginActivity.this, "Password is incorrect!", Toast.LENGTH_LONG).show();
+//                                                    } else
                                                         Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_LONG).show();
-                                                }
+//                                                }
                                             } else {
                                                 String uid = auth.getCurrentUser().getUid();
 
@@ -734,47 +734,7 @@ public class LoginActivity extends AppCompatActivity {
 //
 //        return;
 //    }
-    private boolean CheckMailExist (String email) {
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference=mFirebaseDatabase.getReference().child("GiaoVien");
-        //   mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("GiaoVien");
-        mChildListener= new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-                    GiaoVien gv =snapshot.getValue(GiaoVien.class);
-                    if(gv.getEmail().equals(email))
-                    {
-                        check=1;
-                    }
-
-            }
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        };
-        mDatabaseReference.addChildEventListener(mChildListener);
-        if(check==1)
-        {return true;}
-
-        return false;
-    }
     private void dialogError(int gravity){
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
