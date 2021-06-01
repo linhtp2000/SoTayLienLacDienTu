@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@drawable/custom_khung_bottom_sheet"
+    android:orientation="vertical"
+    android:id="@+id/bottomsheet"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp">
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnQuanlySV"
+            android:textColor="@color/white"
+            android:background="@drawable/custom_notification"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:text="Quản lý sinh viên"
+            android:backgroundTint="@color/background"
+            android:layout_height="60dp"
+            android:layout_width="250dp"
+            />
+        <Button
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnQuanlyPH"
+            android:layout_below="@id/btnQuanlySV"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/background"
+            android:background="@drawable/custom_notification"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:text="Quản lý phụ huynh"
+            android:layout_height="60dp"
+            android:layout_width="250dp"
+            />
+        <Button
+
+            android:id="@+id/btnQuanlyGV"
+            android:layout_below="@id/btnQuanlyPH"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:background="@drawable/custom_notification"
+            android:backgroundTint="@color/background"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:text="Quản lý giáo viên"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="250dp"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

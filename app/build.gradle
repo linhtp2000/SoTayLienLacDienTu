@@ -64,5 +64,14 @@ dependencies {
     implementation "androidx.multidex:multidex:2.0.1"
 
     implementation 'com.google.firebase:firebase-storage'
+
+
+}
+dependencies {
+    implementation 'com.google.android.material:material:1.2.1'
+
+}
+dependencies {
+    implementation 'de.hdodenhof:circleimageview:1.2.1'
 }
 apply plugin: 'com.google.gms.google-services'
