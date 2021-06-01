@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
     private static final String TAG = "ReadAndWriteSnippets";
-    private Button btnSignup, btnLogin;
+    private Button btnSignup, btnLogin,btnReset;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private ChildEventListener mChildListener;
@@ -348,7 +348,7 @@ public class LoginActivity extends AppCompatActivity {
                     inputPassword = (EditText) findViewById(R.id.edtPassword);
                     btnSignup = (Button) findViewById(R.id.btnResgister);
                     btnLogin = (Button) findViewById(R.id.btnLogin);
-                    // btnReset = (Button) findViewById(R.id.btn_reset_password);
+                    btnReset = (Button) findViewById(R.id.btnReset);
 
                     //Get Firebase auth instance
                     auth = FirebaseAuth.getInstance();
@@ -359,6 +359,12 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                         }
                     });
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, ChangePasswordActivity.class));
+            }
+        });
 
 
                     btnLogin.setOnClickListener(new View.OnClickListener() {

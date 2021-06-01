@@ -123,7 +123,7 @@ public class TeacherExerciseEdit extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvTo.getText()!="" && tvFrom.getText()!="" && edtName.getText().toString()!="" &&edtNoiDung.getText().toString()!=""&&tvTime.getText().toString().trim()!="") {
+                if(tvTo.getText().toString().trim()!="" && tvFrom.getText().toString().trim()!="" && edtName.getText().toString().trim()!="" &&edtNoiDung.getText().toString().trim()!=""&&tvTime.getText().toString().trim()!="") {
                     String day1=tvFrom.getText().toString();
                     String day2=tvTo.getText().toString();
                     if(CheckDeadlineValid(day1,day2,from,to)==true) {
