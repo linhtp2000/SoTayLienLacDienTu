@@ -6,15 +6,16 @@ public class PhuHuynh {  //class phụ huynh
     private SinhVien SinhVien;
     private  String Phone;
     private  String Email;
-
+    private String Parentof;
     public PhuHuynh(){}
 
-    public PhuHuynh(String id, String name, SinhVien sinhVien, String phone, String email) {
+    public PhuHuynh(String id, String name, com.example.contactapp.Models.SinhVien sinhVien, String phone, String email, String parentof) {
         Id = id;
         Name = name;
         SinhVien = sinhVien;
         Phone = phone;
         Email = email;
+        Parentof = parentof;
     }
 
     public String getId() {
@@ -55,5 +56,13 @@ public class PhuHuynh {  //class phụ huynh
 
     public void setEmail(String email) {
         Email = email;
+    }
+
+    public String getParentof() {
+        return Parentof;
+    }
+
+    public void setParentof(String parentof) {
+        Parentof = parentof;
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.contactapp.Quanly.YourClass.YourClass;
 import com.example.contactapp.R;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class QuanlySV extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    public static String Courseluu=null;
+    public static String tenlop;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -82,7 +84,7 @@ public class QuanlySV extends Fragment {
                 Fragment fg;
                 fg= QuanlyDSSV.newInstance();
                 replaceFragment(fg);
-                QuanlyDSSV.tenlop=dongLopHocArrayList.get(position).getLopHoc();
+                tenlop=dongLopHocArrayList.get(position).getLopHoc();
             }
         });
         return view;
@@ -96,7 +98,7 @@ public class QuanlySV extends Fragment {
         dongLopHocArrayList.add(new DongLopHoc("18110CL2A"));
         adapter=new ListViewLopHocAdapter(getActivity(),R.layout.custom_dong_lop_hoc,dongLopHocArrayList);
         lstLophoc.setAdapter(adapter);
-        txtCourse.setText(Courseluu);
+        txtCourse.setText(YourClass.Tencoursetam);
     }
     private void replaceFragment(Fragment newFragment) {
         FragmentTransaction trasection = getFragmentManager().beginTransaction();

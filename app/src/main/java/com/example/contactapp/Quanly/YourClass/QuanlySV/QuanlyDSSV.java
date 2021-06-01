@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.contactapp.Quanly.HomeQuanly.DongThongBao;
+import com.example.contactapp.Quanly.Quanly;
 import com.example.contactapp.Quanly.YourClass.QuanlyGV.QuanlyGV;
 import com.example.contactapp.Quanly.YourClass.QuanlyGV.ThongtinGV;
 import com.example.contactapp.Quanly.YourClass.QuanlyPH.QuanlyPH;
+import com.example.contactapp.Quanly.YourClass.YourClass;
 import com.example.contactapp.R;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.firebase.database.ChildEventListener;
@@ -41,8 +44,7 @@ public class QuanlyDSSV extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    public static String tenlop=null;
-    public static String tenCoure=null;
+    public static String Mssv;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -96,8 +98,8 @@ public class QuanlyDSSV extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_quanly_d_s_s_v, container, false);
         AnhXA(view);
-        txtTenlop.setText("Class "+tenlop);
-        txtTenCourse.setText(tenCoure);
+        txtTenlop.setText("Class "+QuanlySV.tenlop);
+        txtTenCourse.setText(YourClass.Tencoursetam);
         lstDSSV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -118,7 +120,7 @@ public class QuanlyDSSV extends Fragment {
             public void onClick(View v) {
                 onButtonClick(v);
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                ThongtinSV.Mssv=dongDSSVArrayList.get(tam).getMSSV();
+                Mssv=dongDSSVArrayList.get(tam).getMSSV();
             }
         });
         btnXemDiem.setOnClickListener(new View.OnClickListener() {
@@ -147,11 +149,8 @@ public class QuanlyDSSV extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 DongThongtinSV thongtinSV=snapshot.getValue(DongThongtinSV.class);
-                if(thongtinSV.getLop().equals(tenlop))
-                {
                     dongDSSVArrayList.add(new DongDSSV(thongtinSV.getName(),thongtinSV.getMSSV()));
                     adapter.notifyDataSetChanged();
-                }
             }
 
             @Override

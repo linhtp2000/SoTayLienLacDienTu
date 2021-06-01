@@ -13,8 +13,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.contactapp.Models.PhuHuynh;
+import com.example.contactapp.Quanly.Quanly;
+import com.example.contactapp.Quanly.YourClass.QuanlyGV.QuanlyGV;
 import com.example.contactapp.Quanly.YourClass.QuanlySV.DongDSSV;
+import com.example.contactapp.Quanly.YourClass.QuanlySV.QuanlySV;
 import com.example.contactapp.Quanly.YourClass.QuanlySV.ThongtinSV;
+import com.example.contactapp.Quanly.YourClass.YourClass;
 import com.example.contactapp.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +38,7 @@ public class ThongtinPH extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    public static String Parentof=null;
+
     public static String CourseThongtinPH=null;
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -117,17 +122,18 @@ public class ThongtinPH extends Fragment {
         edtGmail=view.findViewById(R.id.edtGmailPH);
         edtAddress=view.findViewById(R.id.edtAddressPH);
         btnEdit=view.findViewById(R.id.btnEditThongTinPH);
-        txtMSPH.setText("Parent of :"+Parentof);
+        txtMSPH.setText("Parent of :"+ QuanlyPH.Parentof);
+        txtTenCourse.setText(YourClass.Tencoursetam);
+        txtTenlop.setText(QuanlySV.tenlop);
         databaseReference.child("PhuHuynh").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 DongthongtinPhu thongtinPH=snapshot.getValue(DongthongtinPhu.class);
-                if(thongtinPH.getParentof().equals(Parentof))
+                if(thongtinPH.getParentof().equals(QuanlyPH.Parentof))
                 {
                     edtPhone.setText(thongtinPH.getPhone());
                     edtGmail.setText(thongtinPH.getEmail());
-                    edtAddress.setText(thongtinPH.getAddress());
-                    txtTenlop.setText("Class " +thongtinPH.getLop());
+                   edtAddress.setText(thongtinPH.getAddress());
                     txtTenPH.setText(thongtinPH.getName());
                 }
             }

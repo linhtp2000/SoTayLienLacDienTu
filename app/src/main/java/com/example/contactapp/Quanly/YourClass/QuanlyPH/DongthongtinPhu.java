@@ -3,18 +3,18 @@ package com.example.contactapp.Quanly.YourClass.QuanlyPH;
 import com.example.contactapp.Quanly.YourClass.QuanlySV.DongThongtinSV;
 
 public class DongthongtinPhu {
-    String Address,Email,Parentof,Name,Phone,SinhVien,Lop;
+    String Address,Email,Parentof,Name,Phone,SinhVien;
     public DongthongtinPhu(){
 
     }
-    public DongthongtinPhu(String address, String email, String parentof, String name, String phone, String sinhVien, String lop) {
+
+    public DongthongtinPhu(String address, String email, String parentof, String name, String phone, String sinhVien) {
         Address = address;
         Email = email;
         Parentof = parentof;
         Name = name;
         Phone = phone;
         SinhVien = sinhVien;
-        Lop = lop;
     }
 
     public String getAddress() {
@@ -65,11 +65,4 @@ public class DongthongtinPhu {
         SinhVien = sinhVien;
     }
 
-    public String getLop() {
-        return Lop;
-    }
-
-    public void setLop(String lop) {
-        Lop = lop;
-    }
 }

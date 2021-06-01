@@ -42,7 +42,7 @@ public class YourClass extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    public static String Tencoursetam;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -108,11 +108,7 @@ public class YourClass extends Fragment {
             @Override
             public void onClick(View v) {
                 onButtonClick(v);
-                QuanlySV.Courseluu=dongCourses.get(tam).getCourse();
-                QuanlyDSSV.tenCoure=dongCourses.get(tam).getCourse();
-                ThongtinSV.Tencoursetam=dongCourses.get(tam).getCourse();
-                ThongtinPH.CourseThongtinPH=dongCourses.get(tam).getCourse();
-                ThongtinGV.CourseThongtinGV=dongCourses.get(tam).getCourse();
+                Tencoursetam=dongCourses.get(tam).getCourse();
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
 
             }
@@ -121,6 +117,7 @@ public class YourClass extends Fragment {
             @Override
             public void onClick(View v) {
                 onButtonClick(v);
+                Tencoursetam=dongCourses.get(tam).getCourse();
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             }
         });
@@ -128,6 +125,7 @@ public class YourClass extends Fragment {
             @Override
             public void onClick(View v) {
                 onButtonClick(v);
+                Tencoursetam=dongCourses.get(tam).getCourse();
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             }
         });

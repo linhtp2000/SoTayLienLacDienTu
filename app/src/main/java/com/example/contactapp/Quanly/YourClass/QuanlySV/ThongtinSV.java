@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.contactapp.Quanly.YourClass.YourClass;
 import com.example.contactapp.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -31,8 +32,8 @@ public class ThongtinSV extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    public static String Mssv=null;
-    public static String Tencoursetam=null;
+
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -115,12 +116,12 @@ public class ThongtinSV extends Fragment {
         btnEdit=view.findViewById(R.id.btnEditThongTinSV);
         txtTenSV=view.findViewById(R.id.txtTenSVThongtinSV);
         txtMSSV=view.findViewById(R.id.txtMSSVThongtinSV);
+        txtCourse.setText(YourClass.Tencoursetam);
         databaseReference.child("SinhVien").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 DongThongtinSV dongDSSV=snapshot.getValue(DongThongtinSV.class);
-                if(dongDSSV.getMSSV()==Mssv)
-                {
+                if(dongDSSV.getMSSV() == QuanlyDSSV.Mssv) {
                     edtPhone.setText(dongDSSV.getPhone());
                     edtAddress.setText(dongDSSV.getAddress());
                     edtGmail.setText(dongDSSV.getEmail());

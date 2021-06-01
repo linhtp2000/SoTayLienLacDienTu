@@ -12,12 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.contactapp.Quanly.YourClass.QuanlyPH.DongthongtinPhu;
 import com.example.contactapp.Quanly.YourClass.QuanlyPH.ThongtinPH;
 import com.example.contactapp.Quanly.YourClass.QuanlySV.DongDSSV;
 import com.example.contactapp.Quanly.YourClass.QuanlySV.ListViewDSSVAdapter;
 import com.example.contactapp.Quanly.YourClass.QuanlySV.QuanlySV;
+import com.example.contactapp.Quanly.YourClass.YourClass;
 import com.example.contactapp.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -38,7 +40,7 @@ public class QuanlyGV extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    public static String MSGV;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -46,6 +48,7 @@ public class QuanlyGV extends Fragment {
     ListViewDSSVAdapter adapter;
     ArrayList<DongDSSV> dongDSGVArrayList;
     DatabaseReference databaseReference;
+    TextView txtCourse;
     public QuanlyGV() {
         // Required empty public constructor
     }
@@ -92,7 +95,7 @@ public class QuanlyGV extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Fragment fg;
                 fg= ThongtinGV.newInstance();
-                ThongtinGV.MSGV=dongDSGVArrayList.get(position).getMSSV();
+                MSGV=dongDSGVArrayList.get(position).getMSSV();
                 replaceFragment(fg);
             }
         });
@@ -104,6 +107,8 @@ public class QuanlyGV extends Fragment {
         dongDSGVArrayList= new ArrayList<>();
         adapter=new ListViewDSSVAdapter(getActivity(),R.layout.custom_dong_sinh_vien,dongDSGVArrayList);
         lstDSGV.setAdapter(adapter);
+        txtCourse=view.findViewById(R.id.txtCouseQuanlyDSGV);
+        txtCourse.setText(YourClass.Tencoursetam);
         databaseReference.child("GiaoVien").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {

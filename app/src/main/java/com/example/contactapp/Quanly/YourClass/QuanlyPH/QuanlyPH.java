@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.contactapp.Models.PhuHuynh;
 import com.example.contactapp.Quanly.YourClass.QuanlySV.DongDSSV;
 import com.example.contactapp.Quanly.YourClass.QuanlySV.DongThongtinSV;
 import com.example.contactapp.Quanly.YourClass.QuanlySV.ListViewDSSVAdapter;
@@ -38,7 +39,7 @@ public class QuanlyPH extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    public static String Parentof=null;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -92,8 +93,7 @@ public class QuanlyPH extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Fragment fg;
                 fg= ThongtinPH.newInstance();
-                ThongtinPH.Parentof=dongDSPHArrayList.get(position).getMSSV();
-
+                Parentof=dongDSPHArrayList.get(position).getMSSV();
                 replaceFragment(fg);
             }
         });

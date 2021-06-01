@@ -33,7 +33,7 @@ public class ThongtinGV extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    public static String MSGV=null;
+
     public static String CourseThongtinGV=null;
 
     // TODO: Rename and change types of parameters
@@ -125,7 +125,7 @@ public class ThongtinGV extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 DongThongtinGV dongThongtinGV=snapshot.getValue(DongThongtinGV.class);
-                if(dongThongtinGV.getMSGV().equals(MSGV)){
+                if(dongThongtinGV.getMSGV()==QuanlyGV.MSGV){
                     edtPhone.setText(dongThongtinGV.getPhone());
                     edtAddress.setText(dongThongtinGV.getAddress());
                     edtGmail.setText(dongThongtinGV.getEmail());
