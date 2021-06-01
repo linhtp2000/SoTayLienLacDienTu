@@ -20,6 +20,7 @@ import com.example.contactapp.Models.QuanLy;
 import com.example.contactapp.Models.SinhVien;
 import com.example.contactapp.Teacher.Class.TeacherClassActivity;
 import com.example.contactapp.Teacher.Course.TeacherCourseActivity;
+import com.example.contactapp.Teacher.Exercises.TeacherExerciseEdit;
 import com.example.contactapp.Teacher.Exercises.TeacherExercisesActivity;
 import com.example.contactapp.Teacher.Profile.TeacherProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -410,14 +411,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     }
                                                 });
 
-                                                Query query2=mFirebaseDatabase.getReference().child("PhuHuynh").orderByKey().equalTo(auth.getCurrentUser().getUid());
-                                                if(query2.getRef().getKey()!=null)
-                                                {
-                                                    Intent intent = new Intent(LoginActivity.this, TeacherClassActivity.class);
-                                                    startActivity(intent);
-                                                    return;
-                                                  //  finish();
-                                                }
+
 
                                                     mDatabaseReference = mFirebaseDatabase.getReference().child("PhuHuynh");
                                                     mDatabaseReference.addValueEventListener(new ValueEventListener() {
@@ -442,7 +436,6 @@ public class LoginActivity extends AppCompatActivity {
                                                             Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
                                                         }
                                                     });
-                                                Query query4=mFirebaseDatabase.getReference().child("SinhVien").orderByKey().equalTo(auth.getCurrentUser().getUid());
 
                                                         //Sinh vien
                                                         mDatabaseReference = mFirebaseDatabase.getReference().child("SinhVien");
@@ -477,7 +470,7 @@ public class LoginActivity extends AppCompatActivity {
                                                                     //GiaoVien gv = snap.getValue(GiaoVien.class)
                                                                     if (id != null) {
                                                                         if (id.equals(uid)) {
-                                                                            Intent intent = new Intent(LoginActivity.this, TeacherCourseActivity.class);
+                                                                            Intent intent = new Intent(LoginActivity.this, TeacherExerciseEdit.class);
                                                                             startActivity(intent);
                                                                             finish();
                                                                         }
@@ -491,36 +484,31 @@ public class LoginActivity extends AppCompatActivity {
                                                                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
                                                             }
                                                         });
-                                                Query query=mFirebaseDatabase.getReference().child("Admin").orderByKey().equalTo(auth.getCurrentUser().getUid());
-                                                if(query.getRef().getKey()!=null)
-                                                {
-                                                    Intent intent = new Intent(LoginActivity.this, TeacherExercisesActivity.class);
-                                                                            startActivity(intent);
-                                                    return;
-                                                                        //  finish();
-                                                }
+                                               
                                                         //Admin
-//                                                        mDatabaseReference = mFirebaseDatabase.getReference().child("Admin");
-//                                                        mDatabaseReference.addValueEventListener(new ValueEventListener() {
-//                                                            public void onDataChange(DataSnapshot dataSnapshot) {
-//                                                                for (DataSnapshot snap : dataSnapshot.getChildren()) {
-//                                                                    Admin ad = dataSnapshot.getValue(Admin.class);
-//                                                                    if (ad.getEmail() != null) {
-//                                                                        if (ad.getEmail().equals(email)) {
-//                                                                            Intent intent = new Intent(LoginActivity.this, TeacherExercisesActivity.class);
-//                                                                            startActivity(intent);
-//                                                                            finish();
-//                                                                        }
-//                                                                    }
-//                                                                }
-//                                                            }
-//
-//                                                            @Override
-//                                                            public void onCancelled(DatabaseError databaseError) {
-//                                                                // Getting Post failed, log a message
-//                                                                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-//                                                            }
-//                                                        });
+                                                       mDatabaseReference = mFirebaseDatabase.getReference().child("Admin");
+                                                        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+                                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                                                                    String id=snap.getKey();
+                                                                    //GiaoVien gv = snap.getValue(GiaoVien.class)
+                                                                    if (id != null) {
+                                                                        if (id.equals(uid)) {
+                                                                            Intent intent = new Intent(LoginActivity.this, TeacherCourseActivity.class);
+                                                                            startActivity(intent);
+                                                                            finish();
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                            }
+
+                                                            @Override
+                                                            public void onCancelled(DatabaseError databaseError) {
+                                                                // Getting Post failed, log a message
+                                                                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                                                            }
+                                                       });
                                                     }
                                                 }
                                     });
