@@ -132,21 +132,20 @@ public class Schedule extends AppCompatActivity {
                 switch (scheduleBaiGiang.getThu()){
                     case "Thứ Hai":
                         listThu.add("Mon");
-                        LocalDate start = LocalDate.of( 2021 , 5 , 1 );
-                        LocalDate stop = LocalDate.of( 2021 , 5 , 30 );
+                        LocalDate start = LocalDate.of( 2021 , 6 , 1 );
+                        LocalDate stop = LocalDate.of( 2021 , 6 , 30 );
                         LocalDate monday = start.with( TemporalAdjusters.nextOrSame( DayOfWeek.MONDAY ) );
                         while( monday.isBefore( stop ) ) {
                             dateHashMap.put(monday.getDayOfMonth(),"absent");
                             // Set up the next loop.
                             monday = monday.plusWeeks( 1 );
-                            dateHashMap.put(monday.getDayOfMonth(),"absent");
 //                            int datee1 = monday.getDayOfMonth();
                         }
                         break;
                     case "Thứ Ba":
                         listThu.add("Tue");
-                        LocalDate tuesday = LocalDate.of( 2021 , 5 , 1 ).with( TemporalAdjusters.nextOrSame( DayOfWeek.TUESDAY ) );
-                        while( tuesday.isBefore( LocalDate.of( 2021 , 5 , 30 ) ) ) {
+                        LocalDate tuesday = LocalDate.of( 2021 , 6 , 1 ).with( TemporalAdjusters.nextOrSame( DayOfWeek.TUESDAY ) );
+                        while( tuesday.isBefore( LocalDate.of( 2021 , 6 , 30 ) ) ) {
                             dateHashMap.put(tuesday.getDayOfMonth(),"absent");
                             // Set up the next loop.
                             tuesday = tuesday.plusWeeks( 1 );
@@ -155,8 +154,8 @@ public class Schedule extends AppCompatActivity {
                         break;
                     case "Thứ Tư":
                         listThu.add("Wed");
-                        LocalDate wednesday = LocalDate.of( 2021 , 5 , 1 ).with( TemporalAdjusters.nextOrSame( DayOfWeek.WEDNESDAY ) );
-                        while( wednesday.isBefore( LocalDate.of( 2021 , 5 , 30 ) ) ) {
+                        LocalDate wednesday = LocalDate.of( 2021 , 6 , 1 ).with( TemporalAdjusters.nextOrSame( DayOfWeek.WEDNESDAY ) );
+                        while( wednesday.isBefore( LocalDate.of( 2021 , 6 , 30 ) ) ) {
                             dateHashMap.put(wednesday.getDayOfMonth(),"absent");
                             // Set up the next loop.
                             wednesday = wednesday.plusWeeks( 1 );
@@ -165,8 +164,8 @@ public class Schedule extends AppCompatActivity {
                         break;
                     case "Thứ Năm":
                         listThu.add("Thu");
-                        LocalDate thursday = LocalDate.of( 2021 , 5 , 1 ).with( TemporalAdjusters.nextOrSame( DayOfWeek.THURSDAY ) );
-                        while( thursday.isBefore( LocalDate.of( 2021 , 5 , 30 ) ) ) {
+                        LocalDate thursday = LocalDate.of( 2021 , 6 , 1 ).with( TemporalAdjusters.nextOrSame( DayOfWeek.THURSDAY ) );
+                        while( thursday.isBefore( LocalDate.of( 2021 , 6 , 30 ) ) ) {
                             dateHashMap.put(thursday.getDayOfMonth(),"absent");
                             // Set up the next loop.
                             thursday = thursday.plusWeeks( 1 );
@@ -175,8 +174,8 @@ public class Schedule extends AppCompatActivity {
                         break;
                     case "Thứ Sáu":
                         listThu.add("Fri");
-                        LocalDate friday = LocalDate.of( 2021 , 5 , 1 ).with( TemporalAdjusters.nextOrSame( DayOfWeek.FRIDAY ) );
-                        while( friday.isBefore( LocalDate.of( 2021 , 5 , 30 ) ) ) {
+                        LocalDate friday = LocalDate.of( 2021 , 6 , 1 ).with( TemporalAdjusters.nextOrSame( DayOfWeek.FRIDAY ) );
+                        while( friday.isBefore( LocalDate.of( 2021 , 6 , 30 ) ) ) {
                             dateHashMap.put(friday.getDayOfMonth(),"absent");
                             // Set up the next loop.
                             friday = friday.plusWeeks( 1 );
@@ -185,8 +184,8 @@ public class Schedule extends AppCompatActivity {
                         break;
                     case "Thứ Bảy":
                         listThu.add("Sat");
-                        LocalDate Satuday = LocalDate.of( 2021 , 5 , 1 ).with( TemporalAdjusters.nextOrSame( DayOfWeek.SATURDAY ) );
-                        while( Satuday.isBefore( LocalDate.of( 2021 , 5 , 30 ) ) ) {
+                        LocalDate Satuday = LocalDate.of( 2021 , 6 , 1 ).with( TemporalAdjusters.nextOrSame( DayOfWeek.SATURDAY ) );
+                        while( Satuday.isBefore( LocalDate.of( 2021 , 6 , 30 ) ) ) {
                             dateHashMap.put(Satuday.getDayOfMonth(),"absent");
                             // Set up the next loop.
                             Satuday = Satuday.plusWeeks( 1 );

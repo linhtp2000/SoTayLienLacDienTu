@@ -18,6 +18,8 @@ import com.example.contactapp.Models.GiaoVien;
 import com.example.contactapp.Models.PhuHuynh;
 import com.example.contactapp.Models.QuanLy;
 import com.example.contactapp.Models.SinhVien;
+import com.example.contactapp.Student.Home;
+import com.example.contactapp.Student.ParentHome;
 import com.example.contactapp.Teacher.Class.TeacherClassActivity;
 import com.example.contactapp.Teacher.Course.TeacherCourseActivity;
 import com.example.contactapp.Teacher.Exercises.TeacherExerciseEdit;
@@ -46,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     private ChildEventListener mChildListener;
     private FirebaseAuth.AuthStateListener authListener;
     private static int check=0;
-
+    public static String IdUser;
     //  private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabase;
 
@@ -421,7 +423,8 @@ public class LoginActivity extends AppCompatActivity {
                                                                 //GiaoVien gv = snap.getValue(GiaoVien.class)
                                                                 if (id != null) {
                                                                     if (id.equals(uid)) {
-                                                                        Intent intent = new Intent(LoginActivity.this, TeacherExercisesActivity.class);
+                                                                        IdUser=uid;
+                                                                        Intent intent = new Intent(LoginActivity.this, ParentHome.class);
                                                                         startActivity(intent);
                                                                         finish();
                                                                     }
@@ -446,7 +449,8 @@ public class LoginActivity extends AppCompatActivity {
                                                                     //GiaoVien gv = snap.getValue(GiaoVien.class)
                                                                     if (id != null) {
                                                                         if (id.equals(uid)) {
-                                                                            Intent intent = new Intent(LoginActivity.this,TeacherClassActivity.class);
+                                                                            IdUser=uid;
+                                                                            Intent intent = new Intent(LoginActivity.this, Home.class);
                                                                             startActivity(intent);
                                                                             finish();
                                                                         }

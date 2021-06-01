@@ -153,7 +153,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         ph.setSinhVien(null);
 
                                       //    mDatabaseReference.child("PhuHuynh").push().setValue(user.getUid());
-                                        mDatabaseReference.child("PhuHuynh").child(user.getUid()).setValue(ph.getEmail());
+                                        mDatabaseReference.child("PhuHuynh").child(user.getUid()).setValue(ph);
                                     }
                                     if(role==2)
                                     {

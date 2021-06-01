@@ -7,21 +7,18 @@
     android:padding="15dp"
     android:background="@color/background"
     tools:context=".Student.EditProfileUser">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
         android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335">
+        app:layout_constraintVertical_bias="0.335"
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/editprofile_avata"
@@ -93,8 +90,6 @@
             android:textColor="@color/stealblue"
             android:textFontWeight="500"
             android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.071"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -110,8 +105,6 @@
             android:inputType="textPersonName"
             android:paddingLeft="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.872"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editprofile_class"
             tools:ignore="MissingConstraints" />
 
@@ -125,8 +118,6 @@
             android:textColor="@color/stealblue"
             android:textFontWeight="500"
             android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.067"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -141,8 +132,6 @@
             android:inputType="textPersonName"
             android:paddingLeft="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.872"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editprofileTextPhone"
             tools:ignore="MissingConstraints" />
 
@@ -156,8 +145,6 @@
             android:textColor="@color/stealblue"
             android:textFontWeight="500"
             android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.071"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -172,8 +159,6 @@
             android:inputType="textPersonName"
             android:paddingLeft="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.872"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editprofileTextEmail"
             tools:ignore="MissingConstraints" />
 
@@ -181,7 +166,6 @@
             android:id="@+id/btn_editProfileEdit"
             style="@style/buttoncolor"
             android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.5"
             android:layout_height="40dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/boderbuttoncolor"
@@ -193,6 +177,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editprofileTextAddress"
+            app:layout_constraintWidth_percent="0.5"
             tools:ignore="MissingConstraints" />
 
 
