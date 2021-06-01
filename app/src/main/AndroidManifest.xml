@@ -15,6 +15,7 @@
         <activity android:name=".Bottom_Nav_Main"></activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".Teacher.Class.TeacherClassActivity" />
         <activity android:name=".Teacher.Exercises.TeacherExercisesActivity" />
         <activity android:name=".Teacher.Exercises.TeacherExerciseInsert" />

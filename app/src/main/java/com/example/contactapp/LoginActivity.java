@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
     private static final String TAG = "ReadAndWriteSnippets";
-    private Button btnSignup, btnLogin;
+    private Button btnSignup, btnLogin,btnReset;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private ChildEventListener mChildListener;
@@ -349,7 +349,7 @@ public class LoginActivity extends AppCompatActivity {
                     inputPassword = (EditText) findViewById(R.id.edtPassword);
                     btnSignup = (Button) findViewById(R.id.btnResgister);
                     btnLogin = (Button) findViewById(R.id.btnLogin);
-                    // btnReset = (Button) findViewById(R.id.btn_reset_password);
+                    btnReset = (Button) findViewById(R.id.btnReset);
 
                     //Get Firebase auth instance
                     auth = FirebaseAuth.getInstance();
@@ -360,6 +360,12 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                         }
                     });
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, ChangePasswordActivity.class));
+            }
+        });
 
 
                     btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -380,16 +386,16 @@ public class LoginActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
                                             if (!task.isSuccessful()) {
-                                                CheckMailExist(email);
-                                                if (check==0) {
-                                                    Toast.makeText(LoginActivity.this, "Account has not been!", Toast.LENGTH_LONG).show();
-                                                } else {
-                                                    if (check==1) {
-                                                        Toast.makeText(
-                                                                LoginActivity.this, "Password is incorrect!", Toast.LENGTH_LONG).show();
-                                                    } else
+
+//                                                if (check==0) {
+//                                                    Toast.makeText(LoginActivity.this, "Account has not been!", Toast.LENGTH_LONG).show();
+//                                                } else {
+//                                                    if (check==1) {
+//                                                        Toast.makeText(
+//                                                                LoginActivity.this, "Password is incorrect!", Toast.LENGTH_LONG).show();
+//                                                    } else
                                                         Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_LONG).show();
-                                                }
+//                                                }
                                             } else {
                                                 String uid = auth.getCurrentUser().getUid();
 
@@ -735,47 +741,7 @@ public class LoginActivity extends AppCompatActivity {
 //
 //        return;
 //    }
-    private boolean CheckMailExist (String email) {
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference=mFirebaseDatabase.getReference().child("GiaoVien");
-        //   mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("GiaoVien");
-        mChildListener= new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-                    GiaoVien gv =snapshot.getValue(GiaoVien.class);
-                    if(gv.getEmail().equals(email))
-                    {
-                        check=1;
-                    }
-
-            }
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        };
-        mDatabaseReference.addChildEventListener(mChildListener);
-        if(check==1)
-        {return true;}
-
-        return false;
-    }
     private void dialogError(int gravity){
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

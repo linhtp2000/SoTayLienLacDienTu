@@ -33,7 +33,7 @@
             android:layout_marginTop="20dp"
             android:text="TextView"
             android:textColor="@color/white"
-            android:textSize="32sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.16"
@@ -117,11 +117,13 @@
             android:layout_width="57dp"
             android:layout_height="50dp"
 
-            android:layout_marginStart="3dp"
-            android:layout_marginLeft="3dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="188dp"
             android:layout_marginBottom="17dp"
             app:layout_constraintBottom_toTopOf="@+id/tvClass"
-            app:layout_constraintStart_toEndOf="@+id/textViewCourse" />
+            app:layout_constraintStart_toEndOf="@+id/textViewCourse"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/videoconference"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
