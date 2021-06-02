@@ -15,11 +15,19 @@
         <activity android:name=".Bottom_Nav_Main"></activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".Teacher.Class.TeacherClassActivity" />
         <activity android:name=".Teacher.Exercises.TeacherExercisesActivity" />
         <activity android:name=".Teacher.Exercises.TeacherExerciseInsert" />
         <activity android:name=".Teacher.Profile.TeacherProfileActivity" />
+        <activity android:name=".Teacher.Profile.TeacherProfileEdit" />
+        <activity android:name=".Teacher.Profile.TeacherBackgroundProfile" />
+        <activity android:name=".Teacher.Home.TeacherHomeActivity" />
+        <activity android:name=".Teacher.Exercises.TeacherExerciseEdit" />
+        <activity android:name=".Teacher.Course.TeacherCourseActivity" />
 
+
+        <activity android:name=".Quanly.Quanly" />
        
         <activity android:name=".Student.ProfileStudent"></activity>
         <activity android:name=".Student.Home" />
@@ -30,9 +38,12 @@
         <activity android:name=".Student.Deadline" />
         <activity android:name=".Student.TestSchedule" />
         <activity android:name=".Student.Schedule" />
+
         <activity android:name=".Student.ChangePassword" />
         <activity android:name=".Student.EditProfileUser" />
         <activity android:name=".Student.ProfileUserDetail" />
+
+        <activity android:name=".Admin.AdminManager"></activity>
 
         <activity android:name=".Admin.ListClass"></activity>
         <activity android:name=".Admin.ListCourse"></activity>

@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.contactapp.MainActivity;
 import com.example.contactapp.Models.BaiGiang;
 import com.example.contactapp.Models.BaiTap;
 import com.example.contactapp.Models.GiaoVien;
@@ -32,6 +33,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -58,19 +60,33 @@ public class TeacherProfileActivity extends AppCompatActivity {
         btnLogout = findViewById(R.id.btnLogout);
 
        getData();
-//
-//        btnEdit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//               Intent intent= new Intent(TeacherProfileActivity.this,TeacherProfileEdit.class);
-//               startActivity(intent);
-//            }
-//        });
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent= new Intent(TeacherProfileActivity.this,TeacherProfileEdit.class);
+//               GiaoVien gv= new GiaoVien();
+//               gv.setEmail(tvEmail.getText().toString());
+//               gv.setName(tvName.getText().toString());
+//               gv.setPhone(tvPhone.getText().toString());
+//               intent.putExtra("GiaoVien", gv);
+               startActivity(intent);
+            }
+        });
 
         btnChangpwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(TeacherProfileActivity.this,TeacherProfileChangePassword.class);
+                startActivity(intent);
+            }
+        });
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                auth.signOut();
+                Intent intent= new Intent(TeacherProfileActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -104,41 +120,5 @@ public class TeacherProfileActivity extends AppCompatActivity {
             }
         });
 
-//                    mDatabaseReference=mFirebaseDatabase.getReference().child("GiaoVien");
-//            mChildListener= new ChildEventListener() {
-//                @Override
-//                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//                    GiaoVien gv = snapshot.getValue(GiaoVien.class);
-//                    gv.setId(snapshot.getKey());
-//                    String email = auth.getCurrentUser().getEmail();
-//                    if (gv.getEmail().equals(email)) {
-//                        tvName.setText(gv.getName());
-//                        tvPhone.setText(gv.getPhone());
-//                        tvEmail.setText(gv.getEmail());
-//
-//                    }
-//                }
-//
-//                @Override
-//                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//
-//                }
-//
-//                @Override
-//                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-//
-//                }
-//
-//                @Override
-//                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                }
-//            };
-//            mDatabaseReference.addChildEventListener(mChildListener);
     }
 }

@@ -12,16 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
         android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintHorizontal_bias="0.206"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335">
+        app:layout_constraintVertical_bias="0.965">
 
         <ImageView
             android:id="@+id/imgvImage"
@@ -38,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="180dp"
-            android:fontFamily="@font/ellebaskerville_bold"
+
             android:text="Lecture"
             android:textColor="@color/stealblue"
             android:textFontWeight="2000"
@@ -53,93 +51,94 @@
             android:id="@+id/pudetail_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="244dp"
+            android:layout_marginTop="256dp"
             android:fontFamily="@font/ellebaskerville_bold"
-            android:text="Phone:"
+            android:text="Name:"
             android:textColor="@color/stealblue"
             android:textFontWeight="500"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.077"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/edtPhone"
-            android:layout_width="214dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="20dp"
+            android:id="@+id/edtName"
+
+            android:layout_width="243dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="34dp"
             android:background="@drawable/border"
             android:ems="10"
-            android:hint="Phone"
+
             android:inputType="textPersonName"
             android:paddingLeft="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.711"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/imgvImage"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/pudetail_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="324dp"
             android:fontFamily="@font/ellebaskerville_bold"
             android:text="Email:"
             android:textColor="@color/stealblue"
             android:textFontWeight="500"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/edtEmail"
-            android:layout_width="214dp"
-            android:layout_height="43dp"
+            android:id="@+id/tvEmail"
+            android:layout_width="243dp"
+            android:layout_height="44dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/border"
             android:ems="10"
-            android:textSize="20dp"
             android:inputType="textPersonName"
+
             android:paddingLeft="15dp"
-            app:layout_constraintEnd_toEndOf="@+id/edtPhone"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="@+id/edtName"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtPhone"
+            app:layout_constraintTop_toBottomOf="@+id/edtName"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/pudetail_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="365dp"
+            android:layout_marginTop="384dp"
             android:fontFamily="@font/ellebaskerville_bold"
-            android:text="Address:"
+            android:text="Phone:"
             android:textColor="@color/stealblue"
             android:textFontWeight="500"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintHorizontal_bias="0.013"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/edtAddress"
-            android:layout_width="214dp"
-            android:layout_height="43dp"
+            android:id="@+id/edtPhone"
+
+            android:layout_width="243dp"
+            android:layout_height="44dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="34dp"
             android:background="@drawable/border"
             android:ems="10"
-            android:hint="Address"
+
             android:inputType="textPersonName"
             android:paddingLeft="15dp"
-            app:layout_constraintEnd_toEndOf="@+id/edtEmail"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtEmail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmail"
             tools:ignore="MissingConstraints" />
 
         <Button
@@ -147,7 +146,7 @@
             style="@style/buttoncolor"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/boderbuttoncolor"
             android:fontFamily="@font/ellebaskerville_bold"
             android:text="Save"
@@ -155,12 +154,10 @@
             android:textFontWeight="500"
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtAddress"
+            app:layout_constraintTop_toBottomOf="@+id/edtPhone"
             app:layout_constraintWidth_percent="0.7"
             tools:ignore="MissingConstraints" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

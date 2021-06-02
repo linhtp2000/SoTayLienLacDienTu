@@ -48,7 +48,7 @@ public class ListManager  extends AppCompatActivity {
 
 
         Button btnAddManager=findViewById(R.id.btnAddManager);
-       dialog=new Dialog(ListManager.this);
+        dialog=new Dialog(ListManager.this);
 
 
         recyclerView=findViewById(R.id.rvManager);
@@ -70,7 +70,9 @@ public class ListManager  extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //list=new ArrayList<>();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+
                     QuanLy quanLy =dataSnapshot.getValue(QuanLy.class);
+
                     quanLy.setId(dataSnapshot.getKey());
 
 
@@ -103,7 +105,7 @@ public class ListManager  extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_addmanager);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         EditText editTextAddName=dialog.findViewById(R.id.editTextNameManager);
-        EditText editTextAddPhone=dialog.findViewById(R.id.EditTextPhoneManager);
+        EditText editTextAddPhone=dialog.findViewById(R.id.EditTextPhoneStudent);
         EditText editTextAddEmail=dialog.findViewById(R.id.editTextEmailManager);
         Button btnSave=dialog.findViewById(R.id.btnSaveAddManager);
         Button btnCancle =dialog.findViewById(R.id.btnCancleAddManager);
@@ -112,16 +114,16 @@ public class ListManager  extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Boolean a=editTextAddName.getText().toString().equals("");
-                Boolean b= editTextAddPhone.getText().toString().equals("");
-                Boolean c= editTextAddEmail.getText().toString().equals("");
+                Boolean nameCheck=editTextAddName.getText().toString().equals("");
+                Boolean phoneCheck= editTextAddPhone.getText().toString().equals("");
+                Boolean mailCheck= editTextAddEmail.getText().toString().equals("");
 
-                if(a==false && b==false && c==false)
+                if(nameCheck==false && phoneCheck==false && mailCheck==false)
                 {
 
                     FirebaseDatabase db=FirebaseDatabase.getInstance();
                     DatabaseReference node=db.getReference();
-                  QuanLy quanLy= new QuanLy(editTextAddName.getText().toString(), editTextAddPhone.getText().toString(),editTextAddEmail.getText().toString());
+                    QuanLy quanLy= new QuanLy(editTextAddName.getText().toString(), editTextAddPhone.getText().toString(),editTextAddEmail.getText().toString());
                     node.child("QuanLy").push().setValue(quanLy);
                     list.clear();
                     // adapter.notifyDataSetChanged();

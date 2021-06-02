@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,8 +40,7 @@ public class TeacherExerciseAdapter extends RecyclerView.Adapter<TeacherExercise
 
 
     public TeacherExerciseAdapter(BaiGiang baigiang){
-
-        bg=new BaiGiang();
+        bg= baigiang;
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference=mFirebaseDatabase.getReference().child("BaiTap");
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
@@ -49,12 +49,12 @@ public class TeacherExerciseAdapter extends RecyclerView.Adapter<TeacherExercise
                 for (DataSnapshot snap:dataSnapshot.getChildren()) {
                    BaiTap bt = snap.getValue(BaiTap.class);
                     bt.setId(snap.getKey());
-                   // if(bt.getBaiGiang()!=null) {
-                       // if (bt.getBaiGiang().equals(baigiang.getId())) {
+                    if(bt.getBaiGiang()!=null) {
+                        if (bt.getBaiGiang().equals(baigiang.getId())) {
                             lstBaiTap.add(bt);
                             notifyItemInserted(lstBaiTap.size() - 1);
-                      //  }
-                 //   }
+                        }
+                    }
                 }
             }
             @Override
@@ -63,6 +63,39 @@ public class TeacherExerciseAdapter extends RecyclerView.Adapter<TeacherExercise
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         });
+//            mChildListener= new ChildEventListener() {
+//                @Override
+//                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//                    BaiTap bt = snapshot.getValue(BaiTap.class);
+//                    bt.setId(snapshot.getKey());
+//                    if (bt.getBaiGiang() != null) {
+//                        if (bt.getBaiGiang().equals(baigiang.getId())) {
+//                            lstBaiTap.add(bt);
+//                            notifyItemInserted(lstBaiTap.size() - 1);
+//                        }
+//                    }
+//                }
+//
+//                @Override
+//                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//
+//                }
+//
+//                @Override
+//                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+//
+//                }
+//
+//                @Override
+//                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            };
     }
     @Override
     public TeacherExerciseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -75,7 +108,7 @@ public class TeacherExerciseAdapter extends RecyclerView.Adapter<TeacherExercise
     @Override
     public void onBindViewHolder(TeacherExerciseViewHolder holder, int position) {
         BaiTap bt= lstBaiTap.get(position);
-        holder.tvMon.setText(bg.getMon());
+        holder.tvMon.setText(bg.getName());
         holder.tvDate.setText(bt.getDeadline());
         holder.tvTenbt.setText(bt.getName());
         holder.tvTime.setText(bt.getThoiGianNop());

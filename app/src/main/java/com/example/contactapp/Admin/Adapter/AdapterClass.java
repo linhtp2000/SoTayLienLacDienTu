@@ -112,10 +112,11 @@ public class AdapterClass  extends  RecyclerView.Adapter<AdapterClass.MyViewHold
 
                                 String a=lop.getName().toString();
                                 String b=course.getText().toString();
-                                    String c=lop.getId();
+                                String c=lop.getId();
                                 if(a.equals(b)==true) {
 
-                                   database.child(c).setValue(null);
+                                    database.child(c).setValue(null);
+                                    list.clear();
 
 
 

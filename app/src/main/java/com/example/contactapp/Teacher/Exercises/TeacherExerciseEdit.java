@@ -3,9 +3,15 @@ package com.example.contactapp.Teacher.Exercises;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -17,9 +23,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.contactapp.Admin.ListStudent;
 import com.example.contactapp.Models.BaiGiang;
 import com.example.contactapp.Models.BaiTap;
 import com.example.contactapp.R;
+import com.example.contactapp.Teacher.Class.TeacherClassAdapter;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseReference;
@@ -41,11 +49,13 @@ public class TeacherExerciseEdit extends AppCompatActivity {
     TextView tvCourse, tvClass,tvFrom,tvTo,tvTime;
     String from;
     Calendar to;
-
+    BaiGiang bg;
+    BaiTap bt;
+    Dialog dialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher_insert_exercise);
+        setContentView(R.layout.activity_teacher_exercise_edit);
 
         tvFrom=findViewById(R.id.tvFrom);
         tvTo=findViewById(R.id.tvTo);
@@ -61,14 +71,15 @@ public class TeacherExerciseEdit extends AppCompatActivity {
         tvTime=findViewById(R.id.tvTime);
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference=mFirebaseDatabase.getReference();
+        mDatabaseReference=mFirebaseDatabase.getReference().child("BaiTap");
 
         Intent intent=getIntent();
         BaiTap baitap =(BaiTap) intent.getSerializableExtra("Baitap");
         BaiGiang baigiang =(BaiGiang) intent.getSerializableExtra("Baigiang");
         tvCourse.setText("Course - "+baigiang.getKhoaHoc());
-        tvClass.setText(baigiang.getMon());
-
+        tvClass.setText(baigiang.getName());
+        bt=baitap;
+        bg=baigiang;
         edtName.setText(baitap.getName());
         edtNoiDung.setText(baitap.getNoiDung());
         tvFrom.setText(baitap.getNgayTao());
@@ -115,20 +126,22 @@ public class TeacherExerciseEdit extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvTo.getText()!="" && tvFrom.getText()!="" && edtName.getText().toString()!="" &&edtNoiDung.getText().toString()!="") {
+                if(tvTo.getText().toString().trim()!="" && tvFrom.getText().toString().trim()!="" && edtName.getText().toString().trim()!="" &&edtNoiDung.getText().toString().trim()!=""&&tvTime.getText().toString().trim()!="") {
                     String day1=tvFrom.getText().toString();
                     String day2=tvTo.getText().toString();
                     if(CheckDeadlineValid(day1,day2,from,to)==true) {
-                        BaiTap baitap = new BaiTap();
-                        baitap.setName(edtName.getText().toString());
-                        baitap.setNoiDung(edtNoiDung.getText().toString());
-                        baitap.setNgayTao(tvFrom.getText().toString());
-                        baitap.setDeadline(tvTo.getText().toString());
-                        baitap.setThoiGianNop(tvTime.getText().toString());
-                        baitap.setBaiGiang(baigiang.getId());
-                        baitap.setGiaoVien(baigiang.getGiaoVien());
-                        baitap.setLstBaiTapSV(null);
-                        mDatabaseReference.child("BaiTap").child(baitap.getId()).setValue(baitap);
+                        BaiTap bt = new BaiTap();
+                       // bt.setId(baitap.getId());
+                        bt.setName(edtName.getText().toString());
+                        bt.setNoiDung(edtNoiDung.getText().toString());
+                        bt.setNgayTao(tvFrom.getText().toString());
+                        bt.setDeadline(tvTo.getText().toString());
+                        bt.setThoiGianTao(from);
+                        bt.setThoiGianNop(tvTime.getText().toString());
+                        bt.setBaiGiang(baigiang.getId());
+                        bt.setGiaoVien(baigiang.getGiaoVien());
+                        bt.setLstBaiTapSV(null);
+                        mDatabaseReference.child(baitap.getId()).setValue(bt);
                         Toast.makeText(TeacherExerciseEdit.this, "Edit Successfully!", Toast.LENGTH_LONG).show();
                         backToList();
                     }
@@ -148,7 +161,9 @@ public class TeacherExerciseEdit extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Showdialog(baitap);
+             //   Showdialog();
+               mDatabaseReference.child(bt.getId()).removeValue();
+                Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
                 backToList();
             }
         });
@@ -170,13 +185,13 @@ public class TeacherExerciseEdit extends AppCompatActivity {
             }
             if(date1.equals(date2))
             {
-                if(Integer.parseInt(s1)>time2.HOUR)
+                if(Integer.parseInt(s1)<time2.HOUR)
                 {
                     return true;
                 }
                 else
                 {
-                    if(Integer.parseInt(s1)==time2.HOUR &&Integer.parseInt(s2)>time2.MINUTE)
+                    if(Integer.parseInt(s1)==time2.HOUR &&Integer.parseInt(s2)<time2.MINUTE)
                     { return true;}
                 }
             }
@@ -188,27 +203,76 @@ public class TeacherExerciseEdit extends AppCompatActivity {
     }
     private void backToList() {
         Intent intent = new Intent(TeacherExerciseEdit.this, TeacherExercisesActivity.class);
+        intent.putExtra("Baigiang",bg);
         startActivity(intent);
     }
-    public void Showdialog(BaiTap baitap){
-        final Dialog dialog=new Dialog(this);
+    private void Showdialog() {
+        dialog= new Dialog(TeacherExerciseEdit.this);
         dialog.setContentView(R.layout.dialogdelete);
-        Button btnOK = (Button) dialog.findViewById(R.id.btnOK);
-        Button btnCancel =(Button) dialog.findViewById(R.id.btnCancel);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        Button btnOk = dialog.findViewById(R.id.btnOk);
+        Button btnCancel = dialog.findViewById(R.id.btnCancel);
+        TextView txtClassName = findViewById(R.id.dialogDelete_Title);
         dialog.show();
+
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatabaseReference.child(bt.getId()).removeValue();
+                Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
+
+            }
+        });
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.cancel();
             }
         });
-        btnOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDatabaseReference.child("BaiTap").child(baitap.getId()).removeValue();
-                Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
-                dialog.cancel();
-            }
-        });
     }
+//private void dialogError(int gravity){
+//    final Dialog dialog = new Dialog(this);
+//    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//    dialog.setContentView(R.layout.dialogdelete);
+//
+//    Window window = dialog.getWindow();
+//    if(window == null)
+//    {
+//        return;
+//    }
+//    window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+//    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//
+//    WindowManager.LayoutParams windowAttributes = window.getAttributes();
+//    windowAttributes.gravity = gravity;
+//    window.setAttributes(windowAttributes);
+//    if(Gravity.BOTTOM == gravity)
+//    {
+//        dialog.setCancelable(true);
+//    }
+//    else {
+//        dialog.setCancelable(false);
+//    }
+//
+//    Button btnCancel =(Button) dialog.findViewById(R.id.btnCancel);
+//    btnCancel.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            dialog.dismiss();
+//        }
+//    });
+//    Button btnOK = (Button) dialog.findViewById(R.id.btnOK);
+//    btnOK.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            mDatabaseReference.child(bt.getId()).removeValue();
+//            Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
+//            dialog.dismiss();
+//        }
+//    });
+//    dialog.show();
+//}
+
 }

@@ -59,7 +59,7 @@ public class ListCourse  extends AppCompatActivity {
         txtTime.setText(currentTime);
 
         Button btnAddCourse=findViewById(R.id.btnAddManager);
-         dialog=new Dialog(ListCourse.this);
+        dialog=new Dialog(ListCourse.this);
 
 
         recyclerView=findViewById(R.id.rvManager);
@@ -81,7 +81,7 @@ public class ListCourse  extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //list=new ArrayList<>();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                  //  KhoaHoc course =dataSnapshot.getValue(KhoaHoc.class);
+                    //  KhoaHoc course =dataSnapshot.getValue(KhoaHoc.class);
                     String key= dataSnapshot.getKey();
 
                     list.add(key);
@@ -124,14 +124,14 @@ public class ListCourse  extends AppCompatActivity {
                 if(check==false)
                 {
 
-                FirebaseDatabase db=FirebaseDatabase.getInstance();
-                DatabaseReference node=db.getReference("KhoaHoc");
-                String text=editTextAddCourse.getText().toString();
-                node.child(text).child("Tenlop").setValue("null");
-                list.clear();
-               // adapter.notifyDataSetChanged();
-                editTextAddCourse.setText("");
-                Toast.makeText(getApplicationContext(), "Thông tin đã được thêm", Toast.LENGTH_SHORT).show();
+                    FirebaseDatabase db=FirebaseDatabase.getInstance();
+                    DatabaseReference node=db.getReference("KhoaHoc");
+                    String text=editTextAddCourse.getText().toString();
+                    node.child(text).child("Tenlop").setValue("null");
+                    list.clear();
+                    // adapter.notifyDataSetChanged();
+                    editTextAddCourse.setText("");
+                    Toast.makeText(getApplicationContext(), "Thông tin đã được thêm", Toast.LENGTH_SHORT).show();
                 }
                 else Toast.makeText(getApplicationContext(), "Bạn chưa nhập thông tin", Toast.LENGTH_SHORT).show();
             }

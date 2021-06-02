@@ -116,8 +116,8 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="129dp"
-            android:layout_height="30dp"
+            android:layout_width="49dp"
+            android:layout_height="20dp"
             android:text="Class"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -130,15 +130,16 @@
         <ImageView
             android:id="@+id/imageView2"
             style="@style/useravt"
-            android:layout_width="42dp"
-            android:layout_height="34dp"
+            android:layout_width="55dp"
+            android:layout_height="41dp"
 
+            android:src="@drawable/videoconference"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="@+id/tvCourse"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.109"
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/tvCourse"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.38" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

@@ -32,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -50,13 +51,29 @@ public class TeacherClassActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_class);
-        lstBaiGiang=new ArrayList<>();
+
+        tvTime=findViewById(R.id.tvTime);
+        tvName=findViewById(R.id.tvName);
+        tvCourse=findViewById(R.id.tvCourse);
+        tvDate=findViewById(R.id.tvDate);
+
+        Intent intent=getIntent();
+        String kh=(String) intent.getSerializableExtra("KhoaHoc");
+        if(kh==null)
+        {
+            kh="";
+        }
+        khoahoc=kh;
+        tvCourse.setText("Course - "+kh);
+        getData();
+        getDate();
+        getUser();
 
         recyclerView=(RecyclerView)findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager=new LinearLayoutManager(TeacherClassActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter= new TeacherClassAdapter();
+        adapter= new TeacherClassAdapter(khoahoc);
         recyclerView.setAdapter(adapter);
 
 
@@ -85,9 +102,65 @@ public class TeacherClassActivity extends AppCompatActivity {
             }
         });
 
-        //        mFirebaseDatabase = FirebaseDatabase.getInstance();
-//        mDatabaseReference=mFirebaseDatabase.getReference().child("BaiGiang");
-//     //   mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("GiaoVien");
+    }
+    private void getUser()
+    {
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        mDatabaseReference=mFirebaseDatabase.getReference().child("GiaoVien");
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()) {
+                    GiaoVien gv = snapshot.getValue(GiaoVien.class);
+                    gv.setId(snapshot.getKey());
+                    String uid=auth.getCurrentUser().getUid();
+                    if(gv.getId().equals(uid))
+                    {
+                        tvName.setText("Welcome, "+gv.getName());
+                        return;
+                    }
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        });
+    }
+    private void getDate()
+    {
+        Calendar calendar = Calendar.getInstance();
+        int day=calendar.get(Calendar.DATE);
+        int month =calendar.get(Calendar.MONTH);
+        int year=calendar.get(Calendar.YEAR);
+        int gio=calendar.get(Calendar.HOUR);
+        int phut=calendar.get(Calendar.MINUTE);
+        int buoi=calendar.get(Calendar.AM);
+        month=month+1;
+        String m="";
+        if(month==1) m="Jan";
+        if(month==2) m="Feb";
+        if(month==3) m="Mar";
+        if(month==4) m="Apr";
+        if(month==5) m="May";
+        if(month==6) m="Jun";
+        if(month==7) m="Jul";
+        if(month==8) m="Aug";
+        if(month==9) m="Sep";
+        if(month==10) m="Oct";
+        if(month==11) m="Nov";
+        if(month==12) m="Dec";
+        tvDate.setText(day+" "+m+", "+year);
+        if(buoi==0){
+            tvTime.setText(gio+":"+phut+"pm");
+        }
+        else {
+            tvTime.setText(gio+":"+phut+"am");
+        }
+
 
     }
 }
