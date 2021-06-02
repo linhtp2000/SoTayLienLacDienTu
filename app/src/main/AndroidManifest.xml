@@ -26,6 +26,8 @@
         <activity android:name=".Teacher.Exercises.TeacherExerciseEdit" />
         <activity android:name=".Teacher.Course.TeacherCourseActivity" />
 
+
+        <activity android:name=".Quanly.Quanly" />
        
         <activity android:name=".Student.ProfileStudent"></activity>
         <activity android:name=".Student.Home" />

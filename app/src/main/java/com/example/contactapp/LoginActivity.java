@@ -25,6 +25,8 @@ import com.example.contactapp.Models.GiaoVien;
 import com.example.contactapp.Models.PhuHuynh;
 import com.example.contactapp.Models.QuanLy;
 import com.example.contactapp.Models.SinhVien;
+import com.example.contactapp.Quanly.HomeQuanly.Home_Quanly;
+import com.example.contactapp.Quanly.Quanly;
 import com.example.contactapp.Student.Home;
 import com.example.contactapp.Student.ParentHome;
 import com.example.contactapp.Teacher.Class.TeacherClassActivity;
@@ -484,7 +486,7 @@ public class LoginActivity extends AppCompatActivity {
                                                                     //GiaoVien gv = snap.getValue(GiaoVien.class)
                                                                     if (id != null) {
                                                                         if (id.equals(uid)) {
-                                                                            Intent intent = new Intent(LoginActivity.this, TeacherExerciseEdit.class);
+                                                                            Intent intent = new Intent(LoginActivity.this, Quanly.class);
                                                                             startActivity(intent);
                                                                             finish();
                                                                         }
