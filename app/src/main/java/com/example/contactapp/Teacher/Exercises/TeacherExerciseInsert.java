@@ -1,10 +1,10 @@
 package com.example.contactapp.Teacher.Exercises;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -14,17 +14,21 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.contactapp.LoginActivity;
+import com.example.contactapp.Model.BaiTapSV;
 import com.example.contactapp.Models.BaiGiang;
 import com.example.contactapp.Models.BaiTap;
 import com.example.contactapp.R;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -44,6 +48,7 @@ public class TeacherExerciseInsert extends AppCompatActivity {
     String from,to;
     Calendar time1,time2;
     BaiGiang baiGiang;
+    private static final String TAG = "ReadAndWriteSnippets";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -121,10 +126,20 @@ public class TeacherExerciseInsert extends AppCompatActivity {
             }
         });
 
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+
+          @Override
+         public void onClick(View view) {
+                       backToList();
+         }
+     });
+
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if(tvTo.getText()!="" && tvFrom.getText()!="" && edtName.getText().toString()!="" &&edtNoiDung.getText().toString()!=""&&tvTime.getText().toString()!="") {
+               if(tvTo.getText().toString().trim().compareTo("") !=0 &&tvFrom.getText().toString().trim().compareTo("") !=0 && edtName.getText().toString().trim().compareTo("") !=0 &&
+                       edtNoiDung.getText().toString().trim().compareTo("") !=0 && tvTime.getText().toString().trim().compareTo("") !=0) {
                    String day1=tvFrom.getText().toString();
                    String day2=tvTo.getText().toString();
                    if(CheckDeadlineValid(day1,day2,time1,time2)==true) {
@@ -138,10 +153,20 @@ public class TeacherExerciseInsert extends AppCompatActivity {
                        baitap.setBaiGiang(baiGiang.getId());
                        baitap.setGiaoVien(baiGiang.getGiaoVien());
                        baitap.setLstBaiTapSV(null);
-                       mDatabaseReference.child("BaiTap").push().setValue(baitap);
+                       Calendar calendar= Calendar.getInstance();
+                       int giay=calendar.get(Calendar.MILLISECOND);
+                       int gio=calendar.get(Calendar.HOUR);
+                       int ngay=calendar.get(Calendar.DATE);
+                       int thang=calendar.get(Calendar.MONTH);
+                       int nam=calendar.get(Calendar.YEAR);
+                       String idbaitap=(baitap.getBaiGiang()+baitap.getName()+ngay+thang+nam+gio+phut+giay).toString();
+                       mDatabaseReference.child("BaiTap").child(idbaitap).setValue(baitap);
+                       baitap.setId(idbaitap);
+                       //Add bài tập
+                       AddBaiTap(baitap);
                        Toast.makeText(TeacherExerciseInsert.this, "Insert Successfully!", Toast.LENGTH_LONG).show();
                        backToList();
-                      // Clean();
+                       //  Clean();
                    }
                    else {
                        Toast.makeText(TeacherExerciseInsert.this, "Deadline is invalid!", Toast.LENGTH_LONG).show();
@@ -173,6 +198,60 @@ public class TeacherExerciseInsert extends AppCompatActivity {
 //        time1=calendar;
 //
 //    }
+    private void AddBaiTap(BaiTap baiTap)
+    {
+        DatabaseReference mDatabaseReference2=mFirebaseDatabase.getReference().child("BaiTapSV");
+        mDatabaseReference.child("TKB").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                for (DataSnapshot snap : snapshot1.getChildren()) {
+                    String id = snap.getKey();
+                    mDatabaseReference.child("TKB").child(id).child("SinhVien").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String idsv = snapshot.getValue(String.class);
+                            mDatabaseReference.child("TKB").child(id).child("BaiGiang").addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                                        String idbaigiang = snap.getValue(String.class);
+                                        //  tkb.setId(snap.getKey());
+                                        if (idbaigiang != null) {
+                                            if (idbaigiang.equals(baiTap.getBaiGiang())) {
+                                                BaiTapSV baiTapSV = new BaiTapSV();
+                                                baiTapSV.setBaiTap(baiTap.getId());
+                                                baiTapSV.setSinhVien(idsv);
+                                                baiTapSV.setDiem(0);
+                                                baiTapSV.setNgayNop("Chưa nộp");
+                                                mDatabaseReference2.push().setValue(baiTapSV);
+                                                break;
+                                            }
+                                        }
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    // Getting Post failed, log a message
+                                    Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+            }
+                @Override
+                public void onCancelled (@NonNull DatabaseError error){
+
+                }
+        });
+    }
 private void backToList() {
     Intent intent = new Intent(TeacherExerciseInsert.this, TeacherExercisesActivity.class);
     intent.putExtra("Baigiang",baiGiang);

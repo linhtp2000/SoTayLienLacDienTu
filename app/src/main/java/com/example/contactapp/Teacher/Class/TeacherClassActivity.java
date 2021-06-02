@@ -3,25 +3,16 @@ package com.example.contactapp.Teacher.Class;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.contactapp.FirebaseUtil;
-import com.example.contactapp.LoginActivity;
-import com.example.contactapp.MainActivity;
-import com.example.contactapp.Models.Admin;
 import com.example.contactapp.Models.BaiGiang;
 import com.example.contactapp.Models.GiaoVien;
-import com.example.contactapp.Models.Mon;
-import com.example.contactapp.Models.PhuHuynh;
 import com.example.contactapp.R;
-import com.example.contactapp.Teacher.Exercises.TeacherExercisesActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -34,7 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Objects;
 
 public class TeacherClassActivity extends AppCompatActivity {
     private FirebaseDatabase mFirebaseDatabase;

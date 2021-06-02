@@ -190,6 +190,8 @@
             android:layout_marginLeft="12dp"
             android:textAlignment="center"
             android:textSize="14sp"
+            android:ems="10"
+            android:inputType="textPersonName"
             app:layout_constraintStart_toEndOf="@+id/textView7"
             app:layout_constraintTop_toTopOf="@+id/tv2"
             tools:ignore="RtlCompat" />
@@ -202,6 +204,8 @@
             android:layout_marginLeft="4dp"
             android:textAlignment="center"
             android:textSize="14sp"
+            android:inputType="textPersonName"
+            android:ems="10"
             app:layout_constraintStart_toEndOf="@+id/textView9"
             app:layout_constraintTop_toTopOf="@+id/tv1"
             tools:ignore="HardcodedText,RtlCompat" />

@@ -176,15 +176,5 @@ public class Student extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
     }
-
-
-
 }

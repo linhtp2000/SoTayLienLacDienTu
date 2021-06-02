@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -20,18 +21,23 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.contactapp.Admin.ListStudent;
+import com.example.contactapp.Model.BaiTapSV;
 import com.example.contactapp.Models.BaiGiang;
 import com.example.contactapp.Models.BaiTap;
 import com.example.contactapp.R;
 import com.example.contactapp.Teacher.Class.TeacherClassAdapter;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -126,7 +132,8 @@ public class TeacherExerciseEdit extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvTo.getText().toString().trim()!="" && tvFrom.getText().toString().trim()!="" && edtName.getText().toString().trim()!="" &&edtNoiDung.getText().toString().trim()!=""&&tvTime.getText().toString().trim()!="") {
+                if(tvTo.getText().toString().trim().compareTo("") !=0 &&tvFrom.getText().toString().trim().compareTo("") !=0 &&
+                        edtName.getText().toString().trim().compareTo("") !=0 &&edtNoiDung.getText().toString().trim().compareTo("") !=0 &&tvTime.getText().toString().trim().compareTo("") !=0) {
                     String day1=tvFrom.getText().toString();
                     String day2=tvTo.getText().toString();
                     if(CheckDeadlineValid(day1,day2,from,to)==true) {
@@ -161,8 +168,9 @@ public class TeacherExerciseEdit extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-             //   Showdialog();
+             //  Showdialog();
                mDatabaseReference.child(bt.getId()).removeValue();
+               DelBaiTap(bt.getId());
                 Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
                 backToList();
             }
@@ -206,73 +214,54 @@ public class TeacherExerciseEdit extends AppCompatActivity {
         intent.putExtra("Baigiang",bg);
         startActivity(intent);
     }
-    private void Showdialog() {
-        dialog= new Dialog(TeacherExerciseEdit.this);
-        dialog.setContentView(R.layout.dialogdelete);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//    private void Showdialog() {
+//        dialog= new Dialog(TeacherExerciseEdit.this);
+//        dialog.setContentView(R.layout.dialogdelete);
+//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//
+//        Button btnOk = dialog.findViewById(R.id.btnOk);
+//        Button btnCancel = dialog.findViewById(R.id.btnCancel);
+//        TextView txtClassName = findViewById(R.id.dialogDelete_Title);
+//        dialog.show();
+//
+//        btnOk.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mDatabaseReference.child(bt.getId()).removeValue();
+//                DelBaiTap(bt.getId());
+//                Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
+//                dialog.cancel();
+//
+//            }
+//        });
+//        btnCancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.cancel();
+//            }
+//        });
+//    }
 
-        Button btnOk = dialog.findViewById(R.id.btnOk);
-        Button btnCancel = dialog.findViewById(R.id.btnCancel);
-        TextView txtClassName = findViewById(R.id.dialogDelete_Title);
-        dialog.show();
 
-        btnOk.setOnClickListener(new View.OnClickListener() {
+    private void DelBaiTap(String id)
+    {
+        DatabaseReference mDatabaseReference2=mFirebaseDatabase.getReference().child("BaiTapSV");
+        mDatabaseReference2.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                mDatabaseReference.child(bt.getId()).removeValue();
-                Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
-                dialog.cancel();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snap : snapshot.getChildren()) {
+                    BaiTapSV bt = snap.getValue(BaiTapSV.class);
+                    //bt.setId(snap.getKey());
+                    if (bt.getBaiTap().equals(id)) {
+                        mDatabaseReference2.child(snap.getKey()).removeValue();
+                    }
+                }
+            }
+            @Override
+            public void onCancelled (@NonNull DatabaseError error){
 
             }
-        });
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
+
         });
     }
-//private void dialogError(int gravity){
-//    final Dialog dialog = new Dialog(this);
-//    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//    dialog.setContentView(R.layout.dialogdelete);
-//
-//    Window window = dialog.getWindow();
-//    if(window == null)
-//    {
-//        return;
-//    }
-//    window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-//    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//
-//    WindowManager.LayoutParams windowAttributes = window.getAttributes();
-//    windowAttributes.gravity = gravity;
-//    window.setAttributes(windowAttributes);
-//    if(Gravity.BOTTOM == gravity)
-//    {
-//        dialog.setCancelable(true);
-//    }
-//    else {
-//        dialog.setCancelable(false);
-//    }
-//
-//    Button btnCancel =(Button) dialog.findViewById(R.id.btnCancel);
-//    btnCancel.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            dialog.dismiss();
-//        }
-//    });
-//    Button btnOK = (Button) dialog.findViewById(R.id.btnOK);
-//    btnOK.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            mDatabaseReference.child(bt.getId()).removeValue();
-//            Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
-//            dialog.dismiss();
-//        }
-//    });
-//    dialog.show();
-//}
-
 }

@@ -65,22 +65,10 @@ public class TeacherProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                Intent intent= new Intent(TeacherProfileActivity.this,TeacherProfileEdit.class);
-//               GiaoVien gv= new GiaoVien();
-//               gv.setEmail(tvEmail.getText().toString());
-//               gv.setName(tvName.getText().toString());
-//               gv.setPhone(tvPhone.getText().toString());
-//               intent.putExtra("GiaoVien", gv);
                startActivity(intent);
             }
         });
 
-        btnChangpwd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(TeacherProfileActivity.this,TeacherProfileChangePassword.class);
-                startActivity(intent);
-            }
-        });
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

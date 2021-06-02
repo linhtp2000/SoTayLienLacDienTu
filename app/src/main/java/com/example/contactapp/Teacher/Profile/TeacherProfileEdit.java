@@ -58,8 +58,8 @@ public class TeacherProfileEdit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Showdialog(TeacherProfileEdit.this);
-
+                Showdialog();
+               // EditProfile(auth.getCurrentUser().getUid());
             }
         });
     }
@@ -90,8 +90,8 @@ public class TeacherProfileEdit extends AppCompatActivity {
             }
         });
     }
-    private void Showdialog(Context context){
-        Dialog dialog=new Dialog(context);
+    private void Showdialog(){
+        Dialog dialog=new Dialog(this);
         dialog.setContentView(R.layout.dialogdelete);
         dialog.show();
         Button btnOK = (Button) dialog.findViewById(R.id.btnOK);
@@ -102,33 +102,37 @@ public class TeacherProfileEdit extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.cancel();
+                dialog.dismiss();
             }
         });
         btnOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String uid=auth.getCurrentUser().getUid();
-                if(edtName.getText().toString().trim()!=""&&edtPhone.getText().toString()!="") {
+                if(edtName.getText().toString().trim().compareTo("")!=0 && edtPhone.getText().toString().trim().compareTo("")!=0) {
+                    String uid = auth.getCurrentUser().getUid();
                     GiaoVien gv = new GiaoVien();
-
                     gv.setPhone(edtPhone.getText().toString());
                     gv.setName(edtName.getText().toString());
                     gv.setEmail(tvEmail.getText().toString());
                     mDatabaseReference.child(uid).setValue(gv);
-                    dialog.cancel();
-                    Toast.makeText(context, "Update successfully!", Toast.LENGTH_SHORT).show();
-                  //  Intent intent = new Intent(TeacherProfileEdit.this, TeacherProfileActivity.class);
-                  //  startActivity(intent);
-
-
+                    Toast.makeText(TeacherProfileEdit.this, "Update successfully!", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }else
+                {
+                    Toast.makeText(TeacherProfileEdit.this, "Please fill out the form", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
                 }
-                else {
-                    dialog.cancel();
-                    Toast.makeText(context, "Please fill out the form", Toast.LENGTH_SHORT).show();
-                }
-
             }
         });
     }
+//    private  void EditProfile(String uid)
+//    {
+//        if(edtName.getText().toString().trim()!=""&&edtPhone.getText().toString().trim()!="") {
+//
+//            Toast.makeText(TeacherProfileEdit.this, "Update successfully!", Toast.LENGTH_SHORT).show();
+//        }
+//        else {
+//            Toast.makeText(TeacherProfileEdit.this, "Please fill out the form", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 }

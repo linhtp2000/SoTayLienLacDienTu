@@ -70,7 +70,7 @@ public class TeacherCourseAdapter extends RecyclerView.Adapter<TeacherCourseAdap
     @Override
     public void onBindViewHolder(TeacherCourseAdapter.TeacherCourseViewHolder holder, int position) {
         String kh= lstKhoahoc.get(position);
-        holder.tvCourse.setText(kh);
+        holder.tvCourse.setText("Course - "+kh);
 
     }
 

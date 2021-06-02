@@ -67,6 +67,13 @@ GiaoVien giaoVien;
               startActivityForResult(intent.createChooser(intent,"Insert Picture"),42);
             }
         });
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(TeacherBackgroundProfile.this,TeacherProfileActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
