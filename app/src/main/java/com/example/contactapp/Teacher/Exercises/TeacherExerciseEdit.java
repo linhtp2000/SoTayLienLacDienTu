@@ -23,6 +23,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.contactapp.Admin.ListStudent;
 import com.example.contactapp.Models.BaiGiang;
 import com.example.contactapp.Models.BaiTap;
 import com.example.contactapp.R;
@@ -49,6 +50,7 @@ public class TeacherExerciseEdit extends AppCompatActivity {
     Calendar to;
     BaiGiang bg;
     BaiTap bt;
+    Dialog dialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -158,9 +160,9 @@ public class TeacherExerciseEdit extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-//                dialogError(Gravity.CENTER);
-                mDatabaseReference.child(bt.getId()).removeValue();
-                Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
+                Showdialog();
+//                mDatabaseReference.child(bt.getId()).removeValue();
+//                Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
                 backToList();
             }
         });
@@ -203,69 +205,72 @@ public class TeacherExerciseEdit extends AppCompatActivity {
         intent.putExtra("Baigiang",bg);
         startActivity(intent);
     }
-//    private void Showdialog(BaiTap baitap){
-//       Dialog dialog=new Dialog(this);
-//        dialog.setContentView(R.layout.dialogdelete);
+    private void Showdialog() {
+        dialog.setContentView(R.layout.dialogdelete);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        Button btnOk = dialog.findViewById(R.id.btnOkSure);
+        Button btnCancle = dialog.findViewById(R.id.btnCancleSure);
+        TextView txtClassName = findViewById(R.id.txtClassNameStudent);
+        dialog.show();
+
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatabaseReference.child(bt.getId()).removeValue();
+                Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
+
+            }
+        });
+        btnCancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+    }
+//private void dialogError(int gravity){
+//    final Dialog dialog = new Dialog(this);
+//    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//    dialog.setContentView(R.layout.dialogdelete);
 //
-//        Button btnOK = (Button) dialog.findViewById(R.id.btnOK);
-//        Button btnCancel =(Button) dialog.findViewById(R.id.btnCancel);
-//        dialog.show();
-//        btnCancel.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.cancel();
-//            }
-//        });
-//        btnOK.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mDatabaseReference.child(baitap.getId()).removeValue();
-//                Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
-//                dialog.cancel();
-//            }
-//        });
+//    Window window = dialog.getWindow();
+//    if(window == null)
+//    {
+//        return;
 //    }
-private void dialogError(int gravity){
-    final Dialog dialog = new Dialog(this);
-    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-    dialog.setContentView(R.layout.dialogdelete);
-
-    Window window = dialog.getWindow();
-    if(window == null)
-    {
-        return;
-    }
-    window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-    WindowManager.LayoutParams windowAttributes = window.getAttributes();
-    windowAttributes.gravity = gravity;
-    window.setAttributes(windowAttributes);
-    if(Gravity.BOTTOM == gravity)
-    {
-        dialog.setCancelable(true);
-    }
-    else {
-        dialog.setCancelable(false);
-    }
-
-    Button btnCancel =(Button) dialog.findViewById(R.id.btnCancel);
-    btnCancel.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            dialog.dismiss();
-        }
-    });
-    Button btnOK = (Button) dialog.findViewById(R.id.btnOK);
-    btnOK.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            mDatabaseReference.child(bt.getId()).removeValue();
-            Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
-            dialog.dismiss();
-        }
-    });
-    dialog.show();
-}
+//    window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+//    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//
+//    WindowManager.LayoutParams windowAttributes = window.getAttributes();
+//    windowAttributes.gravity = gravity;
+//    window.setAttributes(windowAttributes);
+//    if(Gravity.BOTTOM == gravity)
+//    {
+//        dialog.setCancelable(true);
+//    }
+//    else {
+//        dialog.setCancelable(false);
+//    }
+//
+//    Button btnCancel =(Button) dialog.findViewById(R.id.btnCancel);
+//    btnCancel.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            dialog.dismiss();
+//        }
+//    });
+//    Button btnOK = (Button) dialog.findViewById(R.id.btnOK);
+//    btnOK.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            mDatabaseReference.child(bt.getId()).removeValue();
+//            Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
+//            dialog.dismiss();
+//        }
+//    });
+//    dialog.show();
+//}
 
 }

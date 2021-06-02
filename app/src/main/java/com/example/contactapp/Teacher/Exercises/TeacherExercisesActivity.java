@@ -61,7 +61,7 @@ public class TeacherExercisesActivity extends AppCompatActivity {
         tvCourse=findViewById(R.id.tvCourse);
         tvClass=findViewById(R.id.tvClass);
         btnAdd=findViewById(R.id.btnAdd);
-        btnDelete=findViewById(R.id.btnDelete);
+
 
         Intent intent=getIntent();
         BaiGiang bg =(BaiGiang) intent.getSerializableExtra("Baigiang");
@@ -101,13 +101,6 @@ public class TeacherExercisesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TeacherExercisesActivity.this, TeacherExerciseEdit.class);
-                intent.putExtra("Baigiang", baiGiang);
-                startActivity(intent);
-            }
-        });
+
     }
 }

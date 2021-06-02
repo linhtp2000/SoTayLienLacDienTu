@@ -20,6 +20,10 @@
         <activity android:name=".Teacher.Exercises.TeacherExercisesActivity" />
         <activity android:name=".Teacher.Exercises.TeacherExerciseInsert" />
         <activity android:name=".Teacher.Profile.TeacherProfileActivity" />
+        <activity android:name=".Teacher.Profile.TeacherProfileEdit" />
+        <activity android:name=".Teacher.Home.TeacherHomeActivity" />
+        <activity android:name=".Teacher.Exercises.TeacherExerciseEdit" />
+        <activity android:name=".Teacher.Course.TeacherCourseActivity" />
 
        
         <activity android:name=".Student.ProfileStudent"></activity>
