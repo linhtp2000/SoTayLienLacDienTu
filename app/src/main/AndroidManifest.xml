@@ -21,6 +21,7 @@
         <activity android:name=".Teacher.Exercises.TeacherExerciseInsert" />
         <activity android:name=".Teacher.Profile.TeacherProfileActivity" />
         <activity android:name=".Teacher.Profile.TeacherProfileEdit" />
+        <activity android:name=".Teacher.Profile.TeacherBackgroundProfile" />
         <activity android:name=".Teacher.Home.TeacherHomeActivity" />
         <activity android:name=".Teacher.Exercises.TeacherExerciseEdit" />
         <activity android:name=".Teacher.Course.TeacherCourseActivity" />

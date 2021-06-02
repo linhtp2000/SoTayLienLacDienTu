@@ -7,6 +7,15 @@ public class GiaoVien implements Serializable {
     private  String Name;
     private  String Phone;
     private  String Email;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public GiaoVien(){}
 

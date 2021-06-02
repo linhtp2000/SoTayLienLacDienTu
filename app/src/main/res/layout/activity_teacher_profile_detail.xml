@@ -161,30 +161,11 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/btnChangepwd"
-            style="@style/buttoncolor"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/boderbuttoncolor"
-            android:fontFamily="@font/ellebaskerville_bold"
-            android:text="Change Pasword"
-            android:textColor="@color/white"
-            android:textFontWeight="500"
-            android:textSize="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnEdit"
-            app:layout_constraintWidth_percent="0.7"
-            tools:ignore="MissingConstraints" />
-
-        <Button
             android:id="@+id/btnLogout"
             style="@style/buttoncolor"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/boderbuttoncolor"
             android:fontFamily="@font/ellebaskerville_bold"
             android:text="Logout"
@@ -192,9 +173,8 @@
             android:textFontWeight="1000"
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnChangepwd"
+            app:layout_constraintTop_toBottomOf="@+id/btnEdit"
             app:layout_constraintWidth_percent="0.7"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>

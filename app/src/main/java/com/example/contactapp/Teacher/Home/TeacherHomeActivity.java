@@ -21,6 +21,7 @@ import com.example.contactapp.R;
 import com.example.contactapp.Teacher.Course.TeacherCourseActivity;
 import com.example.contactapp.Teacher.Course.TeacherCourseAdapter;
 import com.example.contactapp.Teacher.Exercises.TeacherExerciseEdit;
+import com.example.contactapp.Teacher.Profile.TeacherBackgroundProfile;
 import com.example.contactapp.Teacher.Profile.TeacherProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -61,7 +62,7 @@ public class TeacherHomeActivity extends AppCompatActivity {
 
         btnProfile.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent= new Intent(TeacherHomeActivity.this, TeacherProfileActivity.class);
+                Intent intent= new Intent(TeacherHomeActivity.this, TeacherBackgroundProfile.class);
                 startActivity(intent);
 
             }

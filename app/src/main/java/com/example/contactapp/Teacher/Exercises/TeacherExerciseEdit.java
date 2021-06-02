@@ -27,6 +27,7 @@ import com.example.contactapp.Admin.ListStudent;
 import com.example.contactapp.Models.BaiGiang;
 import com.example.contactapp.Models.BaiTap;
 import com.example.contactapp.R;
+import com.example.contactapp.Teacher.Class.TeacherClassAdapter;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseReference;
@@ -160,9 +161,9 @@ public class TeacherExerciseEdit extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Showdialog();
-//                mDatabaseReference.child(bt.getId()).removeValue();
-//                Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
+             //   Showdialog();
+               mDatabaseReference.child(bt.getId()).removeValue();
+                Toast.makeText(TeacherExerciseEdit.this, "Delete successfully!", Toast.LENGTH_SHORT).show();
                 backToList();
             }
         });
@@ -206,12 +207,13 @@ public class TeacherExerciseEdit extends AppCompatActivity {
         startActivity(intent);
     }
     private void Showdialog() {
+        dialog= new Dialog(TeacherExerciseEdit.this);
         dialog.setContentView(R.layout.dialogdelete);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        Button btnOk = dialog.findViewById(R.id.btnOkSure);
-        Button btnCancle = dialog.findViewById(R.id.btnCancleSure);
-        TextView txtClassName = findViewById(R.id.txtClassNameStudent);
+        Button btnOk = dialog.findViewById(R.id.btnOk);
+        Button btnCancel = dialog.findViewById(R.id.btnCancel);
+        TextView txtClassName = findViewById(R.id.dialogDelete_Title);
         dialog.show();
 
         btnOk.setOnClickListener(new View.OnClickListener() {
@@ -223,7 +225,7 @@ public class TeacherExerciseEdit extends AppCompatActivity {
 
             }
         });
-        btnCancle.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.cancel();
