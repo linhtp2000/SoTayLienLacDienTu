@@ -1,8 +1,11 @@
 package com.example.contactapp.Model;
 
 public class Schedule_List {
-    public String id;
-    public Object BaiGiang;
+    private String id;
+    private Object BaiGiang;
+    private String SinhVien;
+
+
 
     public Schedule_List(){
 
@@ -11,6 +14,23 @@ public class Schedule_List {
         this.id=id;
         this.BaiGiang = listbaiGiang;
     }
+//    public Object getBaiGiang() {
+//        return BaiGiang;
+//    }
+//
+//    public void setBaiGiang(Object baiGiang) {
+//        BaiGiang = baiGiang;
+//    }
+
+    public String getIdSinhVien() {
+        return SinhVien;
+    }
+
+    public void setIdSinhVien(String idSinhVien) {
+        this.SinhVien = idSinhVien;
+    }
+
+
 
     public String getId() {
         return id;

@@ -37,6 +37,7 @@ public class Deadline extends AppCompatActivity {
     TextView time;
     TextView User;
     TextView date;
+    TextView role;
     DatabaseReference mDatabase;
     CustomCalendar customCalendar;
     String idBaiTap;
@@ -47,7 +48,7 @@ public class Deadline extends AppCompatActivity {
         setContentView(R.layout.activity_deadline);
 
 
-
+        role=(TextView) findViewById(R.id.textView9);
 
         //customCalendar
         customCalendar=findViewById(R.id.customCalendar);
@@ -201,6 +202,7 @@ public class Deadline extends AppCompatActivity {
                 }
             });
         }else {
+            role.setText("Parent");
             User.setText("Wellcome, " + ParentHome.NameUser);
             mDatabase.child("BaiTap").addChildEventListener(new ChildEventListener() {
                 @Override

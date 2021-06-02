@@ -16,12 +16,13 @@ public class ProfileUserDetail extends AppCompatActivity {
     TextView ClassUser;
     EditText Phone;
     EditText Mail;
+    TextView mssv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_user_detail);
         Button btn = (Button) findViewById(R.id.btn_puDetailEdit);
-
+        mssv =(TextView) findViewById(R.id.pudetail_mssv);
         User = (TextView) findViewById(R.id.pudetail_name);
         ClassUser = (TextView) findViewById(R.id.pudetail_class);
         Phone = (EditText) findViewById(R.id.editTextPhone);
