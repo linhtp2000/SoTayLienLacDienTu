@@ -126,13 +126,13 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 if (!task.isSuccessful()) {
                                     //Email đã tồn tại
-//                                    if(CheckMailExist(email))
-//                                    {
-//                                        Toast.makeText(RegisterActivity.this, "Account has been exist!", Toast.LENGTH_SHORT).show();
-//                                    }
-//                                    else {
+                                    if(CheckMailExist(email))
+                                    {
+                                        Toast.makeText(RegisterActivity.this, "Account has been exist!", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else {
                                     Toast.makeText(RegisterActivity.this, "Authentication failed." , Toast.LENGTH_SHORT).show();
-                                   // }
+                                    }
                                 }
                                 else {
                                     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();

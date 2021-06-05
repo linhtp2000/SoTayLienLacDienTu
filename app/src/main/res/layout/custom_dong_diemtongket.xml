@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="#40FF0000"
+    android:orientation="horizontal"
+    android:weightSum="8"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <TextView
+        android:id="@+id/txtTenTongDiemTB"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:text="Trung"
+        android:layout_weight="1.5"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:id="@+id/txtMSSVTongDiemTB"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="18110222"
+        android:textSize="15sp"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:id="@+id/txtDiemTongDiemTB"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="10.00"
+        android:textSize="15sp"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:id="@+id/txtXeploaiTongDiemTB"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="Xuất Sắc"
+        android:textSize="15sp"
+        android:layout_weight="2.5"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+</LinearLayout>
